@@ -106,11 +106,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new WebpackPwaManifest({
       name: 'StackEdit',
+      short_name: 'StackEdit',
       description: 'Full-featured, open-source Markdown editor',
       display: 'standalone',
       orientation: 'any',
-      start_url: 'app',
+      start_url: '.',
       background_color: '#ffffff',
+      theme_color: '#007acc',
       crossorigin: 'use-credentials',
       icons: [{
         src: resolve('src/assets/favicon.png'),
@@ -123,7 +125,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       },
       AppCache: true,
       excludes: ['**/.*', '**/*.map', '**/index.html', '**/static/oauth2/callback.html', '**/icons-*/*.png', '**/static/fonts/KaTeX_*'],
-      externals: ['/', '/app', '/oauth2/callback']
+      externals: ['./', 'static/oauth2/callback.html']
     }),
   ]
 })
