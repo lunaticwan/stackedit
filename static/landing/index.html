@@ -13,7 +13,7 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="msvalidate.01" content="5E47EE6F67B069C17E3CDD418351A612">
     <meta name="google-site-verification" content="iWDn0T2r2_bDQWp_nW23MGePbO9X0M8wQSzbOU70pFQ" />
-    <link rel="stylesheet" href="https://stackedit.io/style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: #fbfbfb;
@@ -261,7 +261,10 @@
     </style>
     <script>
         function scrollTo(selector) {
-            $('html,body').animate({scrollTop: $(selector).offset().top}, 500);
+            var elt = document.querySelector(selector);
+            if (elt) {
+                elt.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     </script>
 </head>
@@ -290,7 +293,7 @@
                 </div>
             </div>
             <div class="splash-screen__footer">
-                <a class="button" href="javascript:scrollTo($('.anchor'))">
+                <a class="button" href="javascript:scrollTo('.anchor')">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><path d="M 11,4L 13,4L 13,16.0104L 18.5052,10.5052L 19.9194,11.9194L 12,19.8388L 4.08058,11.9194L 5.49479,10.5052L 11,16.0104L 11,4 Z "/></path></svg>
                     Read more
                 </a>
@@ -456,7 +459,6 @@
             <a href="privacy_policy.html" target="_blank">Privacy Policy</a>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 </body>
 
 </html>
