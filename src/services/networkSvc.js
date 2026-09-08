@@ -63,27 +63,7 @@ export default {
         && this.isUserActive()
       ) {
         store.commit('updateLastOfflineCheck');
-        const script = document.createElement('script');
-        let timeout;
-        try {
-          await new Promise((resolve, reject) => {
-            script.onload = resolve;
-            script.onerror = reject;
-            script.src = `https://apis.google.com/js/api.js?${Date.now()}`;
-            try {
-              document.head.appendChild(script); // This can fail with bad network
-              timeout = setTimeout(reject, networkTimeout);
-            } catch (e) {
-              reject(e);
-            }
-          });
-          isConnectionDown = false;
-        } catch (e) {
-          isConnectionDown = true;
-        } finally {
-          clearTimeout(timeout);
-          document.head.removeChild(script);
-        }
+        isConnectionDown = false;
       }
       const offline = isBrowserOffline || isConnectionDown;
       if (store.state.offline !== offline) {
