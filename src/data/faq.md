@@ -1,9 +1,9 @@
-**Where is my data stored?**
+**내 데이터는 어디에 저장되나요?**
 
-If your workspace is not synced, your files are stored inside your browser and nowhere else.
+워크스페이스가 동기화되지 않은 경우, 파일은 브라우저 내부에만 저장되며 다른 곳에는 저장되지 않습니다.
 
-We recommend syncing your workspace to make sure files won't be lost in case your browser data is cleared. Self-hosted CouchDB or GitLab backends are well suited for privacy.
+브라우저 데이터가 삭제될 경우 파일 손실을 방지하기 위해 워크스페이스를 동기화하는 것을 권장합니다. 개인 정보 보호를 위해 직접 호스팅하는 CouchDB 또는 GitLab 백엔드가 적합합니다.
 
-**Can StackEdit access my data without telling me?**
+**StackEdit이 사용자 승인 없이 내 데이터에 접근할 수 있나요?**
 
-StackEdit is a browser-based application. The access tokens issued by Google, Dropbox, GitHub... are stored in your browser and are not sent to any kind of backend or 3^rd^ party so your data won't be accessed by anyone.
+StackEdit은 브라우저 기반 애플리케이션입니다. Google, Dropbox, GitHub 등에서 발급된 접근 토큰(Access Token)은 사용자의 브라우저에 저장되며 백엔드나 제3자에게 전송되지 않으므로 누구도 사용자의 데이터에 임의로 접근할 수 없습니다.

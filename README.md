@@ -2,46 +2,54 @@
 
 [![Build Status](https://img.shields.io/travis/benweet/stackedit.svg?style=flat)](https://travis-ci.org/benweet/stackedit) [![NPM version](https://img.shields.io/npm/v/stackedit.svg?style=flat)](https://www.npmjs.org/package/stackedit)
 
-> Full-featured, open-source Markdown editor based on PageDown, the Markdown library used by Stack Overflow and the other Stack Exchange sites.
+> Stack Overflow 및 Stack Exchange 사이트에서 사용되는 Markdown 라이브러리인 PageDown 기반의 풀기능 오픈소스 Markdown 에디터입니다.
 
 https://stackedit.io/
 
-### Ecosystem
+### 생태계 (Ecosystem)
 
-- [Chrome app](https://chrome.google.com/webstore/detail/iiooodelglhkcpgbajoejffhijaclcdg)
-- NEW! Embed StackEdit in any website with [stackedit.js](https://github.com/benweet/stackedit.js)
-- NEW! [Chrome extension](https://chrome.google.com/webstore/detail/ajehldoplanpchfokmeempkekhnhmoha) that uses stackedit.js
-- [Community](https://community.stackedit.io/)
+- [Chrome 앱](https://chrome.google.com/webstore/detail/iiooodelglhkcpgbajoejffhijaclcdg)
+- [stackedit.js](https://github.com/benweet/stackedit.js)를 사용하여 모든 웹사이트에 StackEdit 임베드 가능
+- stackedit.js를 사용하는 [Chrome 확장 프로그램](https://chrome.google.com/webstore/detail/ajehldoplanpchfokmeempkekhnhmoha)
+- [커뮤니티](https://community.stackedit.io/)
 
-### Build
+### 빌드 및 실행 (Build)
 
 ```bash
-# install dependencies
+# 의존성 패키지 설치
 npm install
 
-# serve with hot reload at localhost:8080
+# 로컬 개발 서버 실행 (localhost:8080)
 npm start
 
-# build for production with minification
+# 프로덕션 빌드 (파일 압축 및 최적화)
 npm run build
 
-# build for production and view the bundle analyzer report
+# 프로덕션 빌드 및 번들 분석 보고서 확인
 npm run build --report
 ```
 
-### Deploy with Helm
+### GitHub Pages 배포 (GitHub Pages Deployment)
 
-StackEdit Helm chart allows easy StackEdit deployment to any Kubernetes cluster.
-You can use it to configure deployment with your existing ingress controller and cert-manager.
+이 리포지토리는 GitHub Actions를 사용하여 GitHub Pages에 자동 배포되도록 설정되어 있습니다.
+
+- `.github/workflows/deploy.yml` 워크플로우 파일이 포함되어 있습니다.
+- `main` 또는 `master` 브랜치에 변경 사항이 push되면 자동으로 Node.js v10 환경에서 빌드가 수행되고, 결과물(`dist/`)이 GitHub Pages에 배포됩니다.
+- GitHub 리포지토리 설정의 **Settings > Pages > Build and deployment**에서 Source를 **GitHub Actions**로 지정해야 합니다.
+
+### Helm을 이용한 배포 (Deploy with Helm)
+
+StackEdit Helm 차트를 사용하면 Kubernetes 클러스터에 StackEdit을 쉽게 배포할 수 있습니다.
+기존 Ingress 컨트롤러 및 cert-manager와 함께 배포하도록 설정할 수 있습니다.
 
 ```bash
-# Add the StackEdit Helm repository
+# StackEdit Helm 리포지토리 추가
 helm repo add stackedit https://benweet.github.io/stackedit-charts/
 
-# Update your local Helm chart repository cache
+# 로컬 Helm 차트 리포지토리 캐시 업데이트
 helm repo update
 
-# Deploy StackEdit chart to your cluster
+# 클러스터에 StackEdit 차트 배포
 helm install --name stackedit stackedit/stackedit \
   --set dropboxAppKey=$DROPBOX_API_KEY \
   --set dropboxAppKeyFull=$DROPBOX_FULL_ACCESS_API_KEY \
@@ -53,23 +61,23 @@ helm install --name stackedit stackedit/stackedit \
   --set wordpressSecret=$WORDPRESS_CLIENT_SECRET
 ```
 
-Later, to upgrade StackEdit to the latest version:
+이후 StackEdit을 최신 버전으로 업그레이드하려면:
 
 ```bash
 helm repo update
 helm upgrade stackedit stackedit/stackedit
 ```
 
-If you want to uninstall StackEdit:
+StackEdit을 삭제하려면:
 
 ```bash
 helm delete --purge stackedit
 ```
 
-If you want to use your existing ingress controller and cert-manager issuer:
+기존 Ingress 컨트롤러 및 cert-manager issuer를 사용하려는 경우:
 
 ```bash
-# See https://docs.cert-manager.io/en/latest/tutorials/acme/quick-start/index.html
+# 참고: https://docs.cert-manager.io/en/latest/tutorials/acme/quick-start/index.html
 helm install --name stackedit stackedit/stackedit \
   --set dropboxAppKey=$DROPBOX_API_KEY \
   --set dropboxAppKeyFull=$DROPBOX_FULL_ACCESS_API_KEY \
