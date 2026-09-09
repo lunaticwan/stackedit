@@ -1,8 +1,8 @@
 <template>
-  <modal-inner class="modal__inner-1--templates" aria-label="Manage templates">
+  <modal-inner class="modal__inner-1--templates" aria-label="템플릿 관리">
     <div class="modal__content">
       <div class="form-entry">
-        <label class="form-entry__label" for="template">Template</label>
+        <label class="form-entry__label" for="template">템플릿</label>
         <div class="form-entry__field">
           <input v-if="isEditing" id="template" type="text" class="textfield" v-focus @blur="submitEdit()" @keydown.enter="submitEdit()" @keydown.esc.stop="submitEdit(true)" v-model="editingName">
           <select v-else id="template" v-model="selectedId" class="textfield">
@@ -12,31 +12,31 @@
           </select>
         </div>
         <div class="form-entry__actions flex flex--row flex--end">
-          <button class="form-entry__button button" @click="create" v-title="'New template'">
+          <button class="form-entry__button button" @click="create" v-title="'새 템플릿'">
             <icon-file-plus></icon-file-plus>
           </button>
-          <button class="form-entry__button button" @click="copy" v-title="'Copy template'">
+          <button class="form-entry__button button" @click="copy" v-title="'템플릿 복사'">
             <icon-file-multiple></icon-file-multiple>
           </button>
-          <button v-if="!isReadOnly" class="form-entry__button button" @click="isEditing = true" v-title="'Rename template'">
+          <button v-if="!isReadOnly" class="form-entry__button button" @click="isEditing = true" v-title="'템플릿 이름 변경'">
             <icon-pen></icon-pen>
           </button>
-          <button v-if="!isReadOnly" class="form-entry__button button" @click="remove" v-title="'Remove template'">
+          <button v-if="!isReadOnly" class="form-entry__button button" @click="remove" v-title="'템플릿 삭제'">
             <icon-delete></icon-delete>
           </button>
         </div>
       </div>
       <div class="form-entry">
-        <label class="form-entry__label">Value</label>
+        <label class="form-entry__label">내용 (Value)</label>
         <div class="form-entry__field" v-for="(template, id) in templates" :key="id" v-if="id === selectedId">
           <code-editor lang="handlebars" :value="template.value" :disabled="isReadOnly" @changed="template.value = $event"></code-editor>
         </div>
       </div>
       <div v-if="!isReadOnly">
-        <a href="javascript:void(0)" v-if="!showHelpers" @click="showHelpers = true">Add helpers</a>
+        <a href="javascript:void(0)" v-if="!showHelpers" @click="showHelpers = true">헬퍼 함수 추가</a>
         <div class="form-entry" v-else>
           <br>
-          <label class="form-entry__label">Helpers</label>
+          <label class="form-entry__label">헬퍼 함수 (Helpers)</label>
           <div class="form-entry__field" v-for="(template, id) in templates" :key="id" v-if="id === selectedId">
             <code-editor lang="javascript" :value="template.helpers" @changed="template.helpers = $event"></code-editor>
           </div>
@@ -44,8 +44,8 @@
       </div>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>
@@ -122,7 +122,7 @@ export default {
   methods: {
     create() {
       const template = {
-        name: 'New template',
+        name: '새 템플릿',
         value: '\n',
         helpers: '\n',
       };

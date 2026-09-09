@@ -2,13 +2,13 @@
   <nav class="navigation-bar" :class="{'navigation-bar--editor': styles.showEditor && !revisionContent, 'navigation-bar--light': light}">
     <!-- Explorer -->
     <div class="navigation-bar__inner navigation-bar__inner--left navigation-bar__inner--button">
-      <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" v-title="'Close StackEdit'"><icon-check-circle></icon-check-circle></button>
-      <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else tour-step-anchor="explorer" @click="toggleExplorer()" v-title="'Toggle explorer'"><icon-folder></icon-folder></button>
+      <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" v-title="'StackEdit 닫기'"><icon-check-circle></icon-check-circle></button>
+      <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else tour-step-anchor="explorer" @click="toggleExplorer()" v-title="'탐색기 토글'"><icon-folder></icon-folder></button>
     </div>
     <!-- Side bar -->
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--button">
-      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" v-title="'Open StackEdit'"><icon-provider provider-id="stackedit"></icon-provider></a>
-      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else tour-step-anchor="menu" @click="toggleSideBar()" v-title="'Toggle side bar'"><icon-provider provider-id="stackedit"></icon-provider></button>
+      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" v-title="'StackEdit 열기'"><icon-provider provider-id="stackedit"></icon-provider></a>
+      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else tour-step-anchor="menu" @click="toggleSideBar()" v-title="'사이드바 토글'"><icon-provider provider-id="stackedit"></icon-provider></button>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--title flex flex--row">
       <!-- Spinner -->
@@ -22,20 +22,20 @@
       <input class="navigation-bar__title navigation-bar__title--input text-input" :class="{'navigation-bar__title--focus': titleFocus, 'navigation-bar__title--scrolling': titleScrolling}" :style="{width: titleWidth + 'px'}" @focus="editTitle(true)" @blur="editTitle(false)" @keydown.enter="submitTitle(false)" @keydown.esc.stop="submitTitle(true)" @mouseenter="titleHover = true" @mouseleave="titleHover = false" v-model="title">
       <!-- Sync/Publish -->
       <div class="flex flex--row" :class="{'navigation-bar__hidden': styles.hideLocations}">
-        <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in syncLocations" :key="location.id" :href="location.url" target="_blank" v-title="'Synchronized location'"><icon-provider :provider-id="location.providerId"></icon-provider></a>
-        <button class="navigation-bar__button navigation-bar__button--sync button" :disabled="!isSyncPossible || isSyncRequested || offline" @click="requestSync" v-title="'Synchronize now'"><icon-sync></icon-sync></button>
-        <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in publishLocations" :key="location.id" :href="location.url" target="_blank" v-title="'Publish location'"><icon-provider :provider-id="location.providerId"></icon-provider></a>
-        <button class="navigation-bar__button navigation-bar__button--publish button" :disabled="!publishLocations.length || isPublishRequested || offline" @click="requestPublish" v-title="'Publish now'"><icon-upload></icon-upload></button>
+        <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in syncLocations" :key="location.id" :href="location.url" target="_blank" v-title="'동기화 위치'"><icon-provider :provider-id="location.providerId"></icon-provider></a>
+        <button class="navigation-bar__button navigation-bar__button--sync button" :disabled="!isSyncPossible || isSyncRequested || offline" @click="requestSync" v-title="'지금 동기화'"><icon-sync></icon-sync></button>
+        <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in publishLocations" :key="location.id" :href="location.url" target="_blank" v-title="'게시 위치'"><icon-provider :provider-id="location.providerId"></icon-provider></a>
+        <button class="navigation-bar__button navigation-bar__button--publish button" :disabled="!publishLocations.length || isPublishRequested || offline" @click="requestPublish" v-title="'지금 게시'"><icon-upload></icon-upload></button>
       </div>
       <!-- Revision -->
       <div class="flex flex--row" v-if="revisionContent">
-        <button class="navigation-bar__button navigation-bar__button--revision navigation-bar__button--restore button" @click="restoreRevision">Restore</button>
-        <button class="navigation-bar__button navigation-bar__button--revision button" @click="setRevisionContent()" v-title="'Close revision'"><icon-close></icon-close></button>
+        <button class="navigation-bar__button navigation-bar__button--revision navigation-bar__button--restore button" @click="restoreRevision">복원</button>
+        <button class="navigation-bar__button navigation-bar__button--revision button" @click="setRevisionContent()" v-title="'리비전 닫기'"><icon-close></icon-close></button>
       </div>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--edit-pagedownButtons">
-      <button class="navigation-bar__button button" @click="undo" v-title="'Undo'" :disabled="!canUndo"><icon-undo></icon-undo></button>
-      <button class="navigation-bar__button button" @click="redo" v-title="'Redo'" :disabled="!canRedo"><icon-redo></icon-redo></button>
+      <button class="navigation-bar__button button" @click="undo" v-title="'실행 취소'" :disabled="!canUndo"><icon-undo></icon-undo></button>
+      <button class="navigation-bar__button button" @click="redo" v-title="'다시 실행'" :disabled="!canRedo"><icon-redo></icon-redo></button>
       <div v-for="button in pagedownButtons" :key="button.method">
         <button class="navigation-bar__button button" v-if="button.method" @click="pagedownClick(button.method)" v-title="button.titleWithShortcut">
           <component :is="button.iconClass"></component>

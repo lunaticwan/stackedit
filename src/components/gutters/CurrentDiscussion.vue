@@ -4,18 +4,18 @@
     <div class="current-discussion__inner">
       <div class="flex flex--row flex--space-between">
         <div class="current-discussion__buttons flex flex--row flex--end">
-          <button class="current-discussion__button button" v-if="showNext" @click="goToDiscussion(previousDiscussionId)" v-title="'Previous discussion'">
+          <button class="current-discussion__button button" v-if="showNext" @click="goToDiscussion(previousDiscussionId)" v-title="'이전 토론'">
             <icon-arrow-left></icon-arrow-left>
           </button>
-          <button class="current-discussion__button current-discussion__button--rotate button" v-if="showNext" @click="goToDiscussion(nextDiscussionId)" v-title="'Next discussion'">
+          <button class="current-discussion__button current-discussion__button--rotate button" v-if="showNext" @click="goToDiscussion(nextDiscussionId)" v-title="'다음 토론'">
             <icon-arrow-left></icon-arrow-left>
           </button>
         </div>
         <div class="current-discussion__buttons flex flex--row flex--end">
-          <button class="current-discussion__button current-discussion__button--remove button" v-if="showRemove" @click="removeDiscussion" v-title="'Remove discussion'">
+          <button class="current-discussion__button current-discussion__button--remove button" v-if="showRemove" @click="removeDiscussion" v-title="'토론 삭제'">
             <icon-delete></icon-delete>
           </button>
-          <button class="current-discussion__button button" @click="setCurrentDiscussionId()" v-title="'Close discussion'">
+          <button class="current-discussion__button button" @click="setCurrentDiscussionId()" v-title="'토론 닫기'">
             <icon-close></icon-close>
           </button>
         </div>
@@ -80,7 +80,7 @@ export default {
         ? editorSvc.clEditor.selectionMgr.getCoordinates(discussion.end)
         : editorSvc.getPreviewOffsetCoordinates(editorSvc.getPreviewOffset(discussion.end));
       if (!coordinates) {
-        this.info("Discussion can't be located in the file.");
+        this.info('파일 내에서 토론 위치를 찾을 수 없습니다.');
       } else {
         const scrollerElt = layoutSettings.showEditor
           ? editorSvc.editorElt.parentNode

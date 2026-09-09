@@ -2,20 +2,20 @@
   <div class="explorer flex flex--column">
     <div class="side-title flex flex--row flex--space-between">
       <div class="flex flex--row">
-        <button class="side-title__button side-title__button--new-file button" @click="newItem()" v-title="'New file'">
+        <button class="side-title__button side-title__button--new-file button" @click="newItem()" v-title="'새 파일'">
           <icon-file-plus></icon-file-plus>
         </button>
-        <button class="side-title__button side-title__button--new-folder button" @click="newItem(true)" v-title="'New folder'">
+        <button class="side-title__button side-title__button--new-folder button" @click="newItem(true)" v-title="'새 폴더'">
           <icon-folder-plus></icon-folder-plus>
         </button>
-        <button class="side-title__button side-title__button--delete button" @click="deleteItem()" v-title="'Delete'">
+        <button class="side-title__button side-title__button--delete button" @click="deleteItem()" v-title="'삭제'">
           <icon-delete></icon-delete>
         </button>
-        <button class="side-title__button side-title__button--rename button" @click="editItem()" v-title="'Rename'">
+        <button class="side-title__button side-title__button--rename button" @click="editItem()" v-title="'이름 변경'">
           <icon-pen></icon-pen>
         </button>
       </div>
-      <button class="side-title__button side-title__button--close button" @click="toggleExplorer(false)" v-title="'Close explorer'">
+      <button class="side-title__button side-title__button--close button" @click="toggleExplorer(false)" v-title="'탐색기 닫기'">
         <icon-close></icon-close>
       </button>
     </div>

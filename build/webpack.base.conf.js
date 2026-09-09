@@ -64,6 +64,16 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [
+          resolve('node_modules/abcjs')
+        ],
+        options: {
+          presets: [['env', { modules: 'commonjs' }]],
+        }
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [
           resolve('src'),
           resolve('test'),
           resolve('node_modules/mermaid')

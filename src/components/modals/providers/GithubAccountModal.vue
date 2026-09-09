@@ -14,8 +14,8 @@
       </div>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="config.resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="config.resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

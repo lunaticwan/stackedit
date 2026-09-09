@@ -1,52 +1,52 @@
 export default [{
 }, {
   method: 'bold',
-  title: 'Bold',
+  title: '굵게',
   icon: 'format-bold',
 }, {
   method: 'italic',
-  title: 'Italic',
+  title: '기울임꼴',
   icon: 'format-italic',
 }, {
   method: 'heading',
-  title: 'Heading',
+  title: '제목',
   icon: 'format-size',
 }, {
   method: 'strikethrough',
-  title: 'Strikethrough',
+  title: '취소선',
   icon: 'format-strikethrough',
 }, {
 }, {
   method: 'ulist',
-  title: 'Unordered list',
+  title: '글머리 기호 목록',
   icon: 'format-list-bulleted',
 }, {
   method: 'olist',
-  title: 'Ordered list',
+  title: '번호 매기기 목록',
   icon: 'format-list-numbers',
 }, {
   method: 'clist',
-  title: 'Check list',
+  title: '체크리스트',
   icon: 'format-list-checks',
 }, {
 }, {
   method: 'quote',
-  title: 'Blockquote',
+  title: '인용구',
   icon: 'format-quote-close',
 }, {
   method: 'code',
-  title: 'Code',
+  title: '코드',
   icon: 'code-tags',
 }, {
   method: 'table',
-  title: 'Table',
+  title: '표',
   icon: 'table',
 }, {
   method: 'link',
-  title: 'Link',
+  title: '링크',
   icon: 'link-variant',
 }, {
   method: 'image',
-  title: 'Image',
+  title: '이미지',
   icon: 'file-image',
 }];

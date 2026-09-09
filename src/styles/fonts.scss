@@ -1,41 +1,30 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@5.0.1/index.css');
+
 @font-face {
-  font-family: 'Lato';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/lato-normal.woff') format('woff');
+  src: local('Pretendard Regular'), local('Pretendard-Regular'), url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Regular.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 400;
-  src: url('../assets/fonts/lato-normal-italic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Lato';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 600;
-  src: url('../assets/fonts/lato-black.woff') format('woff');
+  src: local('Pretendard SemiBold'), local('Pretendard-SemiBold'), url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-SemiBold.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 600;
-  src: url('../assets/fonts/lato-black-italic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto Mono';
+  font-family: 'Cascadia Code';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/RobotoMono-Regular.woff') format('woff');
+  src: local('Cascadia Code Regular'), local('CascadiaCode-Regular'), local('Cascadia Code'), url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@5.0.1/files/cascadia-code-latin-400-normal.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Roboto Mono';
+  font-family: 'Cascadia Code';
   font-style: normal;
   font-weight: 600;
-  src: url('../assets/fonts/RobotoMono-Bold.woff') format('woff');
+  src: local('Cascadia Code Bold'), local('CascadiaCode-Bold'), local('Cascadia Code'), url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@5.0.1/files/cascadia-code-latin-600-normal.woff2') format('woff2');
 }

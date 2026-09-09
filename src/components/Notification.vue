@@ -10,10 +10,10 @@
         {{item.content}}
       </div>
       <button class="notification__button button" v-if="item.type === 'confirm'" @click="item.reject">
-        No
+        아니오
       </button>
       <button class="notification__button button" v-if="item.type === 'confirm'" @click="item.resolve">
-        Yes
+        예
       </button>
     </div>
   </div>

@@ -5,19 +5,19 @@
         <icon-provider provider-id="github"></icon-provider>
       </div>
       <p>Create a workspace synced with a <b>GitHub</b> repository folder.</p>
-      <form-entry label="Repository URL" error="repoUrl">
+      <form-entry label="저장소 URL" error="repoUrl">
         <input slot="field" class="textfield" type="text" v-model.trim="repoUrl" @keydown.enter="resolve()">
         <div class="form-entry__info">
           <b>Example:</b> https://github.com/owner/my-repo
         </div>
       </form-entry>
-      <form-entry label="Folder path" info="optional">
+      <form-entry label="폴더 경로" info="선택 사항">
         <input slot="field" class="textfield" type="text" v-model.trim="path" @keydown.enter="resolve()">
         <div class="form-entry__info">
           If not supplied, the root folder will be used.
         </div>
       </form-entry>
-      <form-entry label="Branch" info="optional">
+      <form-entry label="브랜치" info="선택 사항">
         <input slot="field" class="textfield" type="text" v-model.trim="branch" @keydown.enter="resolve()">
         <div class="form-entry__info">
           If not supplied, the <code>master</code> branch will be used.
@@ -25,8 +25,8 @@
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

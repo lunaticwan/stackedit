@@ -1,56 +1,56 @@
 <template>
-  <modal-inner class="modal__inner-1--file-properties" aria-label="File properties">
+  <modal-inner class="modal__inner-1--file-properties" aria-label="파일 속성">
     <div class="modal__content">
       <div class="tabs flex flex--row">
         <tab :active="tab === 'simple'" @click="setSimpleTab()">
-          Simple properties
+          기본 속성
         </tab>
         <tab :active="tab === 'yaml'" @click="setYamlTab()">
-          YAML properties
+          YAML 속성
         </tab>
       </div>
       <div v-if="tab === 'simple'">
-        <div class="modal__title">Extensions</div>
-        <div class="modal__sub-title">Configure the Markdown engine.</div>
-        <form-entry label="Preset">
+        <div class="modal__title">확장 기능</div>
+        <div class="modal__sub-title">Markdown 엔진을 설정합니다.</div>
+        <form-entry label="프리셋">
           <select slot="field" class="textfield" v-model="preset" @keydown.enter="resolve()">
             <option v-for="(preset, id) in presets" :key="id" :value="preset">
               {{ preset }}
             </option>
           </select>
         </form-entry>
-        <div class="modal__title">Metadata</div>
-        <div class="modal__sub-title">Add info to your publications (Wordpress, Blogger...).</div>
-        <form-entry label="Title">
+        <div class="modal__title">메타데이터</div>
+        <div class="modal__sub-title">게시물에 메타 정보를 추가합니다 (WordPress, Blogger 등).</div>
+        <form-entry label="제목">
           <input slot="field" class="textfield" type="text" v-model.trim="title" @keydown.enter="resolve()">
         </form-entry>
-        <form-entry label="Author">
+        <form-entry label="작성자">
           <input slot="field" class="textfield" type="text" v-model.trim="author" @keydown.enter="resolve()">
         </form-entry>
-        <form-entry label="Tags" info="comma-separated">
+        <form-entry label="태그" info="쉼표로 구분">
           <input slot="field" class="textfield" type="text" v-model.trim="tags" @keydown.enter="resolve()">
         </form-entry>
-        <form-entry label="Categories" info="comma-separated">
+        <form-entry label="카테고리" info="쉼표로 구분">
           <input slot="field" class="textfield" type="text" v-model.trim="categories" @keydown.enter="resolve()">
         </form-entry>
-        <form-entry label="Excerpt">
+        <form-entry label="요약">
           <input slot="field" class="textfield" type="text" v-model.trim="excerpt" @keydown.enter="resolve()">
         </form-entry>
-        <form-entry label="Featured image">
+        <form-entry label="대표 이미지">
           <input slot="field" class="textfield" type="text" v-model.trim="featuredImage" @keydown.enter="resolve()">
         </form-entry>
-        <form-entry label="Status">
+        <form-entry label="상태">
           <input slot="field" class="textfield" type="text" v-model.trim="status" @keydown.enter="resolve()">
           <div class="form-entry__info">
-            <b>Example:</b> draft
+            <b>예시:</b> draft
           </div>
         </form-entry>
-        <form-entry label="Date" info="YYYY-MM-DD">
+        <form-entry label="날짜" info="YYYY-MM-DD">
           <input slot="field" class="textfield" type="text" v-model.trim="date" @keydown.enter="resolve()">
         </form-entry>
       </div>
       <div v-if="tab === 'yaml'">
-        <div class="form-entry" role="tabpanel" aria-label="YAML properties">
+        <div class="form-entry" role="tabpanel" aria-label="YAML 속성">
           <label class="form-entry__label">YAML</label>
           <div class="form-entry__field">
             <code-editor lang="yaml" :value="yamlProperties" key="custom-properties" @changed="setYamlProperties"></code-editor>
@@ -58,13 +58,13 @@
         </div>
         <div class="modal__error modal__error--file-properties">{{error}}</div>
         <div class="modal__info modal__info--multiline">
-          <p><strong>ProTip:</strong> You can manually toggle extensions:</p>
+          <p><strong>팁:</strong> 수동으로 확장 기능을 설정할 수 있습니다:</p>
           <pre class=" language-yaml"><code class="prism  language-yaml"><span class="token key atrule">extensions</span><span class="token punctuation">:</span>
   <span class="token key atrule">emoji</span><span class="token punctuation">:</span>
     <span class="token comment"># Enable emoji shortcuts like :) :-(</span>
     <span class="token key atrule">shortcuts</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre>
-          <p>Use preset <code>zero</code> to make your own configuration:</p>
+          <p><code>zero</code> 프리셋을 사용하여 커스텀 구성을 생성할 수도 있습니다:</p>
           <pre class=" language-yaml"><code class="prism  language-yaml"><span class="token key atrule">extensions</span><span class="token punctuation">:</span>
   <span class="token key atrule">preset</span><span class="token punctuation">:</span> zero
   <span class="token key atrule">markdown</span><span class="token punctuation">:</span>
@@ -72,13 +72,13 @@
   <span class="token key atrule">katex</span><span class="token punctuation">:</span>
     <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre>
-          <p>For the full list of options, see <a href="https://github.com/benweet/stackedit/blob/master/src/data/presets.js" target="_blank">here</a>.</p>
+          <p>전체 옵션 목록은 <a href="https://github.com/benweet/stackedit/blob/master/src/data/presets.js" target="_blank">여기</a>를 참조하세요.</p>
         </div>
       </div>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

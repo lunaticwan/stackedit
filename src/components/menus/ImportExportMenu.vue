@@ -6,8 +6,8 @@
         <icon-upload></icon-upload>
       </div>
       <div class="flex flex--column">
-        <div>Import Markdown</div>
-        <span>Import a plain text file.</span>
+        <div>Markdown 가져오기</div>
+        <span>일반 텍스트 파일 가져오기</span>
       </div>
     </label>
     <input class="hidden-file" id="import-html-file-input" type="file" @change="onImportHtml">
@@ -16,30 +16,30 @@
         <icon-upload></icon-upload>
       </div>
       <div class="flex flex--column">
-        <div>Import HTML</div>
-        <span>Convert an HTML file to Markdown.</span>
+        <div>HTML 가져오기</div>
+        <span>HTML 파일을 Markdown으로 변환</span>
       </div>
     </label>
     <hr>
     <menu-entry @click.native="exportMarkdown">
       <icon-download slot="icon"></icon-download>
-      <div>Export as Markdown</div>
-      <span>Save plain text file.</span>
+      <div>Markdown으로 내보내기</div>
+      <span>일반 텍스트 파일로 저장</span>
     </menu-entry>
     <menu-entry @click.native="exportHtml">
       <icon-download slot="icon"></icon-download>
-      <div>Export as HTML</div>
-      <span>Generate an HTML page from a template.</span>
+      <div>HTML로 내보내기</div>
+      <span>템플릿 기반 HTML 페이지 생성</span>
     </menu-entry>
     <menu-entry @click.native="exportPdf">
       <icon-download slot="icon"></icon-download>
-      <div><div class="menu-entry__label" :class="{'menu-entry__label--warning': !isSponsor}">sponsor</div> Export as PDF</div>
-      <span>Produce a PDF from an HTML template.</span>
+      <div><div class="menu-entry__label" :class="{'menu-entry__label--warning': !isSponsor}">스폰서</div> PDF로 내보내기</div>
+      <span>HTML 템플릿 기반 PDF 생성</span>
     </menu-entry>
     <menu-entry @click.native="exportPandoc">
       <icon-download slot="icon"></icon-download>
-      <div><div class="menu-entry__label" :class="{'menu-entry__label--warning': !isSponsor}">sponsor</div> Export with Pandoc</div>
-      <span>Convert to PDF, Word, EPUB...</span>
+      <div><div class="menu-entry__label" :class="{'menu-entry__label--warning': !isSponsor}">스폰서</div> Pandoc으로 내보내기</div>
+      <span>PDF, Word, EPUB 등으로 변환</span>
     </menu-entry>
   </div>
 </template>
@@ -63,7 +63,7 @@ const readFile = file => new Promise((resolve) => {
     reader.onload = (e) => {
       const content = e.target.result;
       if (content.match(/\uFFFD/)) {
-        store.dispatch('notification/error', 'File is not readable.');
+        store.dispatch('notification/error', '파일을 읽을 수 없습니다.');
       } else {
         resolve(content);
       }

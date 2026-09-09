@@ -2,14 +2,14 @@
   <div class="side-bar__panel side-bar__panel--menu">
     <menu-entry @click.native="manageWorkspaces">
       <icon-database slot="icon"></icon-database>
-      <div><div class="menu-entry__label menu-entry__label--count">{{workspaceCount}}</div> Manage workspaces</div>
-      <span>List, rename, remove workspaces</span>
+      <div><div class="menu-entry__label menu-entry__label--count">{{workspaceCount}}</div> Workspace 관리</div>
+      <span>Workspace 목록 조회, 이름 변경, 삭제</span>
     </menu-entry>
     <hr>
     <div class="workspace" v-for="(workspace, id) in workspacesById" :key="id">
       <menu-entry :href="workspace.url" target="_blank">
         <icon-provider slot="icon" :provider-id="workspace.providerId"></icon-provider>
-        <div class="workspace__name"><div class="menu-entry__label" v-if="currentWorkspace === workspace">current</div>{{workspace.name}}</div>
+        <div class="workspace__name"><div class="menu-entry__label" v-if="currentWorkspace === workspace">현재</div>{{workspace.name}}</div>
       </menu-entry>
     </div>
   </div>

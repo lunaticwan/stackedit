@@ -1,13 +1,13 @@
 <template>
   <div class="side-bar flex flex--column">
     <div class="side-title flex flex--row">
-      <button v-if="panel !== 'menu'" class="side-title__button button" @click="setPanel('menu')" v-title="'Main menu'">
+      <button v-if="panel !== 'menu'" class="side-title__button button" @click="setPanel('menu')" v-title="'메인 메뉴'">
         <icon-dots-horizontal></icon-dots-horizontal>
       </button>
       <div class="side-title__title">
         {{panelName}}
       </div>
-      <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'Close side bar'">
+      <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
         <icon-close></icon-close>
       </button>
     </div>
@@ -46,15 +46,15 @@ import markdownConversionSvc from '../services/markdownConversionSvc';
 import store from '../store';
 
 const panelNames = {
-  menu: 'Menu',
+  menu: '메뉴',
   workspaces: 'Workspaces',
-  help: 'Markdown cheat sheet',
-  toc: 'Table of contents',
-  sync: 'Synchronize',
-  publish: 'Publish',
-  history: 'File history',
-  importExport: 'Import/export',
-  workspaceBackups: 'Workspace backups',
+  help: 'Markdown 치트시트',
+  toc: '목차 (TOC)',
+  sync: '동기화',
+  publish: '게시',
+  history: '파일 히스토리',
+  importExport: '가져오기/내보내기',
+  workspaceBackups: 'Workspace 백업',
 };
 
 export default {

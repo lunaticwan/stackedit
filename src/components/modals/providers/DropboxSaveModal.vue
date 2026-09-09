@@ -1,21 +1,21 @@
 <template>
-  <modal-inner aria-label="Synchronize with Dropbox">
+  <modal-inner aria-label="Dropbox와 동기화">
     <div class="modal__content">
       <div class="modal__image">
         <icon-provider provider-id="dropbox"></icon-provider>
       </div>
-      <p>Save <b>{{currentFileName}}</b> to your <b>Dropbox</b> and keep it synced.</p>
-      <form-entry label="File path" error="path">
+      <p><b>{{currentFileName}}</b>을(를) <b>Dropbox</b>에 저장하고 동기화합니다.</p>
+      <form-entry label="파일 경로" error="path">
         <input slot="field" class="textfield" type="text" v-model.trim="path" @keydown.enter="resolve()">
         <div class="form-entry__info">
-          <b>Example:</b> {{config.token.fullAccess ? '' : '/Applications/StackEdit (restricted)'}}/path/to/My Document.md<br>
-          If the file exists, it will be overwritten.
+          <b>예시:</b> {{config.token.fullAccess ? '' : '/Applications/StackEdit (restricted)'}}/path/to/My Document.md<br>
+          파일이 존재하면 덮어씁니다.
         </div>
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

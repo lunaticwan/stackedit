@@ -5,16 +5,16 @@
         <icon-provider provider-id="couchdb"></icon-provider>
       </div>
       <p>Please provide your credentials to login to <b>CouchDB</b>.</p>
-      <form-entry label="Name" error="name">
+      <form-entry label="이름" error="name">
         <input slot="field" class="textfield" type="text" v-model.trim="name" @keydown.enter="resolve()">
       </form-entry>
-      <form-entry label="Password" error="password">
+      <form-entry label="비밀번호" error="password">
         <input slot="field" class="textfield" type="password" v-model.trim="password" @keydown.enter="resolve()">
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

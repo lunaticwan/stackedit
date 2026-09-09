@@ -38,7 +38,7 @@ export default {
   height: 100%;
   font-size: 14px;
   line-height: 18px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: Pretendard, sans-serif;
   user-select: none;
 }
 

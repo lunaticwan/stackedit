@@ -1,8 +1,8 @@
 <template>
-  <modal-inner aria-label="Export with Pandoc">
+  <modal-inner aria-label="Pandoc으로 내보내기">
     <div class="modal__content">
-      <p>Please choose a format for your <b>Pandoc export</b>.</p>
-      <form-entry label="Template">
+      <p><b>Pandoc 내보내기</b>에 사용할 포맷을 선택하세요.</p>
+      <form-entry label="포맷">
         <select class="textfield" slot="field" v-model="selectedFormat" @keydown.enter="resolve()">
           <option value="asciidoc">AsciiDoc</option>
           <option value="context">ConTeXt</option>
@@ -19,8 +19,8 @@
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

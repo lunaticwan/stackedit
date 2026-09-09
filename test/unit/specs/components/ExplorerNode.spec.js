@@ -90,7 +90,7 @@ describe('ExplorerNode.vue', () => {
     const node = await makeFolderNode();
     const wrapper = mount(node);
     wrapper.trigger('contextmenu');
-    await specUtils.resolveContextMenu('New file');
+    await specUtils.resolveContextMenu('새 파일');
     expect(wrapper.contains('.explorer-node__new-child')).toBe(true);
     store.commit('explorer/setNewItemName', modifiedName);
     wrapper.find('.explorer-node__new-child .text-input').trigger('blur');
@@ -108,7 +108,7 @@ describe('ExplorerNode.vue', () => {
     const node = await makeFolderNode();
     const wrapper = mount(node);
     wrapper.trigger('contextmenu');
-    await specUtils.resolveContextMenu('New file');
+    await specUtils.resolveContextMenu('새 파일');
     expect(wrapper.contains('.explorer-node__new-child')).toBe(true);
     store.commit('explorer/setNewItemName', modifiedName);
     wrapper.find('.explorer-node__new-child .text-input').trigger('keydown', {
@@ -127,20 +127,20 @@ describe('ExplorerNode.vue', () => {
   it('should not create new file in a file', async () => {
     const node = await makeFileNode();
     mount(node).trigger('contextmenu');
-    expect(specUtils.getContextMenuItem('New file').disabled).toBe(true);
+    expect(specUtils.getContextMenuItem('새 파일').disabled).toBe(true);
   });
 
   it('should not create new file in the trash folder', async () => {
     const node = store.getters['explorer/nodeMap'].trash;
     mount(node).trigger('contextmenu');
-    expect(specUtils.getContextMenuItem('New file').disabled).toBe(true);
+    expect(specUtils.getContextMenuItem('새 파일').disabled).toBe(true);
   });
 
   it('should create new folder in folder', async () => {
     const node = await makeFolderNode();
     const wrapper = mount(node);
     wrapper.trigger('contextmenu');
-    await specUtils.resolveContextMenu('New folder');
+    await specUtils.resolveContextMenu('새 폴더');
     expect(wrapper.contains('.explorer-node__new-child--folder')).toBe(true);
     store.commit('explorer/setNewItemName', modifiedName);
     wrapper.find('.explorer-node__new-child--folder .text-input').trigger('blur');
@@ -158,7 +158,7 @@ describe('ExplorerNode.vue', () => {
     const node = await makeFolderNode();
     const wrapper = mount(node);
     wrapper.trigger('contextmenu');
-    await specUtils.resolveContextMenu('New folder');
+    await specUtils.resolveContextMenu('새 폴더');
     expect(wrapper.contains('.explorer-node__new-child--folder')).toBe(true);
     store.commit('explorer/setNewItemName', modifiedName);
     wrapper.find('.explorer-node__new-child--folder .text-input').trigger('keydown', {
@@ -177,26 +177,26 @@ describe('ExplorerNode.vue', () => {
   it('should not create new folder in a file', async () => {
     const node = await makeFileNode();
     mount(node).trigger('contextmenu');
-    expect(specUtils.getContextMenuItem('New folder').disabled).toBe(true);
+    expect(specUtils.getContextMenuItem('새 폴더').disabled).toBe(true);
   });
 
   it('should not create new folder in the trash folder', async () => {
     const node = store.getters['explorer/nodeMap'].trash;
     mount(node).trigger('contextmenu');
-    expect(specUtils.getContextMenuItem('New folder').disabled).toBe(true);
+    expect(specUtils.getContextMenuItem('새 폴더').disabled).toBe(true);
   });
 
   it('should not create new folder in the temp folder', async () => {
     const node = store.getters['explorer/nodeMap'].temp;
     mount(node).trigger('contextmenu');
-    expect(specUtils.getContextMenuItem('New folder').disabled).toBe(true);
+    expect(specUtils.getContextMenuItem('새 폴더').disabled).toBe(true);
   });
 
   it('should rename file', async () => {
     const node = await makeFileNode();
     const wrapper = mount(node);
     wrapper.trigger('contextmenu');
-    await specUtils.resolveContextMenu('Rename');
+    await specUtils.resolveContextMenu('이름 변경');
     expect(wrapper.contains('.explorer-node__item-editor')).toBe(true);
     wrapper.setData({ editingValue: modifiedName });
     wrapper.find('.explorer-node__item-editor .text-input').trigger('blur');
@@ -208,7 +208,7 @@ describe('ExplorerNode.vue', () => {
     const node = await makeFileNode();
     const wrapper = mount(node);
     wrapper.trigger('contextmenu');
-    await specUtils.resolveContextMenu('Rename');
+    await specUtils.resolveContextMenu('이름 변경');
     expect(wrapper.contains('.explorer-node__item-editor')).toBe(true);
     wrapper.setData({ editingValue: modifiedName });
     wrapper.find('.explorer-node__item-editor .text-input').trigger('keydown', {
@@ -222,7 +222,7 @@ describe('ExplorerNode.vue', () => {
     const node = await makeFolderNode();
     const wrapper = mount(node);
     wrapper.trigger('contextmenu');
-    await specUtils.resolveContextMenu('Rename');
+    await specUtils.resolveContextMenu('이름 변경');
     expect(wrapper.contains('.explorer-node__item-editor')).toBe(true);
     wrapper.setData({ editingValue: modifiedName });
     wrapper.find('.explorer-node__item-editor .text-input').trigger('blur');
@@ -234,7 +234,7 @@ describe('ExplorerNode.vue', () => {
     const node = await makeFolderNode();
     const wrapper = mount(node);
     wrapper.trigger('contextmenu');
-    await specUtils.resolveContextMenu('Rename');
+    await specUtils.resolveContextMenu('이름 변경');
     expect(wrapper.contains('.explorer-node__item-editor')).toBe(true);
     wrapper.setData({ editingValue: modifiedName });
     wrapper.find('.explorer-node__item-editor .text-input').trigger('keydown', {
@@ -247,13 +247,13 @@ describe('ExplorerNode.vue', () => {
   it('should not rename the trash folder', async () => {
     const node = store.getters['explorer/nodeMap'].trash;
     mount(node).trigger('contextmenu');
-    expect(specUtils.getContextMenuItem('Rename').disabled).toBe(true);
+    expect(specUtils.getContextMenuItem('이름 변경').disabled).toBe(true);
   });
 
   it('should not rename the temp folder', async () => {
     const node = store.getters['explorer/nodeMap'].temp;
     mount(node).trigger('contextmenu');
-    expect(specUtils.getContextMenuItem('Rename').disabled).toBe(true);
+    expect(specUtils.getContextMenuItem('이름 변경').disabled).toBe(true);
   });
 
   it('should move file into a folder', async () => {
