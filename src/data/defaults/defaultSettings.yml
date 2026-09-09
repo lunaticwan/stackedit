@@ -79,16 +79,16 @@ turndown:
 
 # GitHub/GitLab commit messages
 git:
-  createFileMessage: '{{path}} created from https://stackedit.io/'
-  updateFileMessage: '{{path}} updated from https://stackedit.io/'
-  deleteFileMessage: '{{path}} deleted from https://stackedit.io/'
+  createFileMessage: '{{path}} created from iMbank MD'
+  updateFileMessage: '{{path}} updated from iMbank MD'
+  deleteFileMessage: '{{path}} deleted from iMbank MD'
 
 # Default content for new files
 newFileContent: |
 
 
 
-  > Written with [StackEdit](https://stackedit.io/).
+  > Written with iM뱅크 MD.
 
 # Default properties for new files
 newFileProperties: |

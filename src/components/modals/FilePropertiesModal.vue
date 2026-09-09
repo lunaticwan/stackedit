@@ -72,7 +72,6 @@
   <span class="token key atrule">katex</span><span class="token punctuation">:</span>
     <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre>
-          <p>전체 옵션 목록은 <a href="https://github.com/benweet/stackedit/blob/master/src/data/presets.js" target="_blank">여기</a>를 참조하세요.</p>
         </div>
       </div>
     </div>

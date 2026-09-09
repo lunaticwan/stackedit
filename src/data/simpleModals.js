@@ -90,7 +90,7 @@ export default {
     '확인',
   ),
   workspaceGoogleRedirection: simpleModal(
-    '<p>이 Workspace를 열려면 StackEdit에 Google Drive 전체 접근 권한이 필요합니다.</p>',
+    '<p>이 Workspace를 열려면 iM뱅크 MD에 Google Drive 전체 접근 권한이 필요합니다.</p>',
     '취소',
     '확인, 권한 부여',
   ),
