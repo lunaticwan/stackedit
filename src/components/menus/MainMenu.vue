@@ -68,7 +68,7 @@
     </menu-entry>
     <menu-entry @click.native="about">
       <icon-help-circle slot="icon"></icon-help-circle>
-      iM뱅크 MD 정보
+      iM뱅크MD 정보
     </menu-entry>
   </div>
 </template>

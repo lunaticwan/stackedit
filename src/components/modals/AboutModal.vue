@@ -2,7 +2,7 @@
   <modal-inner class="modal__inner-1--about-modal" aria-label="정보">
     <div class="modal__content">
       <div class="logo-background"></div>
-      <h3>iM뱅크 MD</h3>
+      <h3>iM뱅크MD</h3>
       <hr>
       <small>v{{version}}</small>
       <h3>자주 묻는 질문</h3>

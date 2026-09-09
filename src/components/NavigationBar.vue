@@ -2,12 +2,12 @@
   <nav class="navigation-bar" :class="{'navigation-bar--editor': styles.showEditor && !revisionContent, 'navigation-bar--light': light}">
     <!-- Explorer -->
     <div class="navigation-bar__inner navigation-bar__inner--left navigation-bar__inner--button">
-      <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" v-title="'iM뱅크 MD 닫기'"><icon-check-circle></icon-check-circle></button>
+      <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" v-title="'iM뱅크MD 닫기'"><icon-check-circle></icon-check-circle></button>
       <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else tour-step-anchor="explorer" @click="toggleExplorer()" v-title="'탐색기 토글'"><icon-folder></icon-folder></button>
     </div>
     <!-- Side bar -->
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--button">
-      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" v-title="'iM뱅크 MD 열기'"><icon-provider provider-id="stackedit"></icon-provider></a>
+      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" v-title="'iM뱅크MD 열기'"><icon-provider provider-id="stackedit"></icon-provider></a>
       <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else tour-step-anchor="menu" @click="toggleSideBar()" v-title="'사이드바 토글'"><icon-provider provider-id="stackedit"></icon-provider></button>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--title flex flex--row">
