@@ -1,8 +1,6 @@
-# StackEdit
+# iM Markdown
 
-[![Build Status](https://img.shields.io/travis/benweet/stackedit.svg?style=flat)](https://travis-ci.org/benweet/stackedit) [![NPM version](https://img.shields.io/npm/v/stackedit.svg?style=flat)](https://www.npmjs.org/package/stackedit)
-
-> Stack Overflow 및 Stack Exchange 사이트에서 사용되는 Markdown 라이브러리인 PageDown 기반의 풀기능 오픈소스 Markdown 에디터입니다.
+> PageDown 기반의 풀기능 마크다운 에디터 iM Markdown입니다.
 
 https://stackedit.io/
 

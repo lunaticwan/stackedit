@@ -79,16 +79,16 @@ turndown:
 
 # GitHub/GitLab commit messages
 git:
-  createFileMessage: '{{path}} created from iMbank MD'
-  updateFileMessage: '{{path}} updated from iMbank MD'
-  deleteFileMessage: '{{path}} deleted from iMbank MD'
+  createFileMessage: '{{path}} created from iM Markdown'
+  updateFileMessage: '{{path}} updated from iM Markdown'
+  deleteFileMessage: '{{path}} deleted from iM Markdown'
 
 # Default content for new files
 newFileContent: |
 
 
 
-  > Written with iM뱅크MD.
+  > Written with iM Markdown.
 
 # Default properties for new files
 newFileProperties: |
