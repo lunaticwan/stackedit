@@ -8,7 +8,7 @@
           </option>
         </select>
       </p>
-      <p v-if="!historyContext">수정 이력을 사용하려면 <b>{{currentFileName}}</b>을(를) 동기화하거나 <a href="javascript:void(0)" @click="signin">Google에 로그인</a>하여 메인 Workspace를 동기화하세요.</p>
+      <p v-if="!historyContext"><b>{{currentFileName}}</b>에 저장된 수정 이력이 없습니다.</p>
       <p v-else-if="loading">히스토리 불러오는 중…</p>
       <p v-else-if="!revisionsWithSpacer.length"><b>{{currentFileName}}</b>에 대한 이력이 없습니다.</p>
       <div class="menu-entry menu-entry--info flex flex--row flex--align-center" v-else>

@@ -1,26 +1,12 @@
 <template>
-  <modal-inner class="modal__inner-1--about-modal" aria-label="About">
+  <modal-inner class="modal__inner-1--about-modal" aria-label="정보">
     <div class="modal__content">
       <div class="logo-background"></div>
-      StackEdit on <a target="_blank" href="https://github.com/benweet/stackedit/">GitHub</a>
-      <br>
-      <a target="_blank" href="https://github.com/benweet/stackedit/issues">Issue tracker</a> — <a target="_blank" href="https://github.com/benweet/stackedit/releases">Changelog</a>
-      <br>
-      <a target="_blank" href="https://chrome.google.com/webstore/detail/iiooodelglhkcpgbajoejffhijaclcdg">Chrome app</a> — <a target="_blank" href="https://chrome.google.com/webstore/detail/ajehldoplanpchfokmeempkekhnhmoha">Chrome extension</a>
-      <br>
-      <a target="_blank" href="https://community.stackedit.io/">Community</a> — <a target="_blank" href="https://community.stackedit.io/c/how-to">Tutos and How To</a>
-      <br>
-      StackEdit on <a target="_blank" href="https://twitter.com/stackedit/">Twitter</a>
+      <h3>iM뱅크 MD</h3>
       <hr>
-      <small>© 2013-2019 Dock5 Software Ltd.<br>v{{version}}</small>
-      <h3>FAQ</h3>
+      <small>v{{version}}</small>
+      <h3>자주 묻는 질문</h3>
       <div class="faq" v-html="faq"></div>
-      <div class="modal__info">
-        상업적 지원이나 맞춤형 개발 문의는 <a href="mailto:stackedit.project@gmail.com">이메일로 문의</a>하세요.
-      </div>
-      Licensed under an
-      <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a><br>
-      <a target="_blank" href="privacy_policy.html">개인정보 처리방침</a>
     </div>
     <div class="modal__button-bar">
       <button class="button button--resolve" @click="config.resolve()">닫기</button>

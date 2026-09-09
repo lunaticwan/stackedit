@@ -4,8 +4,8 @@
       <div class="modal__image">
         <icon-key></icon-key>
       </div>
-      <p v-if="entries.length">StackEdit이 다음 외부 계정에 접근할 수 있습니다:</p>
-      <p v-else>StackEdit에 연동된 외부 계정이 없습니다.</p>
+      <p v-if="entries.length">iM뱅크 MD가 다음 외부 계정에 접근할 수 있습니다:</p>
+      <p v-else>iM뱅크 MD에 연동된 외부 계정이 없습니다.</p>
       <div>
         <div class="account-entry flex flex--column" v-for="entry in entries" :key="entry.token.sub">
           <div class="account-entry__header flex flex--row flex--align-center">
