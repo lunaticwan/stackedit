@@ -6,12 +6,12 @@
         <icon-content-save></icon-content-save>
       </div>
       <div class="flex flex--column">
-        Import workspace backup
+        Workspace 백업 가져오기
       </div>
     </label>
     <menu-entry @click.native="exportWorkspace">
       <icon-content-save slot="icon"></icon-content-save>
-      Export workspace backup
+      Workspace 백업 내보내기
     </menu-entry>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
         reader.onload = (e) => {
           const text = e.target.result;
           if (text.match(/\uFFFD/)) {
-            store.dispatch('notification/error', 'File is not readable.');
+            store.dispatch('notification/error', '파일을 읽을 수 없습니다.');
           } else {
             backupSvc.importBackup(text);
           }

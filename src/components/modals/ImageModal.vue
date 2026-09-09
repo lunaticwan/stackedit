@@ -1,23 +1,23 @@
 <template>
-  <modal-inner aria-label="Insert image">
+  <modal-inner aria-label="이미지 삽입">
     <div class="modal__content">
-      <p>Please provide a <b>URL</b> for your image.</p>
+      <p>이미지 <b>URL</b>을 입력하세요.</p>
       <form-entry label="URL" error="url">
         <input slot="field" class="textfield" type="text" v-model.trim="url" @keydown.enter="resolve">
       </form-entry>
       <menu-entry @click.native="openGooglePhotos(token)" v-for="token in googlePhotosTokens" :key="token.sub">
         <icon-provider slot="icon" provider-id="googlePhotos"></icon-provider>
-        <div>Open from Google Photos</div>
+        <div>Google Photos에서 열기</div>
         <span>{{token.name}}</span>
       </menu-entry>
       <menu-entry @click.native="addGooglePhotosAccount">
         <icon-provider slot="icon" provider-id="googlePhotos"></icon-provider>
-        <span>Add Google Photos account</span>
+        <span>Google Photos 계정 추가</span>
       </menu-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve">Ok</button>
+      <button class="button" @click="reject()">취소</button>
+      <button class="button button--resolve" @click="resolve">확인</button>
     </div>
   </modal-inner>
 </template>

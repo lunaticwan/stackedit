@@ -169,21 +169,21 @@ export default {
             top: evt.clientY,
           },
           items: [{
-            name: 'New file',
+            name: '새 파일',
             disabled: !this.node.isFolder || this.node.isTrash,
             perform: () => explorerSvc.newItem(false),
           }, {
-            name: 'New folder',
+            name: '새 폴더',
             disabled: !this.node.isFolder || this.node.isTrash || this.node.isTemp,
             perform: () => explorerSvc.newItem(true),
           }, {
             type: 'separator',
           }, {
-            name: 'Rename',
+            name: '이름 변경',
             disabled: this.node.isTrash || this.node.isTemp,
             perform: () => this.setEditingId(this.node.item.id),
           }, {
-            name: 'Delete',
+            name: '삭제',
             perform: () => explorerSvc.deleteItem(),
           }],
         });

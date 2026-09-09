@@ -16,14 +16,14 @@
       <h3>FAQ</h3>
       <div class="faq" v-html="faq"></div>
       <div class="modal__info">
-        For commercial support or custom development, please <a href="mailto:stackedit.project@gmail.com">contact us</a>.
+        상업적 지원이나 맞춤형 개발 문의는 <a href="mailto:stackedit.project@gmail.com">이메일로 문의</a>하세요.
       </div>
       Licensed under an
       <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a><br>
-      <a target="_blank" href="privacy_policy.html">Privacy Policy</a>
+      <a target="_blank" href="privacy_policy.html">개인정보 처리방침</a>
     </div>
     <div class="modal__button-bar">
-      <button class="button button--resolve" @click="config.resolve()">Close</button>
+      <button class="button button--resolve" @click="config.resolve()">닫기</button>
     </div>
   </modal-inner>
 </template>

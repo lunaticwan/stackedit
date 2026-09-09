@@ -1,11 +1,11 @@
 <template>
-  <modal-inner class="modal__inner-1--publish-management" aria-label="Manage publication locations">
+  <modal-inner class="modal__inner-1--publish-management" aria-label="게시 위치 관리">
     <div class="modal__content">
       <div class="modal__image">
         <icon-upload></icon-upload>
       </div>
-      <p v-if="publishLocations.length"><b>{{currentFileName}}</b> is published to the following location(s):</p>
-      <p v-else><b>{{currentFileName}}</b> is not published yet.</p>
+      <p v-if="publishLocations.length"><b>{{currentFileName}}</b>이(가) 다음 위치에 게시되었습니다:</p>
+      <p v-else><b>{{currentFileName}}</b>이(가) 아직 게시되지 않았습니다.</p>
       <div>
         <div class="publish-entry flex flex--column" v-for="location in publishLocations" :key="location.id">
           <div class="publish-entry__header flex flex--row flex--align-center">
@@ -16,7 +16,7 @@
               {{location.description}}
             </div>
             <div class="publish-entry__buttons flex flex--row flex--center">
-              <button class="publish-entry__button button" @click="remove(location)" v-title="'Remove location'">
+              <button class="publish-entry__button button" @click="remove(location)" v-title="'위치 삭제'">
                 <icon-delete></icon-delete>
               </button>
             </div>
@@ -26,10 +26,10 @@
               {{location.url}}
             </div>
             <div class="publish-entry__buttons flex flex--row flex--center" v-if="location.url">
-              <button class="publish-entry__button button" v-clipboard="location.url" @click="info('Location URL copied to clipboard!')" v-title="'Copy URL'">
+              <button class="publish-entry__button button" v-clipboard="location.url" @click="info('위치 URL이 클립보드에 복사되었습니다!')" v-title="'URL 복사'">
                 <icon-content-copy></icon-content-copy>
               </button>
-              <a class="publish-entry__button button" v-if="location.url" :href="location.url" target="_blank" v-title="'Open location'">
+              <a class="publish-entry__button button" v-if="location.url" :href="location.url" target="_blank" v-title="'위치 열기'">
                 <icon-open-in-new></icon-open-in-new>
               </a>
             </div>
@@ -37,11 +37,11 @@
         </div>
       </div>
       <div class="modal__info" v-if="publishLocations.length">
-        <b>Tip:</b> Removing a location won't delete any file.
+        <b>팁:</b> 위치를 삭제해도 파일은 삭제되지 않습니다.
       </div>
     </div>
     <div class="modal__button-bar">
-      <button class="button button--resolve" @click="config.resolve()">Close</button>
+      <button class="button button--resolve" @click="config.resolve()">닫기</button>
     </div>
   </modal-inner>
 </template>

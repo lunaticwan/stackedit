@@ -1,7 +1,7 @@
 <template>
-  <modal-inner class="modal__inner-1--sponsor" aria-label="Sponsor">
+  <modal-inner class="modal__inner-1--sponsor" aria-label="후원">
     <div class="modal__content">
-      <p>Please choose a <b>PayPal</b> option:</p>
+      <p><b>PayPal</b> 결제 옵션을 선택하세요:</p>
       <a class="paypal-option button flex flex--row flex--center" v-for="button in buttons" :key="button.id" :href="button.link">
         <div class="flex flex--column">
           <div>{{button.price}}<div class="paypal-option__offer" v-if="button.offer">{{button.offer}}</div></div>
@@ -10,7 +10,7 @@
       </a>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
+      <button class="button" @click="config.reject()">취소</button>
     </div>
   </modal-inner>
 </template>
@@ -44,10 +44,10 @@ export default {
 
     return {
       buttons: sponsorToken ? [
-        makeButton('QD7SFZS79D2AL', '$5', '3 months sponsorship'),
-        makeButton('WG64NCFL9TQZJ', '$15', '1 year sponsorship', '-25%'),
-        makeButton('G2E7MN873EQ3U', '$25', '2 years sponsorship', '-37%'),
-        makeButton('JQJT7ARKYC7FC', '$50', '5 years sponsorship', '-50%'),
+        makeButton('QD7SFZS79D2AL', '$5', '3개월 후원'),
+        makeButton('WG64NCFL9TQZJ', '$15', '1년 후원', '-25%'),
+        makeButton('G2E7MN873EQ3U', '$25', '2년 후원', '-37%'),
+        makeButton('JQJT7ARKYC7FC', '$50', '5년 후원', '-50%'),
       ] : [],
     };
   },

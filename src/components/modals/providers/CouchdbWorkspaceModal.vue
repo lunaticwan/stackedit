@@ -5,7 +5,7 @@
         <icon-provider provider-id="couchdb"></icon-provider>
       </div>
       <p>Create a workspace synced with a <b>CouchDB</b> database.</p>
-      <form-entry label="Database URL" error="dbUrl">
+      <form-entry label="데이터베이스 URL" error="dbUrl">
         <input slot="field" class="textfield" type="text" v-model.trim="dbUrl" @keydown.enter="resolve()">
         <div class="form-entry__info">
           <b>Example:</b> https://instance.smileupps.com/stackedit-workspace
@@ -16,8 +16,8 @@
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

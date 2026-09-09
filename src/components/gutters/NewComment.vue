@@ -14,8 +14,8 @@
       </div>
     </div>
     <div class="comment__buttons flex flex--row flex--end">
-      <button class="comment__button button" @click="cancelNewComment">Cancel</button>
-      <button class="comment__button button" @click="addComment">Ok</button>
+      <button class="comment__button button" @click="cancelNewComment">취소</button>
+      <button class="comment__button button" @click="addComment">확인</button>
     </div>
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
       const text = store.state.discussion.newCommentText.trim();
       if (text.length) {
         if (text.length > 2000) {
-          store.dispatch('notification/error', 'Comment is too long.');
+          store.dispatch('notification/error', '댓글이 너무 깁니다.');
         } else {
           // Create comment
           const discussionId = store.state.discussion.currentDiscussionId;

@@ -2,47 +2,47 @@
   <div class="tour" @keydown.esc.stop="skip">
     <div class="tour-step" :class="'tour-step--' + step" :style="stepStyle">
       <div class="tour-step__inner" v-if="step === 'welcome'">
-        <h2>Welcome back!</h2>
-        <p>The new <b>StackEdit 5</b> is here!</p>
-        <p>Please click <b>Next</b> to take a quick tour.</p>
+        <h2>환영합니다!</h2>
+        <p>새로운 <b>StackEdit 5</b>를 만나보세요!</p>
+        <p><b>다음</b>을 클릭하여 간단한 둘러보기를 진행하세요.</p>
         <div class="tour-step__button-bar">
-          <button class="button" @click="finish">Skip</button>
-          <button class="button button--resolve" @click="next">Next</button>
+          <button class="button" @click="finish">건너뛰기</button>
+          <button class="button button--resolve" @click="next">다음</button>
         </div>
       </div>
       <div class="tour-step__inner" v-else-if="step === 'editor'">
-        <h2>Your Markdown editor</h2>
-        <p>StackEdit converts your Markdown to HTML in real-time.</p>
-        <p>Click <icon-side-preview></icon-side-preview> to toggle the side preview.</p>
+        <h2>Markdown 에디터</h2>
+        <p>StackEdit은 Markdown을 실시간으로 HTML로 변환합니다.</p>
+        <p><icon-side-preview></icon-side-preview>를 클릭하여 사이드 미리보기를 토글하세요.</p>
         <div class="tour-step__button-bar">
-          <button class="button" @click="finish">Skip</button>
-          <button class="button button--resolve" @click="next">Next</button>
+          <button class="button" @click="finish">건너뛰기</button>
+          <button class="button button--resolve" @click="next">다음</button>
         </div>
       </div>
       <div class="tour-step__inner" v-else-if="step === 'explorer'">
-        <h2>File explorer</h2>
-        <p>StackEdit can manage multiple files and folders in a workspace.</p>
-        <p>Click <icon-folder></icon-folder> to open the file explorer.</p>
+        <h2>파일 탐색기</h2>
+        <p>StackEdit은 Workspace 내의 여러 파일과 폴더를 관리할 수 있습니다.</p>
+        <p><icon-folder></icon-folder>를 클릭하여 파일 탐색기를 열 수 있습니다.</p>
         <div class="tour-step__button-bar">
-          <button class="button" @click="finish">Skip</button>
-          <button class="button button--resolve" @click="next">Next</button>
+          <button class="button" @click="finish">건너뛰기</button>
+          <button class="button button--resolve" @click="next">다음</button>
         </div>
       </div>
       <div class="tour-step__inner" v-else-if="step === 'menu'">
-        <h2>Do a lot more!</h2>
-        <p>StackEdit can also synchronize and publish your files, manage collaborative workspaces...</p>
-        <p>Click <icon-provider provider-id="stackedit"></icon-provider> to explore the menu.</p>
+        <h2>다양한 기능 활용</h2>
+        <p>StackEdit으로 파일 동기화, 게시, 협업 Workspace 관리 등을 실행할 수 있습니다...</p>
+        <p><icon-provider provider-id="stackedit"></icon-provider>를 클릭하여 메뉴를 둘러보세요.</p>
         <div class="tour-step__button-bar">
-          <button class="button" @click="finish">Skip</button>
-          <button class="button button--resolve" @click="next">Next</button>
+          <button class="button" @click="finish">건너뛰기</button>
+          <button class="button button--resolve" @click="next">다음</button>
         </div>
       </div>
       <div class="tour-step__inner" v-else-if="step === 'end'">
-        <h2>Enjoy!</h2>
-        <p>If you like StackEdit, please rate 5 stars on the <a target="_blank" href="https://chrome.google.com/webstore/detail/iiooodelglhkcpgbajoejffhijaclcdg/reviews">Chrome Web Store</a>.</p>
-        <p>You can also star the project on <a target="_blank" href="https://github.com/benweet/stackedit">GitHub</a> and join the <a target="_blank" href="https://community.stackedit.io/">community</a>.</p>
+        <h2>즐겁게 사용하세요!</h2>
+        <p>StackEdit이 마음에 드신다면 <a target="_blank" href="https://chrome.google.com/webstore/detail/iiooodelglhkcpgbajoejffhijaclcdg/reviews">Chrome 웹 스토어</a>에 별점 5점을 남겨주세요.</p>
+        <p><a target="_blank" href="https://github.com/benweet/stackedit">GitHub</a> 저장소에 Star를 누르고 <a target="_blank" href="https://community.stackedit.io/">커뮤니티</a>에 참여하세요.</p>
         <div class="tour-step__button-bar">
-          <button class="button button--resolve" @click="finish">Ok</button>
+          <button class="button button--resolve" @click="finish">확인</button>
         </div>
       </div>
     </div>

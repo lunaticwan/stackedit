@@ -1,21 +1,21 @@
 <template>
-  <modal-inner aria-label="Export to PDF">
+  <modal-inner aria-label="PDF로 내보내기">
     <div class="modal__content">
-      <p>Please choose a template for your <b>PDF export</b>.</p>
-      <form-entry label="Template">
+      <p><b>PDF 내보내기</b>에 사용할 템플릿을 선택하세요.</p>
+      <form-entry label="템플릿">
         <select class="textfield" slot="field" v-model="selectedTemplate" @keydown.enter="resolve()">
           <option v-for="(template, id) in allTemplatesById" :key="id" :value="id">
             {{ template.name }}
           </option>
         </select>
         <div class="form-entry__actions">
-          <a href="javascript:void(0)" @click="configureTemplates">Configure templates</a>
+          <a href="javascript:void(0)" @click="configureTemplates">템플릿 설정</a>
         </div>
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

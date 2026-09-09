@@ -5,13 +5,13 @@
         <icon-provider provider-id="zendesk"></icon-provider>
       </div>
       <p>Link your <b>Zendesk</b> account to <b>StackEdit</b>.</p>
-      <form-entry label="Site URL" error="siteUrl">
+      <form-entry label="사이트 URL" error="siteUrl">
         <input slot="field" class="textfield" type="text" v-model.trim="siteUrl" @keydown.enter="resolve()">
         <div class="form-entry__info">
           <b>Example:</b> https://example.zendesk.com/
         </div>
       </form-entry>
-      <form-entry label="Client Unique Identifier" error="clientId">
+      <form-entry label="클라이언트 식별자" error="clientId">
         <input slot="field" class="textfield" type="text" v-model.trim="clientId" @keydown.enter="resolve()">
         <div class="form-entry__info">
           You have to configure an OAuth Client with redirect URL <b>{{redirectUrl}}</b>
@@ -22,8 +22,8 @@
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

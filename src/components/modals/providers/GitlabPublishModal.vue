@@ -5,39 +5,39 @@
         <icon-provider provider-id="gitlab"></icon-provider>
       </div>
       <p>Publish <b>{{currentFileName}}</b> to your <b>GitLab</b> project.</p>
-      <form-entry label="Project URL" error="projectUrl">
+      <form-entry label="프로젝트 URL" error="projectUrl">
         <input slot="field" class="textfield" type="text" v-model.trim="projectUrl" @keydown.enter="resolve()">
         <div class="form-entry__info">
           <b>Example:</b> {{config.token.serverUrl}}/path/to/project
         </div>
       </form-entry>
-      <form-entry label="File path" error="path">
+      <form-entry label="파일 경로" error="path">
         <input slot="field" class="textfield" type="text" v-model.trim="path" @keydown.enter="resolve()">
         <div class="form-entry__info">
           <b>Example:</b> path/to/README.md<br>
           If the file exists, it will be overwritten.
         </div>
       </form-entry>
-      <form-entry label="Branch" info="optional">
+      <form-entry label="브랜치" info="선택 사항">
         <input slot="field" class="textfield" type="text" v-model.trim="branch" @keydown.enter="resolve()">
         <div class="form-entry__info">
           If not supplied, the <code>master</code> branch will be used.
         </div>
       </form-entry>
-      <form-entry label="Template">
+      <form-entry label="템플릿">
         <select slot="field" class="textfield" v-model="selectedTemplate" @keydown.enter="resolve()">
           <option v-for="(template, id) in allTemplatesById" :key="id" :value="id">
             {{ template.name }}
           </option>
         </select>
         <div class="form-entry__actions">
-          <a href="javascript:void(0)" @click="configureTemplates">Configure templates</a>
+          <a href="javascript:void(0)" @click="configureTemplates">템플릿 설정</a>
         </div>
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">Cancel</button>
-      <button class="button button--resolve" @click="resolve()">Ok</button>
+      <button class="button" @click="config.reject()">취소</button>
+      <button class="button button--resolve" @click="resolve()">확인</button>
     </div>
   </modal-inner>
 </template>

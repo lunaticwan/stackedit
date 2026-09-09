@@ -1,10 +1,10 @@
 <template>
-  <modal-inner class="modal__inner-1--workspace-management" aria-label="Manage workspaces">
+  <modal-inner class="modal__inner-1--workspace-management" aria-label="Workspace 관리">
     <div class="modal__content">
       <div class="modal__image">
         <icon-database></icon-database>
       </div>
-      <p>The following workspaces are accessible:</p>
+      <p>다음 Workspace에 접근할 수 있습니다:</p>
       <div class="workspace-entry flex flex--column" v-for="(workspace, id) in workspacesById" :key="id">
         <div class="flex flex--column">
           <div class="workspace-entry__header flex flex--row flex--align-center">
@@ -14,10 +14,10 @@
             <input class="text-input" type="text" v-if="editedId === id" v-focus @blur="submitEdit()" @keydown.enter="submitEdit()" @keydown.esc.stop="submitEdit(true)" v-model="editingName">
             <div class="workspace-entry__name" v-else>{{workspace.name}}</div>
             <div class="workspace-entry__buttons flex flex--row">
-              <button class="workspace-entry__button button" @click="edit(id)" v-title="'Edit name'">
+              <button class="workspace-entry__button button" @click="edit(id)" v-title="'이름 변경'">
                 <icon-pen></icon-pen>
               </button>
-              <button class="workspace-entry__button button" @click="remove(id)" v-title="'Remove'">
+              <button class="workspace-entry__button button" @click="remove(id)" v-title="'삭제'">
                 <icon-delete></icon-delete>
               </button>
             </div>
@@ -27,10 +27,10 @@
               {{workspace.url}}
             </div>
             <div class="workspace-entry__buttons flex flex--row">
-              <button class="workspace-entry__button button" v-clipboard="workspace.url" @click="info('Workspace URL copied to clipboard!')" v-title="'Copy URL'">
+              <button class="workspace-entry__button button" v-clipboard="workspace.url" @click="info('Workspace URL이 클립보드에 복사되었습니다!')" v-title="'URL 복사'">
                 <icon-content-copy></icon-content-copy>
               </button>
-              <a class="workspace-entry__button button" :href="workspace.url" target="_blank" v-title="'Open workspace'">
+              <a class="workspace-entry__button button" :href="workspace.url" target="_blank" v-title="'Workspace 열기'">
                 <icon-open-in-new></icon-open-in-new>
               </a>
             </div>
@@ -40,24 +40,24 @@
               {{workspace.locationUrl}}
             </div>
             <div class="workspace-entry__buttons flex flex--row">
-              <button class="workspace-entry__button button" v-clipboard="workspace.locationUrl" @click="info('Workspace URL copied to clipboard!')" v-title="'Copy URL'">
+              <button class="workspace-entry__button button" v-clipboard="workspace.locationUrl" @click="info('Workspace URL이 클립보드에 복사되었습니다!')" v-title="'URL 복사'">
                 <icon-content-copy></icon-content-copy>
               </button>
-              <a class="workspace-entry__button button" :href="workspace.locationUrl" target="_blank" v-title="'Open workspace location'">
+              <a class="workspace-entry__button button" :href="workspace.locationUrl" target="_blank" v-title="'Workspace 위치 열기'">
                 <icon-open-in-new></icon-open-in-new>
               </a>
             </div>
           </div>
           <div>
             <span class="workspace-entry__offline" v-if="availableOffline[id]">
-              available offline
+              오프라인 사용 가능
             </span>
           </div>
         </div>
       </div>
     </div>
     <div class="modal__button-bar">
-      <button class="button button--resolve" @click="config.resolve()">Close</button>
+      <button class="button button--resolve" @click="config.resolve()">닫기</button>
     </div>
   </modal-inner>
 </template>
@@ -117,9 +117,9 @@ export default {
     },
     async remove(id) {
       if (id === this.mainWorkspace.id) {
-        this.info('Your main workspace can not be removed.');
+        this.info('메인 Workspace는 삭제할 수 없습니다.');
       } else if (id === this.currentWorkspace.id) {
-        this.info('Please close the workspace before removing it.');
+        this.info('Workspace를 삭제하기 전에 먼저 닫아주세요.');
       } else {
         try {
           await store.dispatch('modal/open', 'removeWorkspace');

@@ -8,18 +8,18 @@
           </option>
         </select>
       </p>
-      <p v-if="!historyContext">Synchronize <b>{{currentFileName}}</b> to enable revision history or <a href="javascript:void(0)" @click="signin">sign in with Google</a> to synchronize your main workspace.</p>
-      <p v-else-if="loading">Loading history…</p>
-      <p v-else-if="!revisionsWithSpacer.length"><b>{{currentFileName}}</b> has no history.</p>
+      <p v-if="!historyContext">수정 이력을 사용하려면 <b>{{currentFileName}}</b>을(를) 동기화하거나 <a href="javascript:void(0)" @click="signin">Google에 로그인</a>하여 메인 Workspace를 동기화하세요.</p>
+      <p v-else-if="loading">히스토리 불러오는 중…</p>
+      <p v-else-if="!revisionsWithSpacer.length"><b>{{currentFileName}}</b>에 대한 이력이 없습니다.</p>
       <div class="menu-entry menu-entry--info flex flex--row flex--align-center" v-else>
         <div class="menu-entry__icon menu-entry__icon--image">
           <icon-provider :provider-id="syncLocation.providerId"></icon-provider>
         </div>
         <span v-if="syncLocation.url">
-          The following revisions are stored in <a :href="syncLocation.url" target="_blank">{{ syncLocationProviderName }}</a>.
+          다음 리비전들은 <a :href="syncLocation.url" target="_blank">{{ syncLocationProviderName }}</a>에 저장되어 있습니다.
         </span>
         <span v-else>
-          The following revisions are stored in {{ syncLocationProviderName }}.
+          다음 리비전들은 {{ syncLocationProviderName }}에 저장되어 있습니다.
         </span>
       </div>
     </div>
@@ -39,7 +39,7 @@
     </div>
     <div class="history__spacer history__spacer--last" v-if="revisions.length"></div>
     <div class="flex flex--row flex--end" v-if="showMoreButton">
-      <button class="history__button button" @click="showMore">More</button>
+      <button class="history__button button" @click="showMore">더 보기</button>
     </div>
   </div>
 </template>

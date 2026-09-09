@@ -1,21 +1,21 @@
 <template>
   <div class="find-replace" @keydown.esc.stop="onEscape">
-    <button class="find-replace__close-button button not-tabbable" @click="close()" v-title="'Close'">
+    <button class="find-replace__close-button button not-tabbable" @click="close()" v-title="'닫기'">
       <icon-close></icon-close>
     </button>
     <div class="find-replace__row">
       <input type="text" class="find-replace__text-input find-replace__text-input--find text-input" @keydown.enter="find('forward')" v-model="findText">
       <div class="find-replace__find-stats">
-        {{findPosition}} of {{findCount}}
+        {{findCount}}개 중 {{findPosition}}번째
       </div>
       <div class="flex flex--row flex--space-between">
         <div class="flex flex--row">
-          <button class="find-replace__button find-replace__button--find-option button" :class="{'find-replace__button--on': findCaseSensitive}" @click="findCaseSensitive = !findCaseSensitive" title="Case sensitive">Aa</button>
-          <button class="find-replace__button find-replace__button--find-option button" :class="{'find-replace__button--on': findUseRegexp}" @click="findUseRegexp = !findUseRegexp" title="Regular expression">.<sup>⁕</sup></button>
+          <button class="find-replace__button find-replace__button--find-option button" :class="{'find-replace__button--on': findCaseSensitive}" @click="findCaseSensitive = !findCaseSensitive" title="대소문자 구분">Aa</button>
+          <button class="find-replace__button find-replace__button--find-option button" :class="{'find-replace__button--on': findUseRegexp}" @click="findUseRegexp = !findUseRegexp" title="정규 표현식">.<sup>⁕</sup></button>
         </div>
         <div class="flex flex--row">
-          <button class="find-replace__button button" @click="find('backward')">Previous</button>
-          <button class="find-replace__button button" @click="find('forward')">Next</button>
+          <button class="find-replace__button button" @click="find('backward')">이전</button>
+          <button class="find-replace__button button" @click="find('forward')">다음</button>
         </div>
       </div>
     </div>
@@ -24,8 +24,8 @@
         <input type="text" class="find-replace__text-input find-replace__text-input--replace text-input" @keydown.enter="replace" v-model="replaceText">
       </div>
       <div class="find-replace__row flex flex--row flex--end">
-        <button class="find-replace__button button" @click="replace">Replace</button>
-        <button class="find-replace__button button" @click="replaceAll">All</button>
+        <button class="find-replace__button button" @click="replace">바꾸기</button>
+        <button class="find-replace__button button" @click="replaceAll">모두 바꾸기</button>
       </div>
     </div>
   </div>

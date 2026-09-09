@@ -1,11 +1,11 @@
 <template>
-  <modal-inner class="modal__inner-1--account-management" aria-label="Manage external accounts">
+  <modal-inner class="modal__inner-1--account-management" aria-label="외부 계정 관리">
     <div class="modal__content">
       <div class="modal__image">
         <icon-key></icon-key>
       </div>
-      <p v-if="entries.length">StackEdit has access to the following external accounts:</p>
-      <p v-else>StackEdit has no access to any external account yet.</p>
+      <p v-if="entries.length">StackEdit이 다음 외부 계정에 접근할 수 있습니다:</p>
+      <p v-else>StackEdit에 연동된 외부 계정이 없습니다.</p>
       <div>
         <div class="account-entry flex flex--column" v-for="entry in entries" :key="entry.token.sub">
           <div class="account-entry__header flex flex--row flex--align-center">
@@ -16,7 +16,7 @@
               {{entry.name}}
             </div>
             <div class="account-entry__buttons flex flex--row flex--center">
-              <button class="account-entry__button button" @click="remove(entry)" v-title="'Remove access'">
+              <button class="account-entry__button button" @click="remove(entry)" v-title="'연동 해제'">
                 <icon-delete></icon-delete>
               </button>
             </div>
@@ -39,39 +39,39 @@
       </div>
       <menu-entry @click.native="addBloggerAccount">
         <icon-provider slot="icon" provider-id="blogger"></icon-provider>
-        <span>Add Blogger account</span>
+        <span>Blogger 계정 추가</span>
       </menu-entry>
       <menu-entry @click.native="addDropboxAccount">
         <icon-provider slot="icon" provider-id="dropbox"></icon-provider>
-        <span>Add Dropbox account</span>
+        <span>Dropbox 계정 추가</span>
       </menu-entry>
       <menu-entry @click.native="addGithubAccount">
         <icon-provider slot="icon" provider-id="github"></icon-provider>
-        <span>Add GitHub account</span>
+        <span>GitHub 계정 추가</span>
       </menu-entry>
       <menu-entry @click.native="addGitlabAccount">
         <icon-provider slot="icon" provider-id="gitlab"></icon-provider>
-        <span>Add GitLab account</span>
+        <span>GitLab 계정 추가</span>
       </menu-entry>
       <menu-entry @click.native="addGoogleDriveAccount">
         <icon-provider slot="icon" provider-id="googleDrive"></icon-provider>
-        <span>Add Google Drive account</span>
+        <span>Google Drive 계정 추가</span>
       </menu-entry>
       <menu-entry @click.native="addGooglePhotosAccount">
         <icon-provider slot="icon" provider-id="googlePhotos"></icon-provider>
-        <span>Add Google Photos account</span>
+        <span>Google Photos 계정 추가</span>
       </menu-entry>
       <menu-entry @click.native="addWordpressAccount">
         <icon-provider slot="icon" provider-id="wordpress"></icon-provider>
-        <span>Add WordPress account</span>
+        <span>WordPress 계정 추가</span>
       </menu-entry>
       <menu-entry @click.native="addZendeskAccount">
         <icon-provider slot="icon" provider-id="zendesk"></icon-provider>
-        <span>Add Zendesk account</span>
+        <span>Zendesk 계정 추가</span>
       </menu-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button button--resolve" @click="config.resolve()">Close</button>
+      <button class="button button--resolve" @click="config.resolve()">닫기</button>
     </div>
   </modal-inner>
 </template>
