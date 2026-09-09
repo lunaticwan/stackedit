@@ -153,7 +153,7 @@ export default [
       new Feature(
         'sponsor',
         '스폰서',
-        'Google에 로그인하고 StackEdit을 후원하여 PDF 및 Pandoc 내보내기 기능을 해제하세요.',
+        'Google에 로그인하고 iM Markdown을 후원하여 PDF 및 Pandoc 내보내기 기능을 해제하세요.',
       ),
     ],
   ),
@@ -202,42 +202,42 @@ export default [
       new Feature(
         'addBloggerAccount',
         'Blogger 사용자',
-        'Blogger 계정을 StackEdit에 연동하세요.',
+        'Blogger 계정을 iM Markdown에 연동하세요.',
       ),
       new Feature(
         'addDropboxAccount',
         'Dropbox 사용자',
-        'Dropbox 계정을 StackEdit에 연동하세요.',
+        'Dropbox 계정을 iM Markdown에 연동하세요.',
       ),
       new Feature(
         'addGitHubAccount',
         'GitHub 사용자',
-        'GitHub 계정을 StackEdit에 연동하세요.',
+        'GitHub 계정을 iM Markdown에 연동하세요.',
       ),
       new Feature(
         'addGitLabAccount',
         'GitLab 사용자',
-        'GitLab 계정을 StackEdit에 연동하세요.',
+        'GitLab 계정을 iM Markdown에 연동하세요.',
       ),
       new Feature(
         'addGoogleDriveAccount',
         'Google Drive 사용자',
-        'Google Drive 계정을 StackEdit에 연동하세요.',
+        'Google Drive 계정을 iM Markdown에 연동하세요.',
       ),
       new Feature(
         'addGooglePhotosAccount',
         'Google Photos 사용자',
-        'Google Photos 계정을 StackEdit에 연동하세요.',
+        'Google Photos 계정을 iM Markdown에 연동하세요.',
       ),
       new Feature(
         'addWordpressAccount',
         'WordPress 사용자',
-        'WordPress 계정을 StackEdit에 연동하세요.',
+        'WordPress 계정을 iM Markdown에 연동하세요.',
       ),
       new Feature(
         'addZendeskAccount',
         'Zendesk 사용자',
-        'Zendesk 계정을 StackEdit에 연동하세요.',
+        'Zendesk 계정을 iM Markdown에 연동하세요.',
       ),
       new Feature(
         'removeAccount',
