@@ -29,7 +29,7 @@ OfflinePluginRuntime.install({
 });
 
 if (localStorage.updated) {
-  store.dispatch('notification/info', 'iM뱅크 MD가 업데이트되었습니다!');
+  store.dispatch('notification/info', 'iM뱅크MD가 업데이트되었습니다!');
   setTimeout(() => localStorage.removeItem('updated'), 2000);
 }
 
@@ -39,7 +39,7 @@ if (!localStorage.installPrompted) {
     promptEvent.preventDefault();
 
     try {
-      await store.dispatch('notification/confirm', 'iM뱅크 MD를 홈 화면에 추가하시겠습니까?');
+      await store.dispatch('notification/confirm', 'iM뱅크MD를 홈 화면에 추가하시겠습니까?');
       promptEvent.prompt();
       await promptEvent.userChoice;
     } catch (err) {

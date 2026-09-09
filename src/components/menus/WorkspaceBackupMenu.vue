@@ -56,7 +56,7 @@ export default {
         const blob = new Blob([backup], {
           type: 'text/plain;charset=utf-8',
         });
-        FileSaver.saveAs(blob, 'iM뱅크 MD workspace.json');
+        FileSaver.saveAs(blob, 'iM뱅크MD workspace.json');
       });
     },
   },
