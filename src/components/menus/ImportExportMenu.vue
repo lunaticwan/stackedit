@@ -33,19 +33,18 @@
     </menu-entry>
     <menu-entry @click.native="exportPdf">
       <icon-download slot="icon"></icon-download>
-      <div><div class="menu-entry__label" :class="{'menu-entry__label--warning': !isSponsor}">스폰서</div> PDF로 내보내기</div>
+      <div>PDF로 내보내기</div>
       <span>HTML 템플릿 기반 PDF 생성</span>
     </menu-entry>
     <menu-entry @click.native="exportPandoc">
       <icon-download slot="icon"></icon-download>
-      <div><div class="menu-entry__label" :class="{'menu-entry__label--warning': !isSponsor}">스폰서</div> Pandoc으로 내보내기</div>
+      <div>Pandoc으로 내보내기</div>
       <span>PDF, Word, EPUB 등으로 변환</span>
     </menu-entry>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import TurndownService from 'turndown/lib/turndown.browser.umd';
 import htmlSanitizer from '../../libs/htmlSanitizer';
 import MenuEntry from './common/MenuEntry';
@@ -76,7 +75,6 @@ export default {
   components: {
     MenuEntry,
   },
-  computed: mapGetters(['isSponsor']),
   methods: {
     async onImportMarkdown(evt) {
       const file = evt.target.files[0];

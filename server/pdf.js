@@ -2,7 +2,6 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 const tmp = require('tmp');
-const user = require('./user');
 const conf = require('./conf');
 
 /* eslint-disable no-var, prefer-arrow-callback, func-names */
@@ -51,24 +50,18 @@ const readJson = (str) => {
 
 exports.generate = (req, res) => {
   let wkhtmltopdfError = '';
-  user.checkSponsor(req.query.idToken)
-    .then((isSponsor) => {
-      if (!isSponsor) {
-        throw new Error('unauthorized');
-      }
-      return new Promise((resolve, reject) => {
-        tmp.file((err, filePath, fd, cleanupCallback) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve({
-              filePath,
-              cleanupCallback,
-            });
-          }
+  new Promise((resolve, reject) => {
+    tmp.file((err, filePath, fd, cleanupCallback) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve({
+          filePath,
+          cleanupCallback,
         });
-      });
-    })
+      }
+    });
+  })
     .then(({ filePath, cleanupCallback }) => new Promise((resolve, reject) => {
       let finished = false;
 

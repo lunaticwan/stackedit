@@ -31,10 +31,6 @@ export default {
     '아니오',
     '예, 접미사 추가',
   ),
-  paymentSuccess: simpleModal(
-    '<h3>결제가 완료되었습니다!</h3><p>잠시 후 후원 혜택이 적용됩니다.</p>',
-    '확인',
-  ),
   providerRedirection: simpleModal(
     config => `<p><b>${config.name}</b> 인증 페이지로 이동합니다.</p>`,
     '취소',
@@ -55,16 +51,6 @@ export default {
     <div class="modal__info"><b>참고:</b> 로그인 시 메인 Workspace가 동기화됩니다.</div>`,
     '취소',
     '확인, 로그인',
-  ),
-  signInForSponsorship: simpleModal(
-    `<p>후원하려면 Google 계정으로 로그인해야 합니다.</p>
-    <div class="modal__info"><b>참고:</b> 로그인 시 메인 Workspace가 동기화됩니다.</div>`,
-    '취소',
-    '확인, 로그인',
-  ),
-  sponsorOnly: simpleModal(
-    '<p>이 기능은 서버 자원을 사용하는 스폰서 전용 기능입니다.</p>',
-    '확인',
   ),
   stripName: simpleModal(
     config => `<p><b>${config.item.name}</b>에 허용되지 않는 문자가 포함되어 있습니다. 제거하시겠습니까?</p>`,

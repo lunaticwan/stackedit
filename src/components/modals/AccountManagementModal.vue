@@ -37,10 +37,6 @@
           </div>
         </div>
       </div>
-      <menu-entry @click.native="addBloggerAccount">
-        <icon-provider slot="icon" provider-id="blogger"></icon-provider>
-        <span>Blogger 계정 추가</span>
-      </menu-entry>
       <menu-entry @click.native="addDropboxAccount">
         <icon-provider slot="icon" provider-id="dropbox"></icon-provider>
         <span>Dropbox 계정 추가</span>
@@ -162,11 +158,6 @@ export default {
         [entry.providerId]: tokensBySub,
       });
       badgeSvc.addBadge('removeAccount');
-    },
-    async addBloggerAccount() {
-      try {
-        await googleHelper.addBloggerAccount();
-      } catch (e) { /* cancel */ }
     },
     async addDropboxAccount() {
       try {

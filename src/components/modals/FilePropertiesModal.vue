@@ -20,7 +20,7 @@
           </select>
         </form-entry>
         <div class="modal__title">메타데이터</div>
-        <div class="modal__sub-title">게시물에 메타 정보를 추가합니다 (WordPress, Blogger 등).</div>
+        <div class="modal__sub-title">게시물에 메타 정보를 추가합니다 (WordPress 등).</div>
         <form-entry label="제목">
           <input slot="field" class="textfield" type="text" v-model.trim="title" @keydown.enter="resolve()">
         </form-entry>

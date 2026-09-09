@@ -86,7 +86,6 @@ export default {
       const tokensBySub = rootGetters['data/tokensByType'][loginType];
       return tokensBySub && tokensBySub[currentWorkspace.sub];
     },
-    sponsorToken: (state, { mainWorkspaceToken }) => mainWorkspaceToken,
   },
   actions: {
     removeWorkspace: ({ commit, rootGetters }, id) => {

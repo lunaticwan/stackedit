@@ -12,7 +12,6 @@ const getDriveScopes = token => [token.driveFullAccess
   ? 'https://www.googleapis.com/auth/drive'
   : 'https://www.googleapis.com/auth/drive.file',
 'https://www.googleapis.com/auth/drive.install'];
-const bloggerScopes = ['https://www.googleapis.com/auth/blogger'];
 const photosScopes = ['https://www.googleapis.com/auth/photos'];
 
 const checkIdToken = (idToken) => {
@@ -157,10 +156,8 @@ export default {
       name: (existingToken || {}).name || 'Someone',
       isLogin: !store.getters['workspace/mainWorkspaceToken'] &&
         scopes.includes('https://www.googleapis.com/auth/drive.appdata'),
-      isSponsor: false,
       isDrive: scopes.includes('https://www.googleapis.com/auth/drive') ||
         scopes.includes('https://www.googleapis.com/auth/drive.file'),
-      isBlogger: scopes.includes('https://www.googleapis.com/auth/blogger'),
       isPhotos: scopes.includes('https://www.googleapis.com/auth/photos'),
       driveFullAccess: scopes.includes('https://www.googleapis.com/auth/drive'),
     };
@@ -185,30 +182,10 @@ export default {
       // Restore flags
       Object.assign(token, {
         isLogin: existingToken.isLogin || token.isLogin,
-        isSponsor: existingToken.isSponsor,
         isDrive: existingToken.isDrive || token.isDrive,
-        isBlogger: existingToken.isBlogger || token.isBlogger,
         isPhotos: existingToken.isPhotos || token.isPhotos,
         driveFullAccess: existingToken.driveFullAccess || token.driveFullAccess,
       });
-    }
-
-    if (token.isLogin) {
-      try {
-        const res = await networkSvc.request({
-          method: 'GET',
-          url: 'userInfo',
-          params: {
-            idToken: token.idToken,
-          },
-        });
-        token.isSponsor = res.body.sponsorUntil > Date.now();
-        if (token.isSponsor) {
-          badgeSvc.addBadge('sponsor');
-        }
-      } catch (err) {
-        // Ignore
-      }
     }
 
     // Add token to google tokens
@@ -256,11 +233,6 @@ export default {
   async addDriveAccount(fullAccess = false, sub = null) {
     const token = await this.startOauth2(getDriveScopes({ driveFullAccess: fullAccess }), sub);
     badgeSvc.addBadge('addGoogleDriveAccount');
-    return token;
-  },
-  async addBloggerAccount() {
-    const token = await this.startOauth2(bloggerScopes);
-    badgeSvc.addBadge('addBloggerAccount');
     return token;
   },
   async addPhotosAccount() {
@@ -541,82 +513,6 @@ export default {
       return result;
     };
     return getPage(startPageToken);
-  },
-
-  /**
-   * https://developers.google.com/blogger/docs/3.0/reference/blogs/getByUrl
-   * https://developers.google.com/blogger/docs/3.0/reference/posts/insert
-   * https://developers.google.com/blogger/docs/3.0/reference/posts/update
-   */
-  async uploadBlogger({
-    token,
-    blogUrl,
-    blogId,
-    postId,
-    title,
-    content,
-    labels,
-    isDraft,
-    published,
-    isPage,
-  }) {
-    const refreshedToken = await this.refreshToken(token, bloggerScopes);
-
-    // Get the blog ID
-    const blog = { id: blogId };
-    if (!blog.id) {
-      blog.id = (await this.$request(refreshedToken, {
-        url: 'https://www.googleapis.com/blogger/v3/blogs/byurl',
-        params: {
-          url: blogUrl,
-        },
-      })).id;
-    }
-
-    // Create/update the post/page
-    const path = isPage ? 'pages' : 'posts';
-    let options = {
-      method: 'POST',
-      url: `https://www.googleapis.com/blogger/v3/blogs/${blog.id}/${path}/`,
-      body: {
-        kind: isPage ? 'blogger#page' : 'blogger#post',
-        blog,
-        title,
-        content,
-      },
-    };
-    if (labels) {
-      options.body.labels = labels;
-    }
-    if (published) {
-      options.body.published = published.toISOString();
-    }
-    // If it's an update
-    if (postId) {
-      options.method = 'PUT';
-      options.url += postId;
-      options.body.id = postId;
-    }
-    const post = await this.$request(refreshedToken, options);
-    if (isPage) {
-      return post;
-    }
-
-    // Revert/publish post
-    options = {
-      method: 'POST',
-      url: `https://www.googleapis.com/blogger/v3/blogs/${post.blog.id}/posts/${post.id}/`,
-      params: {},
-    };
-    if (isDraft) {
-      options.url += 'revert';
-    } else {
-      options.url += 'publish';
-      if (published) {
-        options.params.publishDate = published.toISOString();
-      }
-    }
-    return this.$request(refreshedToken, options);
   },
 
   /**

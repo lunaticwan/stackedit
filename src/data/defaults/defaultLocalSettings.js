@@ -9,8 +9,6 @@ export default () => ({
   googleDriveWorkspaceFolderId: '',
   googleDrivePublishFormat: 'markdown',
   googleDrivePublishTemplate: 'styledHtml',
-  bloggerBlogUrl: '',
-  bloggerPublishTemplate: 'plainHtml',
   dropboxRestrictedAccess: false,
   dropboxPublishTemplate: 'styledHtml',
   githubRepoFullAccess: false,
