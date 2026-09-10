@@ -9,7 +9,7 @@
           <navigation-bar></navigation-bar>
         </div>
         <div class="layout__panel flex flex--row" :style="{height: styles.innerHeight + 'px'}">
-          <div class="layout__panel layout__panel--editor" v-show="styles.showEditor" :style="{width: (styles.editorWidth + styles.editorGutterWidth) + 'px', fontSize: styles.fontSize + 'px'}">
+          <div class="layout__panel layout__panel--editor" v-show="styles.showEditor" :style="{width: (styles.editorWidth + styles.editorGutterWidth) + 'px', fontSize: styles.fontSize + 'px', lineHeight: styles.lineHeight}">
             <div class="gutter" :style="{left: styles.editorGutterLeft + 'px'}">
               <div class="gutter__background" v-if="styles.editorGutterWidth" :style="{width: styles.editorGutterWidth + 'px'}"></div>
             </div>
@@ -22,7 +22,7 @@
           <div class="layout__panel layout__panel--button-bar" v-show="styles.showEditor" :style="{width: constants.buttonBarWidth + 'px'}">
             <button-bar></button-bar>
           </div>
-          <div class="layout__panel layout__panel--preview" v-show="styles.showPreview" :style="{width: (styles.previewWidth + styles.previewGutterWidth) + 'px', fontSize: styles.fontSize + 'px'}">
+          <div class="layout__panel layout__panel--preview" v-show="styles.showPreview" :style="{width: (styles.previewWidth + styles.previewGutterWidth) + 'px', fontSize: styles.fontSize + 'px', lineHeight: styles.lineHeight}">
             <div class="gutter" :style="{left: styles.previewGutterLeft + 'px'}">
               <div class="gutter__background" v-if="styles.previewGutterWidth" :style="{width: styles.previewGutterWidth + 'px'}"></div>
             </div>
@@ -44,14 +44,14 @@
         <side-bar></side-bar>
       </div>
     </div>
-    <!-- 화면 우측 하단 상시 고정 플로팅 LLM 복사 버튼 -->
+    <!-- 화면 우측 하단 상시 고정 플로팅 복사 버튼 -->
     <button
-      class="floating-llm-btn button"
-      @click="copyForLLM"
-      v-title="'LLM 프롬프트 서식으로 마크다운 복사'"
+      class="floating-copy-btn button"
+      @click="copyMarkdown"
+      v-title="'마크다운 복사'"
     >
       <span v-if="copied">복사됨!</span>
-      <span v-else>LLM 복사</span>
+      <span v-else>복사하기</span>
     </button>
   </div>
 </template>
@@ -117,9 +117,9 @@ export default {
     ]),
     saveSelection: () => editorSvc.saveSelection(true),
     /**
-     * 에디터의 마크다운 텍스트 또는 선택 영역을 LLM 프롬프트용 코드 블록으로 클립보드 복사
+     * 에디터의 마크다운 텍스트 또는 선택 영역을 클립보드로 복사
      */
-    copyForLLM() {
+    copyMarkdown() {
       let text = editorSvc.clEditor ? editorSvc.clEditor.getContent() : '';
       if (editorSvc.clEditor && editorSvc.clEditor.selectionMgr) {
         const selectedText = editorSvc.clEditor.selectionMgr.getSelectedText();
@@ -127,12 +127,11 @@ export default {
           text = selectedText;
         }
       }
-      const formattedPrompt = `\`\`\`markdown\n${text}\n\`\`\``;
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(formattedPrompt);
+        navigator.clipboard.writeText(text);
       } else {
         const textarea = document.createElement('textarea');
-        textarea.value = formattedPrompt;
+        textarea.value = text;
         document.body.appendChild(textarea);
         textarea.select();
         document.execCommand('copy');
@@ -258,7 +257,7 @@ $preview-background-dark: #252525;
   border-top-right-radius: $border-radius-base;
 }
 
-.floating-llm-btn {
+.floating-copy-btn {
   position: fixed;
   right: 20px;
   bottom: 35px;

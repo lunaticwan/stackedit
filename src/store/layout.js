@@ -85,10 +85,10 @@ function computeStyles(state, getters, layoutSettings = getters['data/layoutSett
   }
 
   const computedSettings = getters['data/computedSettings'];
-  styles.fontSize = 18;
+  styles.fontSize = layoutSettings.fontSize || 18;
+  styles.lineHeight = layoutSettings.lineHeight || 1.6;
   styles.textWidth = 990;
   if (doublePanelWidth < 1120) {
-    styles.fontSize -= 1;
     styles.textWidth = 910;
   }
   if (doublePanelWidth < 1040) {
@@ -97,9 +97,6 @@ function computeStyles(state, getters, layoutSettings = getters['data/layoutSett
   styles.textWidth *= computedSettings.maxWidthFactor;
   if (doublePanelWidth < styles.textWidth) {
     styles.textWidth = doublePanelWidth;
-  }
-  if (styles.textWidth < 640) {
-    styles.fontSize -= 1;
   }
   styles.fontSize *= computedSettings.fontSizeFactor;
 

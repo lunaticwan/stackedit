@@ -23,9 +23,9 @@ describe('StatusBar.vue', () => {
     expect(wrapper.find('.stat-panel').exists()).toBe(true);
   });
 
-  it('computes estimated LLM tokens correctly', () => {
+  it('computes text stats correctly', () => {
     editorSvc.clEditor = {
-      getContent: () => 'Hello world! 안녕하세요.',
+      getContent: () => 'Hello world!\n안녕하세요.',
       selectionMgr: {
         selectionEnd: 0,
         getSelectedText: () => '',
@@ -33,10 +33,10 @@ describe('StatusBar.vue', () => {
     };
 
     wrapper.vm.computeText();
-    expect(wrapper.vm.estimatedTokens).toBeGreaterThan(0);
+    expect(wrapper.vm.line).toBe(1);
   });
 
-  it('copies LLM formatted content when copyForLLM is triggered', () => {
+  it('copies markdown content when copyMarkdown is triggered', () => {
     editorSvc.clEditor = {
       getContent: () => '# Title\n\nContent',
       selectionMgr: {
@@ -45,7 +45,7 @@ describe('StatusBar.vue', () => {
     };
 
     document.execCommand = jest.fn();
-    wrapper.vm.copyForLLM();
+    wrapper.vm.copyMarkdown();
     expect(wrapper.vm.copied).toBe(true);
   });
 });
