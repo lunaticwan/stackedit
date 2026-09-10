@@ -268,7 +268,11 @@ const editorSvc = Object.assign(new Vue(), editorSvcDiscussions, editorSvcUtils,
             return false;
           });
         if (hasMore) {
-          setTimeout(() => makeOne(), 10);
+          if (typeof requestAnimationFrame === 'function') {
+            requestAnimationFrame(() => makeOne());
+          } else {
+            setTimeout(() => makeOne(), 10);
+          }
         } else {
           editorSvc.previewCtxWithDiffs = editorSvc.previewCtx;
           editorSvc.$emit('previewCtxWithDiffs', editorSvc.previewCtxWithDiffs);
