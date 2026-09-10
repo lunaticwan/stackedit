@@ -46,7 +46,7 @@ export default {
   line-height: 1.4;
   background-color: #000;
   color: #fff;
-  font-size: 0.9em;
+  font-size: 0.875em;
   border-radius: $border-radius-base;
 }
 

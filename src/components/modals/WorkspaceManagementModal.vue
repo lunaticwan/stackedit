@@ -190,7 +190,7 @@ $small-button-size: 22px;
   white-space: nowrap;
   text-overflow: ellipsis;
   opacity: 0.5;
-  font-size: 0.67em;
+  font-size: 0.6875em;
 }
 
 .workspace-entry__buttons {
@@ -223,7 +223,7 @@ $small-button-size: 22px;
 }
 
 .workspace-entry__offline {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   line-height: 1;
   padding: 0.15em 0.35em;
   border-radius: 3px;

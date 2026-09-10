@@ -125,7 +125,7 @@ $small-button-size: 22px;
   white-space: nowrap;
   text-overflow: ellipsis;
   opacity: 0.5;
-  font-size: 0.67em;
+  font-size: 0.6875em;
 }
 
 .sync-entry__buttons {

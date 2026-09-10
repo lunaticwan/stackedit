@@ -49,6 +49,6 @@ export default modalTemplate({
 
 <style lang="scss">
 .couchdb-workspace__info {
-  font-size: 0.8em;
+  font-size: 0.8125em;
 }
 </style>

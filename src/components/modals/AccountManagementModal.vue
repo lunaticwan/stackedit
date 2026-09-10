@@ -221,7 +221,7 @@ $button-size: 30px;
 
 .account-entry__row {
   border-top: 1px solid $hr-color;
-  font-size: 0.67em;
+  font-size: 0.6875em;
   padding: 0.25em 0;
 }
 

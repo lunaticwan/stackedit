@@ -66,7 +66,7 @@
 
 .menu-entry__label {
   float: right;
-  font-size: 0.6rem;
+  font-size: 0.625rem;
   font-weight: 600;
   line-height: 1;
   padding: 0.15em 0.25em;

@@ -145,7 +145,7 @@ $tour-step-width: 240px;
   position: absolute;
   background-color: $tour-step-background;
   padding: 1.5em;
-  font-size: 0.9em;
+  font-size: 0.875em;
   line-height: 1.33;
   width: $tour-step-width;
   text-align: center;
@@ -219,7 +219,7 @@ $tour-step-width: 240px;
   justify-content: flex-end;
 
   .button {
-    font-size: 1.1em;
+    font-size: 1.125em;
   }
 }
 </style>
