@@ -129,7 +129,7 @@ export default {
   },
   uid() {
     crypto.getRandomValues(array);
-    return array.cl_map(value => alphabet[value % radix]).join('');
+    return Array.from(array).map(value => alphabet[value % radix]).join('');
   },
   hash(str) {
     // https://stackoverflow.com/a/7616484/1333165
