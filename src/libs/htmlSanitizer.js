@@ -243,7 +243,7 @@ function htmlParser(html, handler) {
       // throw $sanitizeMinErr('badparse', "The sanitizer was unable to parse the following block " +
       // 	"of html: {0}", html);
       stack.reverse();
-      return stack.cl_each(function (tag) {
+      return stack.forEach(function (tag) {
         buf.push('</');
         buf.push(tag);
         buf.push('>');
