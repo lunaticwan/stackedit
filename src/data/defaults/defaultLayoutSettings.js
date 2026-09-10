@@ -11,4 +11,6 @@ export default () => ({
   findUseRegexp: false,
   sideBarPanel: 'menu',
   welcomeTourFinished: true,
+  fontSize: 18,
+  lineHeight: 1.6,
 });
