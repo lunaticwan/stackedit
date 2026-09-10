@@ -8,7 +8,16 @@
       <span v-for="stat in textStats" :key="stat.id">
         <span class="stat-panel__value">{{stat.value}}</span> {{stat.name}}
       </span>
+      <span class="stat-panel__value" v-title="'추정된 LLM 토큰 수 (영문/한글 혼합 기준)'">~{{estimatedTokens}} 토큰</span>
       <span class="stat-panel__value">{{line}}행, {{column}}열</span>
+      <button
+        class="stat-panel__llm-btn"
+        @click="copyForLLM"
+        v-title="'LLM 프롬프트 서식으로 마크다운 복사'"
+      >
+        <span v-if="copied">복사됨!</span>
+        <span v-else>LLM 복사</span>
+      </button>
     </div>
     <div class="stat-panel__block stat-panel__block--right">
       <span class="stat-panel__block-name">
@@ -27,7 +36,14 @@ import { mapGetters } from 'vuex';
 import editorSvc from '../services/editorSvc';
 import utils from '../services/utils';
 
+/**
+ * 텍스트 통계 항목을 정의하는 클래스
+ */
 class Stat {
+  /**
+   * @param {string} name - 통계 항목 이름
+   * @param {string} regex - 정규표현식 패턴 문자열
+   */
   constructor(name, regex) {
     this.id = utils.uid();
     this.name = name;
@@ -42,6 +58,8 @@ export default {
     htmlSelection: false,
     line: 0,
     column: 0,
+    estimatedTokens: 0,
+    copied: false,
     textStats: [
       new Stat('바이트', '[\\s\\S]'),
       new Stat('단어', '\\S+'),
@@ -57,17 +75,45 @@ export default {
     'styles',
   ]),
   created() {
-    editorSvc.$on('sectionList', () => this.computeText());
-    editorSvc.$on('selectionRange', () => this.computeText());
-    editorSvc.$on('previewCtx', () => this.computeHtml());
-    editorSvc.$on('previewSelectionRange', () => this.computeHtml());
+    this.computeTextRaf = null;
+    this.computeHtmlRaf = null;
+
+    editorSvc.$on('sectionList', () => this.scheduleComputeText());
+    editorSvc.$on('selectionRange', () => this.scheduleComputeText());
+    editorSvc.$on('previewCtx', () => this.scheduleComputeHtml());
+    editorSvc.$on('previewSelectionRange', () => this.scheduleComputeHtml());
+  },
+  destroyed() {
+    if (this.computeTextRaf) cancelAnimationFrame(this.computeTextRaf);
+    if (this.computeHtmlRaf) cancelAnimationFrame(this.computeHtmlRaf);
   },
 
   methods: {
+    /**
+     * 마크다운 텍스트 통계 및 토큰 수 계산 스케줄링 (requestAnimationFrame 적용)
+     */
+    scheduleComputeText() {
+      if (this.computeTextRaf) {
+        cancelAnimationFrame(this.computeTextRaf);
+      }
+      this.computeTextRaf = requestAnimationFrame(() => this.computeText());
+    },
+    /**
+     * HTML 통계 계산 스케줄링 (requestAnimationFrame 적용)
+     */
+    scheduleComputeHtml() {
+      if (this.computeHtmlRaf) {
+        cancelAnimationFrame(this.computeHtmlRaf);
+      }
+      this.computeHtmlRaf = requestAnimationFrame(() => this.computeHtml());
+    },
+    /**
+     * 마크다운 텍스트 통계, 선택 영역 좌표 및 LLM 토큰 수(BPE 휴리스틱) 계산
+     */
     computeText() {
-      setTimeout(() => {
-        this.textSelection = false;
-        let text = editorSvc.clEditor.getContent();
+      this.textSelection = false;
+      let text = editorSvc.clEditor ? editorSvc.clEditor.getContent() : '';
+      if (editorSvc.clEditor && editorSvc.clEditor.selectionMgr) {
         const beforeText = text.slice(0, editorSvc.clEditor.selectionMgr.selectionEnd);
         const beforeLines = beforeText.split('\n');
         this.line = beforeLines.length;
@@ -78,28 +124,71 @@ export default {
           this.textSelection = true;
           text = selectedText;
         }
-        this.textStats.forEach((stat) => {
-          stat.value = (text.match(stat.regex) || []).length;
-        });
-      }, 10);
-    },
-    computeHtml() {
-      setTimeout(() => {
-        let text;
-        if (editorSvc.previewSelectionRange) {
-          text = `${editorSvc.previewSelectionRange}`;
+      }
+
+      this.textStats.forEach((stat) => {
+        stat.value = (text.match(stat.regex) || []).length;
+      });
+
+      // LLM 토큰 수 계산 (ASCII: 약 4자당 1토큰, Non-ASCII: 약 1.5자당 1토큰)
+      let nonAsciiCount = 0;
+      let asciiCount = 0;
+      for (let i = 0; i < text.length; i += 1) {
+        if (text.charCodeAt(i) > 127) {
+          nonAsciiCount += 1;
+        } else {
+          asciiCount += 1;
         }
-        this.htmlSelection = true;
-        if (!text) {
-          this.htmlSelection = false;
+      }
+      this.estimatedTokens = Math.ceil((asciiCount / 4) + (nonAsciiCount / 1.5));
+    },
+    /**
+     * HTML 렌더링 결과 통계 계산
+     */
+    computeHtml() {
+      let text;
+      if (editorSvc.previewSelectionRange) {
+        text = `${editorSvc.previewSelectionRange}`;
+      }
+      this.htmlSelection = true;
+      if (!text) {
+        this.htmlSelection = false;
+        if (editorSvc.previewCtx) {
           ({ text } = editorSvc.previewCtx);
         }
-        if (text != null) {
-          this.htmlStats.forEach((stat) => {
-            stat.value = (text.match(stat.regex) || []).length;
-          });
+      }
+      if (text != null) {
+        this.htmlStats.forEach((stat) => {
+          stat.value = (text.match(stat.regex) || []).length;
+        });
+      }
+    },
+    /**
+     * 마크다운 텍스트를 LLM 프롬프트 서식(코드 블록 포맷)으로 클립보드에 복사
+     */
+    copyForLLM() {
+      let text = editorSvc.clEditor ? editorSvc.clEditor.getContent() : '';
+      if (editorSvc.clEditor && editorSvc.clEditor.selectionMgr) {
+        const selectedText = editorSvc.clEditor.selectionMgr.getSelectedText();
+        if (selectedText) {
+          text = selectedText;
         }
-      }, 10);
+      }
+      const formattedPrompt = `\`\`\`markdown\n${text}\n\`\`\``;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(formattedPrompt);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = formattedPrompt;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      this.copied = true;
+      setTimeout(() => {
+        this.copied = false;
+      }, 1500);
     },
   },
 };
@@ -129,5 +218,21 @@ export default {
 .stat-panel__value {
   font-weight: 600;
   margin-left: 5px;
+}
+
+.stat-panel__llm-btn {
+  margin-left: 8px;
+  padding: 1px 6px;
+  font-size: 11px;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+  }
 }
 </style>
