@@ -73,7 +73,7 @@ export default {
   max-width: 520px;
 
   p {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     font-weight: bold;
   }
 }
@@ -81,10 +81,10 @@ export default {
 .badge-entry {
   line-height: 1.4;
   margin: 2rem 0;
-  font-size: 0.9em;
+  font-size: 0.875em;
 
   .badge-entry {
-    font-size: 0.8em;
+    font-size: 0.8125em;
     margin: 0.75rem 0;
   }
 }
@@ -112,7 +112,7 @@ export default {
 }
 
 .badge-entry__name {
-  font-size: 1.2em;
+  font-size: 1.25em;
   font-weight: bold;
   opacity: 0.4;
 }

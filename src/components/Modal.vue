@@ -265,7 +265,7 @@ export default {
   border-radius: $border-radius-base;
   margin: 1.2em 0;
   padding: 0.75em 1.25em;
-  font-size: 0.95em;
+  font-size: 0.9375em;
   line-height: 1.6;
 
   pre {
@@ -291,7 +291,7 @@ export default {
 
 .form-entry__label {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.875em;
   color: #808080;
 
   .form-entry--focused & {
@@ -378,7 +378,7 @@ export default {
   text-align: center;
   line-height: 1.4;
   font-weight: 400;
-  font-size: 1.1em;
+  font-size: 1.125em;
 }
 
 .tabs__tab > a {

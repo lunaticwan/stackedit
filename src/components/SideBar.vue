@@ -143,7 +143,7 @@ export default {
   padding: 0 10px 0 20px;
 
   pre {
-    font-size: 0.9em;
+    font-size: 0.875em;
     font-variant-ligatures: no-common-ligatures;
     line-height: 1.25;
     white-space: pre-wrap;
@@ -163,11 +163,11 @@ export default {
   padding: 10px;
   margin: -10px -10px 10px;
   background-color: $info-bg;
-  font-size: 0.95em;
+  font-size: 0.9375em;
 
   p {
     margin: 10px 15px;
-    font-size: 0.9rem;
+    font-size: 0.875em;
     opacity: 0.67;
     line-height: 1.3;
   }

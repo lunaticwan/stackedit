@@ -59,7 +59,7 @@ export default {
 }
 
 .faq {
-  font-size: 0.8em;
+  font-size: 0.8125em;
   line-height: 1.5;
 }
 </style>
