@@ -2,7 +2,6 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 const tmp = require('tmp');
-const user = require('./user');
 const conf = require('./conf');
 
 const outputFormats = {
@@ -42,27 +41,20 @@ exports.generate = (req, res) => {
   const outputFormat = Object.prototype.hasOwnProperty.call(outputFormats, req.query.format)
     ? req.query.format
     : 'pdf';
-  user.checkSponsor(req.query.idToken)
-    .then((isSponsor) => {
-      if (!isSponsor) {
-        throw new Error('unauthorized');
-      }
-
-      return new Promise((resolve, reject) => {
-        tmp.file({
-          postfix: `.${outputFormat}`,
-        }, (err, filePath, fd, cleanupCallback) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve({
-              filePath,
-              cleanupCallback,
-            });
-          }
+  new Promise((resolve, reject) => {
+    tmp.file({
+      postfix: `.${outputFormat}`,
+    }, (err, filePath, fd, cleanupCallback) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve({
+          filePath,
+          cleanupCallback,
         });
-      });
-    })
+      }
+    });
+  })
     .then(({ filePath, cleanupCallback }) => new Promise((resolve, reject) => {
       const options = readJson(req.query.options);
       const metadata = readJson(req.query.metadata);

@@ -150,11 +150,6 @@ export default [
         '메인 Workspace 동기화됨',
         'Google에 로그인하여 메인 Workspace를 Google Drive 앱 데이터 폴더와 동기화하세요.',
       ),
-      new Feature(
-        'sponsor',
-        '스폰서',
-        'Google에 로그인하고 iM Markdown을 후원하여 PDF 및 Pandoc 내보내기 기능을 해제하세요.',
-      ),
     ],
   ),
   new Feature(
@@ -199,11 +194,6 @@ export default [
     '계정 관리자',
     '외부 계정을 연결하고 계정 대화상자를 사용하여 관리하세요.',
     [
-      new Feature(
-        'addBloggerAccount',
-        'Blogger 사용자',
-        'Blogger 계정을 iM Markdown에 연동하세요.',
-      ),
       new Feature(
         'addDropboxAccount',
         'Dropbox 사용자',
@@ -318,16 +308,6 @@ export default [
     '파일 게시 전문가',
     '게시 메뉴를 사용하여 외부 계정으로 파일을 게시하세요.',
     [
-      new Feature(
-        'publishToBlogger',
-        'Blogger 게시자',
-        '게시 메뉴를 사용하여 Blogger 아티클을 게시하세요.',
-      ),
-      new Feature(
-        'publishToBloggerPage',
-        'Blogger Page 게시자',
-        '게시 메뉴를 사용하여 Blogger 페이지를 게시하세요.',
-      ),
       new Feature(
         'publishToDropbox',
         'Dropbox 게시자',

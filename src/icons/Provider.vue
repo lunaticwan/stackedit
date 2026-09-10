@@ -22,8 +22,6 @@ export default {
           return 'github';
         case 'gitlabWorkspace':
           return 'gitlab';
-        case 'bloggerPage':
-          return 'blogger';
         case 'couchdbWorkspace':
           return 'couchdb';
         default:
@@ -73,10 +71,6 @@ export default {
 
 .icon-provider--wordpress {
   background-image: url(../assets/iconWordpress.svg);
-}
-
-.icon-provider--blogger {
-  background-image: url(../assets/iconBlogger.svg);
 }
 
 .icon-provider--zendesk {
