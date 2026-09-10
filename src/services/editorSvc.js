@@ -118,7 +118,7 @@ const editorSvc = Object.assign(new Vue(), editorSvcDiscussions, editorSvcUtils,
   },
 
   /**
-   * Refresh the preview with the result of `convert()`
+   * `convert()` 결과를 바탕으로 프리뷰 및 TOC DOM 영역 갱신 (이미지 로딩 완료 후 섹션 높이 측정)
    */
   async refreshPreview() {
     const sectionDescList = [];
@@ -229,7 +229,7 @@ const editorSvc = Object.assign(new Vue(), editorSvcDiscussions, editorSvcUtils,
   },
 
   /**
-   * Measure the height of each section in editor, preview and toc.
+   * 에디터, 미리보기 및 목차(TOC)의 각 섹션 높이를 측정하고 스크롤 위치 동기화
    */
   measureSectionDimensions: allowDebounce((restoreScrollPosition = false, force = false) => {
     if (force || editorSvc.previewCtx !== editorSvc.previewCtxMeasured) {
@@ -243,8 +243,7 @@ const editorSvc = Object.assign(new Vue(), editorSvcDiscussions, editorSvcUtils,
   }, 500),
 
   /**
-   * Compute the diffs between editor's markdown and preview's html
-   * asynchronously unless there is only one section to compute.
+   * 에디터 마크다운과 미리보기 HTML 간 diff 계산 (requestAnimationFrame 기반 비동기 프레임 스케줄링)
    */
   makeTextToPreviewDiffs() {
     if (editorSvc.previewCtx !== editorSvc.previewCtxWithDiffs) {

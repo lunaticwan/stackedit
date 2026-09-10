@@ -36,7 +36,14 @@ import { mapGetters } from 'vuex';
 import editorSvc from '../services/editorSvc';
 import utils from '../services/utils';
 
+/**
+ * 텍스트 통계 항목을 정의하는 클래스
+ */
 class Stat {
+  /**
+   * @param {string} name - 통계 항목 이름
+   * @param {string} regex - 정규표현식 패턴 문자열
+   */
   constructor(name, regex) {
     this.id = utils.uid();
     this.name = name;
@@ -82,18 +89,27 @@ export default {
   },
 
   methods: {
+    /**
+     * 마크다운 텍스트 통계 및 토큰 수 계산 스케줄링 (requestAnimationFrame 적용)
+     */
     scheduleComputeText() {
       if (this.computeTextRaf) {
         cancelAnimationFrame(this.computeTextRaf);
       }
       this.computeTextRaf = requestAnimationFrame(() => this.computeText());
     },
+    /**
+     * HTML 통계 계산 스케줄링 (requestAnimationFrame 적용)
+     */
     scheduleComputeHtml() {
       if (this.computeHtmlRaf) {
         cancelAnimationFrame(this.computeHtmlRaf);
       }
       this.computeHtmlRaf = requestAnimationFrame(() => this.computeHtml());
     },
+    /**
+     * 마크다운 텍스트 통계, 선택 영역 좌표 및 LLM 토큰 수(BPE 휴리스틱) 계산
+     */
     computeText() {
       this.textSelection = false;
       let text = editorSvc.clEditor ? editorSvc.clEditor.getContent() : '';
@@ -114,7 +130,7 @@ export default {
         stat.value = (text.match(stat.regex) || []).length;
       });
 
-      // Compute LLM token estimation (bpe heuristic: ~4 chars for ASCII, ~1.5 chars for Non-ASCII)
+      // LLM 토큰 수 계산 (ASCII: 약 4자당 1토큰, Non-ASCII: 약 1.5자당 1토큰)
       let nonAsciiCount = 0;
       let asciiCount = 0;
       for (let i = 0; i < text.length; i += 1) {
@@ -126,6 +142,9 @@ export default {
       }
       this.estimatedTokens = Math.ceil((asciiCount / 4) + (nonAsciiCount / 1.5));
     },
+    /**
+     * HTML 렌더링 결과 통계 계산
+     */
     computeHtml() {
       let text;
       if (editorSvc.previewSelectionRange) {
@@ -144,6 +163,9 @@ export default {
         });
       }
     },
+    /**
+     * 마크다운 텍스트를 LLM 프롬프트 서식(코드 블록 포맷)으로 클립보드에 복사
+     */
     copyForLLM() {
       let text = editorSvc.clEditor ? editorSvc.clEditor.getContent() : '';
       if (editorSvc.clEditor && editorSvc.clEditor.selectionMgr) {

@@ -44,6 +44,7 @@
         <side-bar></side-bar>
       </div>
     </div>
+    <!-- 화면 우측 하단 상시 고정 플로팅 LLM 복사 버튼 -->
     <button
       class="floating-llm-btn button"
       @click="copyForLLM"
@@ -115,6 +116,9 @@ export default {
       'updateBodySize',
     ]),
     saveSelection: () => editorSvc.saveSelection(true),
+    /**
+     * 에디터의 마크다운 텍스트 또는 선택 영역을 LLM 프롬프트용 코드 블록으로 클립보드 복사
+     */
     copyForLLM() {
       let text = editorSvc.clEditor ? editorSvc.clEditor.getContent() : '';
       if (editorSvc.clEditor && editorSvc.clEditor.selectionMgr) {
