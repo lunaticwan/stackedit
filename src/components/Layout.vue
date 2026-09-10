@@ -44,6 +44,14 @@
         <side-bar></side-bar>
       </div>
     </div>
+    <button
+      class="floating-llm-btn button"
+      @click="copyForLLM"
+      v-title="'LLM 프롬프트 서식으로 마크다운 복사'"
+    >
+      <span v-if="copied">복사됨!</span>
+      <span v-else>LLM 복사</span>
+    </button>
   </div>
 </template>
 
@@ -78,6 +86,9 @@ export default {
     CurrentDiscussion,
     FindReplace,
   },
+  data: () => ({
+    copied: false,
+  }),
   computed: {
     ...mapState([
       'light',
@@ -104,6 +115,30 @@ export default {
       'updateBodySize',
     ]),
     saveSelection: () => editorSvc.saveSelection(true),
+    copyForLLM() {
+      let text = editorSvc.clEditor ? editorSvc.clEditor.getContent() : '';
+      if (editorSvc.clEditor && editorSvc.clEditor.selectionMgr) {
+        const selectedText = editorSvc.clEditor.selectionMgr.getSelectedText();
+        if (selectedText) {
+          text = selectedText;
+        }
+      }
+      const formattedPrompt = `\`\`\`markdown\n${text}\n\`\`\``;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(formattedPrompt);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = formattedPrompt;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      this.copied = true;
+      setTimeout(() => {
+        this.copied = false;
+      }, 1500);
+    },
   },
   created() {
     markdownConversionSvc.init(); // Needs to be inited before mount
@@ -217,5 +252,33 @@ $preview-background-dark: #252525;
   width: 300px;
   height: auto;
   border-top-right-radius: $border-radius-base;
+}
+
+.floating-llm-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 35px;
+  z-index: 1000;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007acc;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background-color: #005999;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
 }
 </style>
