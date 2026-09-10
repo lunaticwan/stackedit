@@ -38,16 +38,16 @@
       <div class="navigation-bar__spacer"></div>
       <!-- Font Size Controls -->
       <div class="navigation-bar__control-group">
-        <button class="navigation-bar__button button" @click="decreaseFontSize" v-title="'폰트 크기 축소'">-</button>
+        <button class="navigation-bar__button navigation-bar__button--step button" @click="decreaseFontSize" v-title="'폰트 크기 축소'">-</button>
         <select class="navigation-bar__select" :value="currentFontSize" @change="changeFontSize($event)" v-title="'폰트 크기'">
           <option v-for="size in fontSizeOptions" :key="size" :value="size">{{ size }}px</option>
         </select>
-        <button class="navigation-bar__button button" @click="increaseFontSize" v-title="'폰트 크기 확대'">+</button>
+        <button class="navigation-bar__button navigation-bar__button--step button" @click="increaseFontSize" v-title="'폰트 크기 확대'">+</button>
       </div>
       <div class="navigation-bar__spacer"></div>
       <!-- Line Height Control -->
       <div class="navigation-bar__control-group">
-        <select class="navigation-bar__select" :value="currentLineHeight" @change="changeLineHeight($event)" v-title="'행간 크기'">
+        <select class="navigation-bar__select navigation-bar__select--line-height" :value="currentLineHeight" @change="changeLineHeight($event)" v-title="'행간 크기'">
           <option v-for="lh in lineHeightOptions" :key="lh" :value="lh">행간 {{ lh }}</option>
         </select>
       </div>
@@ -339,22 +339,52 @@ export default {
   margin-bottom: 20px;
 }
 
+.navigation-bar__button--step {
+  width: 26px;
+  height: 26px;
+  line-height: 24px;
+  padding: 0;
+  margin: 0 1px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+
 .navigation-bar__select {
   height: 26px;
   margin: 0 2px;
-  padding: 0 4px;
-  font-size: 12px;
+  padding: 0 6px;
+  font-size: 13px;
+  font-weight: 500;
   color: $navbar-color;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
   outline: none;
+  transition: background-color 0.2s, border-color 0.2s;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
 
   option {
     color: #333;
     background-color: #fff;
   }
+}
+
+.navigation-bar__select--line-height {
+  min-width: 82px;
 }
 
 .navigation-bar__inner--title * {
