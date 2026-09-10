@@ -31,11 +31,6 @@ export default {
     '아니오',
     '예, 접미사 추가',
   ),
-  providerRedirection: simpleModal(
-    config => `<p><b>${config.name}</b> 인증 페이지로 이동합니다.</p>`,
-    '취소',
-    '확인, 이동합니다',
-  ),
   removeWorkspace: simpleModal(
     '<p>로컬 Workspace를 제거하시겠습니까?</p>',
     '아니오',
@@ -45,12 +40,6 @@ export default {
     '<p>모든 로컬 Workspace 데이터가 초기화됩니다. 계속하시겠습니까?</p>',
     '아니오',
     '예, 초기화합니다',
-  ),
-  signInForComment: simpleModal(
-    `<p>댓글을 작성하려면 Google 계정으로 로그인해야 합니다.</p>
-    <div class="modal__info"><b>참고:</b> 로그인 시 메인 Workspace가 동기화됩니다.</div>`,
-    '취소',
-    '확인, 로그인',
   ),
   stripName: simpleModal(
     config => `<p><b>${config.item.name}</b>에 허용되지 않는 문자가 포함되어 있습니다. 제거하시겠습니까?</p>`,
@@ -74,10 +63,5 @@ export default {
   unauthorizedName: simpleModal(
     config => `<p><b>${config.item.name}</b>은(는) 사용할 수 없는 이름입니다.</p>`,
     '확인',
-  ),
-  workspaceGoogleRedirection: simpleModal(
-    '<p>이 Workspace를 열려면 iM Markdown에 Google Drive 전체 접근 권한이 필요합니다.</p>',
-    '취소',
-    '확인, 권한 부여',
   ),
 };

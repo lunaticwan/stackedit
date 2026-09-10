@@ -141,42 +141,10 @@ export default [
     ],
   ),
   new Feature(
-    'signIn',
-    '로그인됨',
-    'Google 계정으로 로그인하여 메인 Workspace를 동기화하고 추가 기능을 해제하세요.',
-    [
-      new Feature(
-        'syncMainWorkspace',
-        '메인 Workspace 동기화됨',
-        'Google에 로그인하여 메인 Workspace를 Google Drive 앱 데이터 폴더와 동기화하세요.',
-      ),
-    ],
-  ),
-  new Feature(
     'workspaces',
     'Workspace 전문가',
     'Workspace 메뉴를 사용하여 다양한 Workspace를 생성하고 관리하세요.',
     [
-      new Feature(
-        'addCouchdbWorkspace',
-        'CouchDB Workspace 생성자',
-        'Workspace 메뉴를 사용하여 CouchDB Workspace를 생성하세요.',
-      ),
-      new Feature(
-        'addGithubWorkspace',
-        'GitHub Workspace 생성자',
-        'Workspace 메뉴를 사용하여 GitHub Workspace를 생성하세요.',
-      ),
-      new Feature(
-        'addGitlabWorkspace',
-        'GitLab Workspace 생성자',
-        'Workspace 메뉴를 사용하여 GitLab Workspace를 생성하세요.',
-      ),
-      new Feature(
-        'addGoogleDriveWorkspace',
-        'Google Drive Workspace 생성자',
-        'Workspace 메뉴를 사용하여 Google Drive Workspace를 생성하세요.',
-      ),
       new Feature(
         'renameWorkspace',
         'Workspace 이름 변경자',
@@ -190,177 +158,6 @@ export default [
     ],
   ),
   new Feature(
-    'manageAccounts',
-    '계정 관리자',
-    '외부 계정을 연결하고 계정 대화상자를 사용하여 관리하세요.',
-    [
-      new Feature(
-        'addDropboxAccount',
-        'Dropbox 사용자',
-        'Dropbox 계정을 iM Markdown에 연동하세요.',
-      ),
-      new Feature(
-        'addGitHubAccount',
-        'GitHub 사용자',
-        'GitHub 계정을 iM Markdown에 연동하세요.',
-      ),
-      new Feature(
-        'addGitLabAccount',
-        'GitLab 사용자',
-        'GitLab 계정을 iM Markdown에 연동하세요.',
-      ),
-      new Feature(
-        'addGoogleDriveAccount',
-        'Google Drive 사용자',
-        'Google Drive 계정을 iM Markdown에 연동하세요.',
-      ),
-      new Feature(
-        'addGooglePhotosAccount',
-        'Google Photos 사용자',
-        'Google Photos 계정을 iM Markdown에 연동하세요.',
-      ),
-      new Feature(
-        'addWordpressAccount',
-        'WordPress 사용자',
-        'WordPress 계정을 iM Markdown에 연동하세요.',
-      ),
-      new Feature(
-        'addZendeskAccount',
-        'Zendesk 사용자',
-        'Zendesk 계정을 iM Markdown에 연동하세요.',
-      ),
-      new Feature(
-        'removeAccount',
-        '연동 해제자',
-        '계정 대화상자를 사용하여 외부 계정 권한을 해제하세요.',
-      ),
-    ],
-  ),
-  new Feature(
-    'syncFiles',
-    '파일 동기화 전문가',
-    '동기화 메뉴를 사용하여 외부 계정으로 파일을 열고 저장하세요.',
-    [
-      new Feature(
-        'openFromDropbox',
-        'Dropbox 리더',
-        '동기화 메뉴를 사용하여 Dropbox 계정에서 파일을 열어보세요.',
-      ),
-      new Feature(
-        'saveOnDropbox',
-        'Dropbox 라이터',
-        '동기화 메뉴를 사용하여 Dropbox 계정에 파일을 저장하세요.',
-      ),
-      new Feature(
-        'openFromGithub',
-        'GitHub 리더',
-        '동기화 메뉴를 사용하여 GitHub 저장소에서 파일을 열어보세요.',
-      ),
-      new Feature(
-        'saveOnGithub',
-        'GitHub 라이터',
-        '동기화 메뉴를 사용하여 GitHub 저장소에 파일을 저장하세요.',
-      ),
-      new Feature(
-        'saveOnGist',
-        'Gist 라이터',
-        '동기화 메뉴를 사용하여 Gist에 파일을 저장하세요.',
-      ),
-      new Feature(
-        'openFromGitlab',
-        'GitLab 리더',
-        '동기화 메뉴를 사용하여 GitLab 저장소에서 파일을 열어보세요.',
-      ),
-      new Feature(
-        'saveOnGitlab',
-        'GitLab 라이터',
-        '동기화 메뉴를 사용하여 GitLab 저장소에 파일을 저장하세요.',
-      ),
-      new Feature(
-        'openFromGoogleDrive',
-        'Google Drive 리더',
-        '동기화 메뉴를 사용하여 Google Drive 계정에서 파일을 열어보세요.',
-      ),
-      new Feature(
-        'saveOnGoogleDrive',
-        'Google Drive 라이터',
-        '동기화 메뉴를 사용하여 Google Drive 계정에 파일을 저장하세요.',
-      ),
-      new Feature(
-        'triggerSync',
-        '동기화 실행자',
-        '동기화 메뉴 또는 네비게이션 바를 사용하여 동기화를 직접 실행하세요.',
-      ),
-      new Feature(
-        'syncMultipleLocations',
-        '다중 동기화',
-        '동기화 메뉴를 사용하여 파일 하나를 여러 외부 위치와 동기화하세요.',
-      ),
-      new Feature(
-        'removeSyncLocation',
-        '동기화 해제자',
-        '파일 동기화 대화상자를 사용하여 동기화 위치를 삭제하세요.',
-      ),
-    ],
-  ),
-  new Feature(
-    'publishFiles',
-    '파일 게시 전문가',
-    '게시 메뉴를 사용하여 외부 계정으로 파일을 게시하세요.',
-    [
-      new Feature(
-        'publishToDropbox',
-        'Dropbox 게시자',
-        '게시 메뉴를 사용하여 Dropbox 계정에 파일을 게시하세요.',
-      ),
-      new Feature(
-        'publishToGithub',
-        'GitHub 게시자',
-        '게시 메뉴를 사용하여 GitHub 저장소에 파일을 게시하세요.',
-      ),
-      new Feature(
-        'publishToGist',
-        'Gist 게시자',
-        '게시 메뉴를 사용하여 Gist에 파일을 게시하세요.',
-      ),
-      new Feature(
-        'publishToGitlab',
-        'GitLab 게시자',
-        '게시 메뉴를 사용하여 GitLab 저장소에 파일을 게시하세요.',
-      ),
-      new Feature(
-        'publishToGoogleDrive',
-        'Google Drive 게시자',
-        '게시 메뉴를 사용하여 Google Drive 계정에 파일을 게시하세요.',
-      ),
-      new Feature(
-        'publishToWordPress',
-        'WordPress 게시자',
-        '게시 메뉴를 사용하여 WordPress 아티클을 게시하세요.',
-      ),
-      new Feature(
-        'publishToZendesk',
-        'Zendesk 게시자',
-        '게시 메뉴를 사용하여 Zendesk Help Center 아티클을 게시하세요.',
-      ),
-      new Feature(
-        'triggerPublish',
-        '게시 갱신자',
-        '게시 메뉴 또는 네비게이션 바를 사용하여 게시된 내용을 수동으로 업데이트하세요.',
-      ),
-      new Feature(
-        'publishMultipleLocations',
-        '다중 게시',
-        '게시 메뉴를 사용하여 하나의 파일을 여러 외부 위치에 게시하세요.',
-      ),
-      new Feature(
-        'removePublishLocation',
-        '게시 취소자',
-        '파일 게시 대화상자를 사용하여 게시 위치를 삭제하세요.',
-      ),
-    ],
-  ),
-  new Feature(
     'manageHistory',
     '역사가',
     '파일 히스토리 메뉴를 사용하여 버전 이력을 확인하고 이전 버전으로 복원하세요.',
@@ -369,11 +166,6 @@ export default [
         'restoreVersion',
         '복원자',
         '파일 히스토리 메뉴를 사용하여 현재 파일의 이전 버전을 복원하세요.',
-      ),
-      new Feature(
-        'chooseHistory',
-        '히스토리 선택자',
-        '여러 외부 위치와 동기화된 파일의 히스토리를 선택하세요.',
       ),
     ],
   ),
