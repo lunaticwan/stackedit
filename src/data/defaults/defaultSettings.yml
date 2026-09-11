@@ -57,13 +57,6 @@ wkhtmltopdf:
   # A3, A4, Legal or Letter
   pageSize: A4
 
-# Options passed to pandoc
-# See https://pandoc.org/MANUAL.html
-pandoc:
-  highlightStyle: kate
-  toc: true
-  tocDepth: 3
-
 # HTML to Markdown converter options
 # See https://github.com/domchristie/turndown
 turndown:

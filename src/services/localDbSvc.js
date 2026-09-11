@@ -105,6 +105,10 @@ const localDbSvc = {
           // Try to parse the item from the localStorage
           const storedItem = JSON.parse(localStorage.getItem(key));
           if (storedItem.hash && lsHashMap[id] !== storedItem.hash) {
+            if (id === 'layoutSettings' && storedItem.data) {
+              delete storedItem.data.showExplorer;
+              delete storedItem.data.showSideBar;
+            }
             // Item has changed, replace it in the store
             store.commit('data/setItem', storedItem);
             lsHashMap[id] = storedItem.hash;
@@ -117,7 +121,14 @@ const localDbSvc = {
       // Write item if different from stored one
       const item = store.state.data.lsItemsById[id];
       if (item && item.hash !== lsHashMap[id]) {
-        localStorage.setItem(key, JSON.stringify(item));
+        let itemToSave = item;
+        if (id === 'layoutSettings' && item.data) {
+          const dataCopy = { ...item.data };
+          delete dataCopy.showExplorer;
+          delete dataCopy.showSideBar;
+          itemToSave = { ...item, data: dataCopy };
+        }
+        localStorage.setItem(key, JSON.stringify(itemToSave));
         lsHashMap[id] = item.hash;
       }
     });

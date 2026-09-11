@@ -248,11 +248,6 @@ export default [
         'PDF 내보내기',
         '가져오기/내보내기 메뉴를 사용하여 디스크에 PDF 파일로 내보내세요.',
       ),
-      new Feature(
-        'exportPandoc',
-        'Pandoc 내보내기',
-        '가져오기/내보내기 메뉴를 사용하여 Pandoc을 통해 파일로 내보내세요.',
-      ),
     ],
   ),
   new Feature(
