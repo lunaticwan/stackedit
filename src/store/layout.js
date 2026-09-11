@@ -156,6 +156,8 @@ export default {
     canRedo: false,
     bodyWidth: 0,
     bodyHeight: 0,
+    isInitialized: false,
+    isMobile: false,
   },
   mutations: {
     setCanUndo: (state, value) => {
@@ -168,17 +170,59 @@ export default {
       state.bodyWidth = document.body.clientWidth;
       state.bodyHeight = document.body.clientHeight;
     },
+    setInitialized: (state, value) => {
+      state.isInitialized = value;
+    },
+    setIsMobile: (state, value) => {
+      state.isMobile = value;
+    },
   },
   getters: {
     constants: () => constants,
     styles: (state, getters, rootState, rootGetters) => computeStyles(rootState, rootGetters),
   },
   actions: {
-    updateBodySize({ commit, dispatch, rootGetters }) {
+    updateBodySize({
+      commit,
+      dispatch,
+      rootGetters,
+      state,
+    }) {
       commit('updateBodySize');
-      // Make sure both explorer and side bar are not open if body width is small
-      const layoutSettings = rootGetters['data/layoutSettings'];
-      dispatch('data/toggleExplorer', layoutSettings.showExplorer, { root: true });
+      const isMobile = state.bodyWidth <= 768;
+
+      if (!state.isInitialized) {
+        commit('setInitialized', true);
+        commit('setIsMobile', isMobile);
+        if (isMobile) {
+          dispatch('data/patchLayoutSettings', {
+            showExplorer: false,
+            showSideBar: false,
+          }, { root: true });
+        } else {
+          dispatch('data/patchLayoutSettings', {
+            showExplorer: true,
+            showSideBar: true,
+          }, { root: true });
+        }
+      } else if (state.isMobile !== isMobile) {
+        commit('setIsMobile', isMobile);
+        if (isMobile) {
+          dispatch('data/patchLayoutSettings', {
+            showExplorer: false,
+            showSideBar: false,
+          }, { root: true });
+        } else {
+          dispatch('data/patchLayoutSettings', {
+            showExplorer: true,
+            showSideBar: true,
+          }, { root: true });
+        }
+      } else {
+        // Make sure both explorer and side bar are not open if body width is small
+        const layoutSettings = rootGetters['data/layoutSettings'];
+        dispatch('data/toggleExplorer', layoutSettings.showExplorer, { root: true });
+      }
     },
   },
 };
