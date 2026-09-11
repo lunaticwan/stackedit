@@ -3,7 +3,6 @@ export default () => ({
   filePropertiesTab: '',
   htmlExportTemplate: 'styledHtml',
   pdfExportTemplate: 'styledHtml',
-  pandocExportFormat: 'pdf',
   googleDriveRestrictedAccess: false,
   googleDriveFolderId: '',
   googleDriveWorkspaceFolderId: '',

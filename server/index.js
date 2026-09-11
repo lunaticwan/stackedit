@@ -5,7 +5,6 @@ const path = require('path');
 const user = require('./user');
 const github = require('./github');
 const pdf = require('./pdf');
-const pandoc = require('./pandoc');
 const conf = require('./conf');
 
 const resolvePath = pathToResolve => path.join(__dirname, '..', pathToResolve);
@@ -28,7 +27,6 @@ module.exports = (app) => {
   app.get('/conf', (req, res) => res.send(conf.publicValues));
   app.get('/userInfo', user.userInfo);
   app.post('/pdfExport', pdf.generate);
-  app.post('/pandocExport', pandoc.generate);
   app.post('/paypalIpn', bodyParser.urlencoded({
     extended: false,
   }), user.paypalIpn);

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import DiffMatchPatch from 'diff-match-patch';
 import Prism from 'prismjs';
-import markdownItPandocRenderer from 'markdown-it-pandoc-renderer';
 import cledit from './editor/cledit';
 import pagedown from '../libs/pagedown';
 import htmlSanitizer from '../libs/htmlSanitizer';
@@ -28,7 +27,6 @@ const allowDebounce = (action, wait) => {
 
 const diffMatchPatch = new DiffMatchPatch();
 let instantPreview = true;
-let tokens;
 
 class SectionDesc {
   constructor(section, previewElt, tocElt, html) {
@@ -114,7 +112,6 @@ const editorSvc = Object.assign(new Vue(), editorSvcDiscussions, editorSvcUtils,
   convert() {
     this.conversionCtx = markdownConversionSvc.convert(this.parsingCtx, this.conversionCtx);
     this.$emit('conversionCtx', this.conversionCtx);
-    ({ tokens } = this.parsingCtx.markdownState);
   },
 
   /**
@@ -334,13 +331,6 @@ const editorSvc = Object.assign(new Vue(), editorSvcDiscussions, editorSvcUtils,
       editorSvc.$emit('previewSelectionRange', editorSvc.previewSelectionRange);
     }
   }, 50),
-
-  /**
-   * Returns the pandoc AST generated from the file tokens and the converter options
-   */
-  getPandocAst() {
-    return tokens && markdownItPandocRenderer(tokens, this.converter.options);
-  },
 
   /**
    * Pass the elements to the store and initialize the editor.

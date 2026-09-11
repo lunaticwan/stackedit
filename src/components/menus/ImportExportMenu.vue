@@ -36,11 +36,6 @@
       <div>PDF로 내보내기</div>
       <span>HTML 템플릿 기반 PDF 생성</span>
     </menu-entry>
-    <menu-entry @click.native="exportPandoc">
-      <icon-download slot="icon"></icon-download>
-      <div>Pandoc으로 내보내기</div>
-      <span>PDF, Word, EPUB 등으로 변환</span>
-    </menu-entry>
   </div>
 </template>
 
@@ -113,11 +108,6 @@ export default {
     async exportPdf() {
       try {
         await store.dispatch('modal/open', 'pdfExport');
-      } catch (e) { /* Cancel */ }
-    },
-    async exportPandoc() {
-      try {
-        await store.dispatch('modal/open', 'pandocExport');
       } catch (e) { /* Cancel */ }
     },
   },

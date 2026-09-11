@@ -18,6 +18,15 @@
               <sticky-comment v-if="styles.editorGutterWidth && stickyComment === 'top'"></sticky-comment>
               <current-discussion v-if="styles.editorGutterWidth"></current-discussion>
             </div>
+            <button
+              v-if="!styles.showPreview"
+              class="floating-copy-btn button"
+              @click="copyMarkdown"
+              v-title="'마크다운 복사'"
+            >
+              <span v-if="copied">복사됨!</span>
+              <span v-else>복사하기</span>
+            </button>
           </div>
           <div class="layout__panel layout__panel--button-bar" v-show="styles.showEditor" :style="{width: constants.buttonBarWidth + 'px'}">
             <button-bar></button-bar>
@@ -31,6 +40,14 @@
               <sticky-comment v-if="styles.previewGutterWidth && stickyComment === 'top'"></sticky-comment>
               <current-discussion v-if="styles.previewGutterWidth"></current-discussion>
             </div>
+            <button
+              class="floating-copy-btn button"
+              @click="copyMarkdown"
+              v-title="'마크다운 복사'"
+            >
+              <span v-if="copied">복사됨!</span>
+              <span v-else>복사하기</span>
+            </button>
           </div>
           <div class="layout__panel layout__panel--find-replace" v-if="showFindReplace">
             <find-replace></find-replace>
@@ -44,15 +61,6 @@
         <side-bar></side-bar>
       </div>
     </div>
-    <!-- 화면 우측 하단 상시 고정 플로팅 복사 버튼 -->
-    <button
-      class="floating-copy-btn button"
-      @click="copyMarkdown"
-      v-title="'마크다운 복사'"
-    >
-      <span v-if="copied">복사됨!</span>
-      <span v-else>복사하기</span>
-    </button>
   </div>
 </template>
 
@@ -258,9 +266,9 @@ $preview-background-dark: #252525;
 }
 
 .floating-copy-btn {
-  position: fixed;
+  position: absolute;
   right: 20px;
-  bottom: 35px;
+  bottom: 20px;
   z-index: 1000;
   padding: 8px 14px;
   font-size: 12px;
