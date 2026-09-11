@@ -391,7 +391,7 @@ const localDbSvc = {
           } else {
             // If still no ID, create a new file
             const newFile = await workspaceSvc.createFile({
-              name: 'Welcome file',
+              name: 'iM Markdown에 오신 것을 환영합니다!',
               text: welcomeFile,
             }, true);
             // Set it as the current file
