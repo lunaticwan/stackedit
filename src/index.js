@@ -8,6 +8,9 @@ import './icons';
 import App from './components/App';
 import store from './store';
 import localDbSvc from './services/localDbSvc';
+import { initDebugLogger } from './services/debugLoggerSvc';
+
+initDebugLogger();
 
 if (!indexedDB) {
   throw new Error('Your browser is not supported. Please upgrade to the latest version.');

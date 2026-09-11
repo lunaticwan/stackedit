@@ -2,6 +2,7 @@ import createLogger from 'vuex/dist/logger';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import utils from '../services/utils';
+import { vuexLoggerPlugin } from '../services/debugLoggerSvc';
 import content from './content';
 import contentState from './contentState';
 import contextMenu from './contextMenu';
@@ -169,7 +170,7 @@ const store = new Vuex.Store({
     },
   },
   strict: debug,
-  plugins: debug ? [createLogger()] : [],
+  plugins: debug ? [createLogger(), vuexLoggerPlugin] : [vuexLoggerPlugin],
 });
 
 setInterval(() => {
