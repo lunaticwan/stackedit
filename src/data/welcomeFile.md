@@ -28,6 +28,52 @@ iM Markdown은 모든 문서를 사용자의 웹 브라우저 내부에 안전�
 메뉴에서 **가져오기/내보내기**를 클릭하여 작성한 문서를 내보낼 수 있습니다. 일반 Markdown 파일, HTML, 또는 PDF 등 필요한 형식으로 선택하여 저장할 수 있습니다.
 
 
+# 코드 작성 예시 (Code Examples)
+
+iM Markdown은 다양한 프로그래밍 언어 및 마크다운 구문에 대한 하이라이팅을 지원합니다.
+
+```typescript
+// TypeScript 예제
+interface User {
+  id: number;
+  name: string;
+}
+
+const currentUser: User = {
+  id: 1,
+  name: "iM Markdown",
+};
+console.log(`Hello, ${currentUser.name}!`);
+```
+
+```java
+// Java 예제
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, iM Markdown!");
+    }
+}
+```
+
+```html
+<!-- HTML 예제 -->
+<div class="welcome-container">
+  <h1>iM Markdown</h1>
+  <p>안전한 로컬 마크다운 에디터</p>
+</div>
+```
+
+```css
+/* CSS 예제 */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #f5f5f5;
+}
+```
+
+
 # Markdown 확장 기능 (Markdown Extensions)
 
 iM Markdown은 표준 마크다운 구문 외에도 다양한 풍부한 **Markdown 확장 기능**을 제공합니다.

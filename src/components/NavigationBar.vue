@@ -1,9 +1,12 @@
 <template>
   <nav class="navigation-bar" :class="{'navigation-bar--editor': styles.showEditor && !revisionContent, 'navigation-bar--light': light}">
     <!-- Explorer -->
-    <div class="navigation-bar__inner navigation-bar__inner--left navigation-bar__inner--button">
+    <div class="navigation-bar__inner navigation-bar__inner--left navigation-bar__inner--button flex flex--row">
       <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" v-title="'iM Markdown 닫기'"><icon-check-circle></icon-check-circle></button>
-      <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else tour-step-anchor="explorer" @click="toggleExplorer()" v-title="'탐색기 토글'"><icon-folder></icon-folder></button>
+      <template v-else>
+        <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" tour-step-anchor="explorer" @click="toggleExplorer()" v-title="'탐색기 토글'"><icon-folder></icon-folder></button>
+        <button class="navigation-bar__button button" @click="createNewFile()" v-title="'새 문서'"><icon-file-plus></icon-file-plus></button>
+      </template>
     </div>
     <!-- Side bar -->
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--button">
@@ -38,6 +41,7 @@
       <div class="navigation-bar__spacer"></div>
       <!-- Font Size Controls -->
       <div class="navigation-bar__control-group">
+        <icon-format-size class="navigation-bar__control-icon"></icon-format-size>
         <button class="navigation-bar__button navigation-bar__button--step button" @click="decreaseFontSize" v-title="'폰트 크기 축소'">-</button>
         <select class="navigation-bar__select" :value="currentFontSize" @change="changeFontSize($event)" v-title="'폰트 크기'">
           <option v-for="size in fontSizeOptions" :key="size" :value="size">{{ size }}px</option>
@@ -269,6 +273,11 @@ export default {
     close() {
       tempFileSvc.close();
     },
+    async createNewFile() {
+      const newFile = await workspaceSvc.createFile({ text: '' });
+      store.commit('file/setCurrentId', newFile.id);
+      badgeSvc.addBadge('createFile');
+    },
   },
   created() {
     this.$watch(
@@ -337,34 +346,46 @@ export default {
   align-items: center;
   height: 36px;
   margin-bottom: 20px;
+  padding: 0 2px;
+}
+
+.navigation-bar__control-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 4px;
+  opacity: 0.8;
+  color: $navbar-color;
 }
 
 .navigation-bar__button--step {
-  width: 26px;
-  height: 26px;
-  line-height: 24px;
+  width: 28px;
+  height: 36px;
+  line-height: 36px;
   padding: 0;
-  margin: 0 1px;
-  font-size: 14px;
-  font-weight: 600;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
   text-align: center;
-  border-radius: 3px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: $navbar-color;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    color: $navbar-hover-color;
+    background-color: $navbar-hover-background;
   }
 }
 
 .navigation-bar__select {
-  height: 26px;
-  margin: 0 2px;
+  height: 30px;
+  margin: 0 3px;
   padding: 0 6px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: $navbar-color;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   cursor: pointer;
@@ -373,7 +394,8 @@ export default {
 
   &:hover,
   &:focus {
-    background-color: rgba(255, 255, 255, 0.2);
+    color: $navbar-hover-color;
+    background-color: $navbar-hover-background;
     border-color: rgba(255, 255, 255, 0.4);
   }
 
@@ -384,7 +406,7 @@ export default {
 }
 
 .navigation-bar__select--line-height {
-  min-width: 82px;
+  min-width: 80px;
 }
 
 .navigation-bar__inner--title * {
