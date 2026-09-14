@@ -12,7 +12,10 @@ pagedownButtons.forEach((button) => {
 
 const minPadding = 25;
 const editorTopPadding = 10;
-const navigationBarEditButtonsWidth = (34 * buttonCount) + (8 * spacerCount); // buttons + spacers
+const fontControlsWidth = 320; // 폰트 크기 및 행높이 컨트롤 패널 너비
+const navigationBarEditButtonsWidth = (34 * buttonCount)
+  + (8 * spacerCount)
+  + fontControlsWidth;
 const navigationBarLeftButtonWidth = 38 + 4 + 12;
 const navigationBarRightButtonWidth = 38 + 8;
 const navigationBarSpinnerWidth = 24 + 8 + 5; // 5 for left margin

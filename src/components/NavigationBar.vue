@@ -362,8 +362,7 @@ export default {
 .navigation-bar__control-label {
   font-size: 13px;
   font-weight: 500;
-  /* 상단 네비게이션 바 배경(#2c2c2c)이 전역 테마(light/dark)와 무관하게 어두우므로 시인성 확보를 위해 항상 밝은 색상 고정 적용 */
-  color: $navbar-color;
+  color: #fff;
   margin-right: 4px;
   margin-left: 2px;
   user-select: none;
@@ -384,8 +383,7 @@ export default {
   font-size: 13px;
   font-weight: 600;
   line-height: 1;
-  /* 어두운 네비게이션 바 배경 대비 확보용 밝은 색상 지정 */
-  color: $navbar-color;
+  color: #e2e8f0;
   background-color: transparent;
   border: none;
   border-radius: 3px;
@@ -393,7 +391,7 @@ export default {
   transition: background-color 0.2s, color 0.2s;
 
   &:hover {
-    color: $navbar-hover-color;
+    color: #fff;
     background-color: $navbar-hover-background;
   }
 }
@@ -404,10 +402,9 @@ export default {
   padding: 0 6px;
   font-size: 13px;
   font-weight: 500;
-  /* 어두운 네비게이션 바 배경과 일관된 스타일 유지를 위해 밝은 텍스트 및 투명 배경 사용 */
-  color: $navbar-color;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 3px;
   cursor: pointer;
   outline: none;
@@ -415,9 +412,9 @@ export default {
 
   &:hover,
   &:focus {
-    color: $navbar-hover-color;
-    background-color: $navbar-hover-background;
-    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
   }
 
   option {
