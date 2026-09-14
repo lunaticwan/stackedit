@@ -362,17 +362,13 @@ export default {
 .navigation-bar__control-label {
   font-size: 13px;
   font-weight: 500;
-  color: $navbar-color;
+  color: #fff;
   margin-right: 4px;
   margin-left: 2px;
   user-select: none;
   display: inline-flex;
   align-items: center;
   line-height: 1;
-
-  .app--light & {
-    color: #4a5568;
-  }
 }
 
 .navigation-bar__step-btn {
@@ -387,25 +383,16 @@ export default {
   font-size: 13px;
   font-weight: 600;
   line-height: 1;
-  color: $navbar-color;
+  color: #e2e8f0;
   background-color: transparent;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
 
-  .app--light & {
-    color: #2d3748;
-  }
-
   &:hover {
-    color: $navbar-hover-color;
+    color: #fff;
     background-color: $navbar-hover-background;
-
-    .app--light & {
-      color: #1a202c;
-      background-color: rgba(0, 0, 0, 0.06);
-    }
   }
 }
 
@@ -415,31 +402,19 @@ export default {
   padding: 0 6px;
   font-size: 13px;
   font-weight: 500;
-  color: $navbar-color;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 3px;
   cursor: pointer;
   outline: none;
   transition: background-color 0.2s, border-color 0.2s;
 
-  .app--light & {
-    color: #2d3748;
-    background-color: #fff;
-    border: 1px solid #cbd5e0;
-  }
-
   &:hover,
   &:focus {
-    color: $navbar-hover-color;
-    background-color: $navbar-hover-background;
-    border-color: rgba(255, 255, 255, 0.4);
-
-    .app--light & {
-      color: #1a202c;
-      background-color: #fff;
-      border-color: #a0aec0;
-    }
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
   }
 
   option {
