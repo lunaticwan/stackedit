@@ -92,7 +92,7 @@ export default {
   word-wrap: break-word;
 
   * {
-    line-height: $line-height-base;
+    line-height: inherit;
   }
 
   .cledit-section {
