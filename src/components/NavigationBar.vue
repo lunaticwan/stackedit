@@ -40,17 +40,17 @@
       </div>
       <div class="navigation-bar__spacer"></div>
       <!-- Font Size Controls -->
-      <div class="navigation-bar__control-group navigation-bar__control-group--pill">
+      <div class="navigation-bar__control-group">
         <span class="navigation-bar__control-label">크기</span>
-        <button class="navigation-bar__button navigation-bar__button--step button" @click="decreaseFontSize" v-title="'폰트 크기 축소'">A-</button>
+        <button class="navigation-bar__step-btn button" @click="decreaseFontSize" v-title="'폰트 크기 축소'">A-</button>
         <select class="navigation-bar__select" :value="currentFontSize" @change="changeFontSize($event)" v-title="'폰트 크기'">
           <option v-for="size in fontSizeOptions" :key="size" :value="size">{{ size }}px</option>
         </select>
-        <button class="navigation-bar__button navigation-bar__button--step button" @click="increaseFontSize" v-title="'폰트 크기 확대'">A+</button>
+        <button class="navigation-bar__step-btn button" @click="increaseFontSize" v-title="'폰트 크기 확대'">A+</button>
       </div>
       <div class="navigation-bar__spacer"></div>
       <!-- Line Height Control -->
-      <div class="navigation-bar__control-group navigation-bar__control-group--pill">
+      <div class="navigation-bar__control-group">
         <span class="navigation-bar__control-label">행높이</span>
         <select class="navigation-bar__select navigation-bar__select--line-height" :value="currentLineHeight" @change="changeLineHeight($event)" v-title="'행간 크기'">
           <option v-for="lh in lineHeightOptions" :key="lh.value" :value="lh.value">{{ lh.label }}</option>
@@ -354,51 +354,45 @@ export default {
 .navigation-bar__control-group {
   display: flex;
   align-items: center;
-  height: 32px;
-  margin-top: 2px;
+  height: 36px;
   margin-bottom: 20px;
-  padding: 0 6px;
-}
-
-.navigation-bar__control-group--pill {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  margin-right: 6px;
-
-  .app--light & {
-    background-color: #f0f4f8;
-    border: 1px solid #dcdfe6;
-  }
+  padding: 0 2px;
 }
 
 .navigation-bar__control-label {
   font-size: 13px;
   font-weight: 500;
   color: $navbar-color;
-  margin-right: 6px;
+  margin-right: 4px;
   margin-left: 2px;
   user-select: none;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 
   .app--light & {
     color: #4a5568;
   }
 }
 
-.navigation-bar__button--step {
-  width: 28px;
+.navigation-bar__step-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 24px;
   height: 26px;
-  line-height: 26px;
-  padding: 0;
-  margin: 0 1px;
+  padding: 0 4px;
+  margin: 0 2px;
   font-size: 13px;
   font-weight: 600;
-  text-align: center;
+  line-height: 1;
   color: $navbar-color;
   background-color: transparent;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
 
   .app--light & {
     color: #2d3748;
@@ -416,15 +410,15 @@ export default {
 }
 
 .navigation-bar__select {
-  height: 24px;
-  margin: 0 2px;
-  padding: 0 4px;
+  height: 26px;
+  margin: 0 3px;
+  padding: 0 6px;
   font-size: 13px;
   font-weight: 500;
   color: $navbar-color;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
   cursor: pointer;
   outline: none;
   transition: background-color 0.2s, border-color 0.2s;
@@ -439,7 +433,7 @@ export default {
   &:focus {
     color: $navbar-hover-color;
     background-color: $navbar-hover-background;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
 
     .app--light & {
       color: #1a202c;
