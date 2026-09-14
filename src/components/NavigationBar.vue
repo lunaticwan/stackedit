@@ -40,19 +40,20 @@
       </div>
       <div class="navigation-bar__spacer"></div>
       <!-- Font Size Controls -->
-      <div class="navigation-bar__control-group">
-        <icon-format-size class="navigation-bar__control-icon"></icon-format-size>
-        <button class="navigation-bar__button navigation-bar__button--step button" @click="decreaseFontSize" v-title="'폰트 크기 축소'">-</button>
+      <div class="navigation-bar__control-group navigation-bar__control-group--pill">
+        <span class="navigation-bar__control-label">크기</span>
+        <button class="navigation-bar__button navigation-bar__button--step button" @click="decreaseFontSize" v-title="'폰트 크기 축소'">A-</button>
         <select class="navigation-bar__select" :value="currentFontSize" @change="changeFontSize($event)" v-title="'폰트 크기'">
           <option v-for="size in fontSizeOptions" :key="size" :value="size">{{ size }}px</option>
         </select>
-        <button class="navigation-bar__button navigation-bar__button--step button" @click="increaseFontSize" v-title="'폰트 크기 확대'">+</button>
+        <button class="navigation-bar__button navigation-bar__button--step button" @click="increaseFontSize" v-title="'폰트 크기 확대'">A+</button>
       </div>
       <div class="navigation-bar__spacer"></div>
       <!-- Line Height Control -->
-      <div class="navigation-bar__control-group">
+      <div class="navigation-bar__control-group navigation-bar__control-group--pill">
+        <span class="navigation-bar__control-label">행높이</span>
         <select class="navigation-bar__select navigation-bar__select--line-height" :value="currentLineHeight" @change="changeLineHeight($event)" v-title="'행간 크기'">
-          <option v-for="lh in lineHeightOptions" :key="lh" :value="lh">행간 {{ lh }}</option>
+          <option v-for="lh in lineHeightOptions" :key="lh.value" :value="lh.value">{{ lh.label }}</option>
         </select>
       </div>
     </div>
@@ -99,7 +100,16 @@ export default {
     titleFocus: false,
     titleHover: false,
     fontSizeOptions: [12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 28, 32, 36],
-    lineHeightOptions: [1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.5],
+    lineHeightOptions: [
+      { value: 1.0, label: '매우 좁게 (12px)' },
+      { value: 1.2, label: '좁게 (14px)' },
+      { value: 1.4, label: '약간 좁게 (16px)' },
+      { value: 1.6, label: '보통 (18px)' },
+      { value: 1.8, label: '약간 넓게 (20px)' },
+      { value: 2.0, label: '넓게 (22px)' },
+      { value: 2.2, label: '매우 넓게 (24px)' },
+      { value: 2.5, label: '최대 (28px)' },
+    ],
   }),
   computed: {
     ...mapState([
@@ -344,27 +354,45 @@ export default {
 .navigation-bar__control-group {
   display: flex;
   align-items: center;
-  height: 36px;
+  height: 32px;
+  margin-top: 2px;
   margin-bottom: 20px;
-  padding: 0 2px;
+  padding: 0 6px;
 }
 
-.navigation-bar__control-icon {
-  width: 20px;
-  height: 20px;
-  margin: 0 4px;
-  opacity: 0.8;
+.navigation-bar__control-group--pill {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  margin-right: 6px;
+
+  .app--light & {
+    background-color: #f0f4f8;
+    border: 1px solid #dcdfe6;
+  }
+}
+
+.navigation-bar__control-label {
+  font-size: 13px;
+  font-weight: 500;
   color: $navbar-color;
+  margin-right: 6px;
+  margin-left: 2px;
+  user-select: none;
+
+  .app--light & {
+    color: #4a5568;
+  }
 }
 
 .navigation-bar__button--step {
   width: 28px;
-  height: 36px;
-  line-height: 36px;
+  height: 26px;
+  line-height: 26px;
   padding: 0;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 500;
+  margin: 0 1px;
+  font-size: 13px;
+  font-weight: 600;
   text-align: center;
   color: $navbar-color;
   background-color: transparent;
@@ -372,31 +400,52 @@ export default {
   border-radius: 4px;
   cursor: pointer;
 
+  .app--light & {
+    color: #2d3748;
+  }
+
   &:hover {
     color: $navbar-hover-color;
     background-color: $navbar-hover-background;
+
+    .app--light & {
+      color: #1a202c;
+      background-color: rgba(0, 0, 0, 0.06);
+    }
   }
 }
 
 .navigation-bar__select {
-  height: 30px;
-  margin: 0 3px;
-  padding: 0 6px;
-  font-size: 14px;
+  height: 24px;
+  margin: 0 2px;
+  padding: 0 4px;
+  font-size: 13px;
   font-weight: 500;
   color: $navbar-color;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 4px;
   cursor: pointer;
   outline: none;
   transition: background-color 0.2s, border-color 0.2s;
 
+  .app--light & {
+    color: #2d3748;
+    background-color: #fff;
+    border: 1px solid #cbd5e0;
+  }
+
   &:hover,
   &:focus {
     color: $navbar-hover-color;
     background-color: $navbar-hover-background;
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.5);
+
+    .app--light & {
+      color: #1a202c;
+      background-color: #fff;
+      border-color: #a0aec0;
+    }
   }
 
   option {
@@ -406,7 +455,7 @@ export default {
 }
 
 .navigation-bar__select--line-height {
-  min-width: 80px;
+  min-width: 100px;
 }
 
 .navigation-bar__inner--title * {
