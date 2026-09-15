@@ -53,13 +53,25 @@ module.getters = {
 
 module.actions = {
   ...module.actions,
-  patchCurrent({ state, getters, commit }, value) {
+  patchCurrent({
+    state,
+    getters,
+    commit,
+    rootGetters,
+  }, value) {
     const { id } = getters.current;
     if (id && !state.revisionContent) {
       commit('patchItem', {
         ...value,
         id,
       });
+      const fileId = rootGetters['file/current'].id;
+      if (fileId) {
+        commit('file/patchItem', {
+          id: fileId,
+          updated: Date.now(),
+        }, { root: true });
+      }
     }
   },
   setRevisionContent({ state, rootGetters, commit }, value) {

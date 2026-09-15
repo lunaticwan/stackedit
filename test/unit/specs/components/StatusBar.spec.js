@@ -23,6 +23,23 @@ describe('StatusBar.vue', () => {
     expect(wrapper.find('.stat-panel').exists()).toBe(true);
   });
 
+  it('renders created and updated date meta information', async () => {
+    const createdTime = new Date('2026-01-01T10:00:00Z').getTime();
+    const updatedTime = new Date('2026-01-02T15:30:00Z').getTime();
+    store.commit('file/setItem', {
+      id: 'test-file-1',
+      created: createdTime,
+      updated: updatedTime,
+    });
+    store.commit('file/setCurrentId', 'test-file-1');
+    await wrapper.vm.$nextTick();
+
+    const metaElements = wrapper.findAll('.stat-panel__meta');
+    expect(metaElements.length).toBe(2);
+    expect(metaElements.at(0).text()).toContain('생성:');
+    expect(metaElements.at(1).text()).toContain('수정:');
+  });
+
   it('computes text stats correctly', () => {
     editorSvc.clEditor = {
       getContent: () => 'Hello world!\n안녕하세요.',
