@@ -17,12 +17,17 @@ export default {
     properties,
     discussions,
     comments,
+    created,
+    updated,
   } = {}, background = false) {
     const id = utils.uid();
+    const now = Date.now();
     const item = {
       id,
       name: utils.sanitizeFilename(name),
       parentId: parentId || null,
+      created: created || now,
+      updated: updated || now,
     };
     const content = {
       id: `${id}/content`,
@@ -128,7 +133,24 @@ export default {
     if (patch.name) {
       const sanitizedName = utils.sanitizeFilename(patch.name);
       if (item.type !== 'folder' || !forbiddenFolderNameMatcher.exec(sanitizedName)) {
-        item.name = sanitizedName;
+        if (item.name !== sanitizedName) {
+          item.name = sanitizedName;
+          if (item.type === 'file') {
+            item.updated = Date.now();
+          }
+        }
+      }
+    }
+
+    if (item.type === 'file') {
+      if (!item.created) {
+        item.created = Date.now();
+      }
+      if (!item.updated) {
+        item.updated = item.created || Date.now();
+      }
+      if (patch.updated) {
+        item.updated = patch.updated;
       }
     }
 

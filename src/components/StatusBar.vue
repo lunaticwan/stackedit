@@ -19,6 +19,12 @@
       </button>
     </div>
     <div class="stat-panel__block stat-panel__block--right">
+      <span class="stat-panel__meta" v-if="currentFile.created">
+        생성: {{currentFile.created | formatDate}}
+      </span>
+      <span class="stat-panel__meta" v-if="currentFile.updated">
+        수정: {{currentFile.updated | formatDate}}
+      </span>
       <span class="stat-panel__block-name">
         HTML
         <span v-if="htmlSelection">(선택 영역)</span>
@@ -31,6 +37,7 @@
 </template>
 
 <script>
+import dayjs from 'dayjs';
 import { mapGetters } from 'vuex';
 import editorSvc from '../services/editorSvc';
 import utils from '../services/utils';
@@ -59,6 +66,7 @@ export default {
     column: 0,
     copied: false,
     textStats: [
+      new Stat('글자 수', '[^\\s]'),
       new Stat('바이트', '[\\s\\S]'),
       new Stat('단어', '\\S+'),
       new Stat('줄', '\n'),
@@ -69,9 +77,20 @@ export default {
       new Stat('단락', '\\S.*'),
     ],
   }),
-  computed: mapGetters('layout', [
-    'styles',
-  ]),
+  computed: {
+    ...mapGetters('layout', [
+      'styles',
+    ]),
+    ...mapGetters('file', {
+      currentFile: 'current',
+    }),
+  },
+  filters: {
+    formatDate(timestamp) {
+      if (!timestamp) return '';
+      return dayjs(timestamp).format('YYYY-MM-DD HH:mm');
+    },
+  },
   created() {
     this.computeTextRaf = null;
     this.computeHtmlRaf = null;
@@ -198,6 +217,11 @@ export default {
 
 .stat-panel__block--right {
   float: right;
+}
+
+.stat-panel__meta {
+  margin-right: 12px;
+  opacity: 0.85;
 }
 
 .stat-panel__value {
