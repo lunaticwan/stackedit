@@ -5,7 +5,7 @@
       <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" v-title="'iM Markdown 닫기'"><icon-check-circle></icon-check-circle></button>
       <template v-else>
         <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" tour-step-anchor="explorer" @click="toggleExplorer()" v-title="'탐색기 토글'"><icon-folder></icon-folder></button>
-        <button class="navigation-bar__button button" @click="createNewFile()" v-title="'새 문서'"><icon-file-plus></icon-file-plus></button>
+        <button class="navigation-bar__button navigation-bar__button--new-file button" @click="createNewFile()" v-title="'새 문서'"><icon-file-plus></icon-file-plus></button>
       </template>
     </div>
     <!-- Side bar -->
@@ -586,6 +586,28 @@ export default {
   &:focus,
   &:hover {
     color: lighten($link-color, 25%);
+  }
+}
+
+.navigation-bar__button--explorer-toggler {
+  color: #fbbf24;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: #f59e0b;
+    background-color: rgba(245, 158, 11, 0.15);
+  }
+}
+
+.navigation-bar__button--new-file {
+  color: #34d399;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: #10b981;
+    background-color: rgba(16, 185, 129, 0.15);
   }
 }
 
