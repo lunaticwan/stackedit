@@ -357,39 +357,116 @@ textarea {
 }
 
 @media print {
-  body {
-    background-color: transparent !important;
-    color: #000 !important; // Black prints faster
-    overflow: visible !important;
-    position: absolute !important;
-
-    div {
-      display: none !important;
-    }
-
-    a {
-      text-decoration: underline;
-    }
+  @page {
+    margin: 15mm;
   }
 
-  body > .app,
-  body > .app > .layout,
-  body > .app > .layout > .layout__panel,
-  body > .app > .layout > .layout__panel > .layout__panel,
-  body > .app > .layout > .layout__panel > .layout__panel > .layout__panel,
-  body > .app > .layout > .layout__panel > .layout__panel > .layout__panel > .layout__panel--preview,
-  body > .app > .layout > .layout__panel > .layout__panel > .layout__panel > .layout__panel--preview div {
+  /* Hide non-printable UI components */
+  .layout__panel--explorer,
+  .layout__panel--navigation-bar,
+  .layout__panel--button-bar,
+  .layout__panel--status-bar,
+  .layout__panel--side-bar,
+  .layout__panel--editor,
+  .layout__panel--find-replace,
+  .gutter,
+  .floating-copy-btn,
+  .modal__viewport,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset layout containers for print flow */
+  html,
+  body,
+  .app,
+  .layout,
+  .layout__panel,
+  .layout__panel--preview {
     background-color: transparent !important;
+    color: #000 !important;
     display: block !important;
     height: auto !important;
     overflow: visible !important;
     position: static !important;
-    width: auto !important;
-    font-size: 16px;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
   }
 
   .preview__inner-2 {
-    padding: 0 50px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+    color: #000 !important;
   }
-  // scss-lint:enable ImportantRule
+
+  /* Page break utilities */
+  .page-break,
+  .page-break-after,
+  [data-page-break],
+  hr.page-break {
+    page-break-after: always !important;
+    break-after: page !important;
+    height: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+  }
+
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  /* Prevent awkward page breaks in elements */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  pre,
+  code,
+  blockquote,
+  table,
+  tr,
+  img,
+  figure,
+  .page-break-inside-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    background-color: #f8f8f8 !important;
+    border: 1px solid #ccc !important;
+  }
+
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+
+    th,
+    td {
+      border: 1px solid #ddd !important;
+      padding: 6px 10px !important;
+    }
+  }
 }
