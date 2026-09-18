@@ -2,7 +2,6 @@ import utils from '../../utils';
 import networkSvc from '../../networkSvc';
 import store from '../../../store';
 import userSvc from '../../userSvc';
-import badgeSvc from '../../badgeSvc';
 
 const appsDomain = null;
 const tokenExpirationMargin = 5 * 60 * 1000; // 5 min (tokens expire after 1h)
@@ -232,12 +231,10 @@ export default {
   },
   async addDriveAccount(fullAccess = false, sub = null) {
     const token = await this.startOauth2(getDriveScopes({ driveFullAccess: fullAccess }), sub);
-    badgeSvc.addBadge('addGoogleDriveAccount');
     return token;
   },
   async addPhotosAccount() {
     const token = await this.startOauth2(photosScopes);
-    badgeSvc.addBadge('addGooglePhotosAccount');
     return token;
   },
 

@@ -51,12 +51,6 @@ export default {
         content,
       });
     },
-    badge({ dispatch }, content) {
-      return dispatch('showItem', {
-        type: 'badge',
-        content,
-      });
-    },
     confirm({ dispatch }, content) {
       return dispatch('showItem', {
         type: 'confirm',

@@ -96,7 +96,6 @@ describe('Explorer.vue', () => {
     wrapper.find('.side-title__button--delete').trigger('click');
     ensureExists(file);
     expect(refreshItem(file).parentId).toEqual('trash');
-    await specUtils.expectBadge('removeFile');
   });
 
   it('should not delete the trash folder', async () => {
@@ -104,7 +103,6 @@ describe('Explorer.vue', () => {
     select('trash');
     wrapper.find('.side-title__button--delete').trigger('click');
     await specUtils.resolveModal('trashDeletion');
-    await specUtils.expectBadge('removeFile', false);
   });
 
   it('should not delete file in the trash folder', async () => {
@@ -114,7 +112,6 @@ describe('Explorer.vue', () => {
     wrapper.find('.side-title__button--delete').trigger('click');
     await specUtils.resolveModal('trashDeletion');
     ensureExists(file);
-    await specUtils.expectBadge('removeFile', false);
   });
 
   it('should delete the temp folder after confirmation', async () => {
@@ -124,7 +121,6 @@ describe('Explorer.vue', () => {
     wrapper.find('.side-title__button--delete').trigger('click');
     await specUtils.resolveModal('tempFolderDeletion');
     ensureNotExists(file);
-    await specUtils.expectBadge('removeFolder');
   });
 
   it('should delete temp file after confirmation', async () => {
@@ -135,7 +131,6 @@ describe('Explorer.vue', () => {
     ensureExists(file);
     await specUtils.resolveModal('tempFileDeletion');
     ensureNotExists(file);
-    await specUtils.expectBadge('removeFile');
   });
 
   it('should delete folder after confirmation', async () => {
@@ -149,7 +144,6 @@ describe('Explorer.vue', () => {
     // Make sure file has been moved to Trash
     ensureExists(file);
     expect(refreshItem(file).parentId).toEqual('trash');
-    await specUtils.expectBadge('removeFolder');
   });
 
   it('should rename file', async () => {
@@ -188,7 +182,6 @@ describe('Explorer.vue', () => {
       Explorer,
       wrapper => wrapper.find('.side-title__button--close').trigger('click'),
       () => store.getters['data/layoutSettings'].showExplorer,
-      'toggleExplorer',
     );
   });
 });

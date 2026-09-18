@@ -71,7 +71,6 @@ import utils from '../services/utils';
 import pagedownButtons from '../data/pagedownButtons';
 import store from '../store';
 import workspaceSvc from '../services/workspaceSvc';
-import badgeSvc from '../services/badgeSvc';
 
 // According to mousetrap
 const mod = /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? 'Meta' : 'Ctrl';
@@ -247,11 +246,7 @@ export default {
     },
     pagedownClick(name) {
       if (store.getters['content/isCurrentEditable']) {
-        const text = editorSvc.clEditor.getContent();
         editorSvc.pagedownEditor.uiManager.doClick(name);
-        if (text !== editorSvc.clEditor.getContent()) {
-          badgeSvc.addBadge('formatButtons');
-        }
       }
     },
     async editTitle(toggle) {
@@ -267,7 +262,6 @@ export default {
               ...store.getters['file/current'],
               name: title,
             });
-            badgeSvc.addBadge('editCurrentFileName');
           } catch (e) {
             // Cancel
           }
@@ -286,7 +280,6 @@ export default {
     async createNewFile() {
       const newFile = await workspaceSvc.createFile({ text: '' });
       store.commit('file/setCurrentId', newFile.id);
-      badgeSvc.addBadge('createFile');
     },
   },
   created() {

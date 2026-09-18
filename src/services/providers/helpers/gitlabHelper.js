@@ -2,7 +2,6 @@ import utils from '../../utils';
 import networkSvc from '../../networkSvc';
 import store from '../../../store';
 import userSvc from '../../userSvc';
-import badgeSvc from '../../badgeSvc';
 
 const request = ({ accessToken, serverUrl }, options) => networkSvc.request({
   ...options,
@@ -92,7 +91,6 @@ export default {
   },
   async addAccount(serverUrl, applicationId, sub = null) {
     const token = await this.startOauth2(serverUrl, applicationId, sub);
-    badgeSvc.addBadge('addGitLabAccount');
     return token;
   },
 

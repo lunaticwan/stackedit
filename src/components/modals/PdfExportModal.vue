@@ -26,7 +26,6 @@ import exportSvc from '../../services/exportSvc';
 import networkSvc from '../../services/networkSvc';
 import modalTemplate from './common/modalTemplate';
 import store from '../../store';
-import badgeSvc from '../../services/badgeSvc';
 
 export default modalTemplate({
   computedLocalSettings: {
@@ -55,7 +54,6 @@ export default modalTemplate({
             timeout: 60000,
           });
           FileSaver.saveAs(body, `${currentFile.name}.pdf`);
-          badgeSvc.addBadge('exportPdf');
         } catch (err) {
           console.error(err); // eslint-disable-line no-console
           store.dispatch('notification/error', err);

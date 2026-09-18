@@ -2,7 +2,6 @@ import utils from '../../utils';
 import networkSvc from '../../networkSvc';
 import store from '../../../store';
 import userSvc from '../../userSvc';
-import badgeSvc from '../../badgeSvc';
 
 const getScopes = token => [token.repoFullAccess ? 'repo' : 'public_repo', 'gist'];
 
@@ -119,7 +118,6 @@ export default {
   },
   async addAccount(repoFullAccess = false) {
     const token = await this.startOauth2(getScopes({ repoFullAccess }));
-    badgeSvc.addBadge('addGitHubAccount');
     return token;
   },
 

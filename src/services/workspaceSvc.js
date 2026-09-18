@@ -1,7 +1,6 @@
 import store from '../store';
 import utils from './utils';
 import constants from '../data/constants';
-import badgeSvc from './badgeSvc';
 
 const forbiddenFolderNameMatcher = /^\.stackedit-data$|^\.stackedit-trash$|\.md$|\.sync$|\.publish$/;
 
@@ -275,10 +274,6 @@ export default {
 
     // Sanitize the workspace
     this.ensureUniqueLocations();
-
-    if (Object.keys(store.getters['syncLocation/currentWithWorkspaceSyncLocation']).length > 1) {
-      badgeSvc.addBadge('syncMultipleLocations');
-    }
   },
 
   addPublishLocation(location) {
@@ -289,10 +284,6 @@ export default {
 
     // Sanitize the workspace
     this.ensureUniqueLocations();
-
-    if (Object.keys(store.getters['publishLocation/current']).length > 1) {
-      badgeSvc.addBadge('publishMultipleLocations');
-    }
   },
 
   /**

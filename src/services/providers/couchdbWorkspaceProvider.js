@@ -2,7 +2,6 @@ import store from '../../store';
 import couchdbHelper from './helpers/couchdbHelper';
 import Provider from './common/Provider';
 import utils from '../utils';
-import badgeSvc from '../badgeSvc';
 
 let syncLastSeq;
 
@@ -59,7 +58,6 @@ export default new Provider({
       }
     }
 
-    badgeSvc.addBadge('addCouchdbWorkspace');
     return store.getters['workspace/workspacesById'][workspaceId];
   },
   async getChanges() {

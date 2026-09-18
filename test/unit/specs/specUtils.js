@@ -25,13 +25,12 @@ beforeEach(() => {
 });
 
 export default {
-  async checkToggler(Component, toggler, checker, featureId) {
+  async checkToggler(Component, toggler, checker) {
     const wrapper = shallowMount(Component, { store });
     const valueBefore = checker();
     toggler(wrapper);
     const valueAfter = checker();
     expect(valueAfter).toEqual(!valueBefore);
-    await this.expectBadge(featureId);
   },
   async resolveModal(type) {
     const config = store.getters['modal/config'];
@@ -49,10 +48,5 @@ export default {
     store.state.contextMenu.resolve(item);
     await new Promise(resolve => setTimeout(resolve, 1));
   },
-  async expectBadge(featureId, isEarned = true) {
-    await new Promise(resolve => setTimeout(resolve, 1));
-    expect(store.getters['data/allBadges'].filter(badge => badge.featureId === featureId)[0]).toMatchObject({
-      isEarned,
-    });
-  },
+  async expectBadge() {},
 };

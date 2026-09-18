@@ -42,16 +42,6 @@
       인쇄
     </menu-entry>
     <hr>
-    <menu-entry @click.native="badges">
-      <icon-seal slot="icon"></icon-seal>
-      <div><div class="menu-entry__label menu-entry__label--count">{{badgeCount}}/{{featureCount}}</div> 뱃지</div>
-      <span>앱 기능 목록 및 획득한 뱃지 확인</span>
-    </menu-entry>
-    <menu-entry @click.native="templates">
-      <icon-code-braces slot="icon"></icon-code-braces>
-      <div><div class="menu-entry__label menu-entry__label--count">{{templateCount}}</div> 템플릿</div>
-      <span>내보내기용 Handlebars 템플릿 설정</span>
-    </menu-entry>
     <menu-entry @click.native="settings">
       <icon-settings slot="icon"></icon-settings>
       <div>설정</div>
@@ -89,15 +79,6 @@ export default {
     workspaceCount() {
       return Object.keys(store.getters['workspace/workspacesById']).length;
     },
-    templateCount() {
-      return Object.keys(store.getters['data/allTemplatesById']).length;
-    },
-    badgeCount() {
-      return store.getters['data/allBadges'].filter(badge => badge.isEarned).length;
-    },
-    featureCount() {
-      return store.getters['data/allBadges'].length;
-    },
   },
   methods: {
     ...mapActions('data', {
@@ -118,19 +99,9 @@ export default {
         await store.dispatch('modal/open', 'settings');
       } catch (e) { /* Cancel */ }
     },
-    async templates() {
-      try {
-        await store.dispatch('modal/open', 'templates');
-      } catch (e) { /* Cancel */ }
-    },
     async accounts() {
       try {
         await store.dispatch('modal/open', 'accountManagement');
-      } catch (e) { /* Cancel */ }
-    },
-    async badges() {
-      try {
-        await store.dispatch('modal/open', 'badgeManagement');
       } catch (e) { /* Cancel */ }
     },
     async reset() {

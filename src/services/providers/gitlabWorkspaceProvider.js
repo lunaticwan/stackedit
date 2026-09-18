@@ -4,7 +4,6 @@ import Provider from './common/Provider';
 import utils from '../utils';
 import userSvc from '../userSvc';
 import gitWorkspaceSvc from '../gitWorkspaceSvc';
-import badgeSvc from '../badgeSvc';
 
 const getAbsolutePath = ({ id }) =>
   `${store.getters['workspace/currentWorkspace'].path || ''}${id}`;
@@ -99,7 +98,6 @@ export default new Provider({
       });
     }
 
-    badgeSvc.addBadge('addGitlabWorkspace');
     return store.getters['workspace/workspacesById'][workspaceId];
   },
   getChanges() {

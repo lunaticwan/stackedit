@@ -84,7 +84,6 @@ import githubHelper from '../../services/providers/helpers/githubHelper';
 import gitlabHelper from '../../services/providers/helpers/gitlabHelper';
 import wordpressHelper from '../../services/providers/helpers/wordpressHelper';
 import zendeskHelper from '../../services/providers/helpers/zendeskHelper';
-import badgeSvc from '../../services/badgeSvc';
 
 export default {
   components: {
@@ -157,7 +156,6 @@ export default {
       await store.dispatch('data/patchTokensByType', {
         [entry.providerId]: tokensBySub,
       });
-      badgeSvc.addBadge('removeAccount');
     },
     async addDropboxAccount() {
       try {

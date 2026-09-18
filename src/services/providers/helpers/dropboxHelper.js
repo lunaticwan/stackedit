@@ -1,7 +1,6 @@
 import networkSvc from '../../networkSvc';
 import userSvc from '../../userSvc';
 import store from '../../../store';
-import badgeSvc from '../../badgeSvc';
 
 const getAppKey = (fullAccess) => {
   if (fullAccess) {
@@ -100,7 +99,6 @@ export default {
   },
   async addAccount(fullAccess = false) {
     const token = await this.startOauth2(fullAccess);
-    badgeSvc.addBadge('addDropboxAccount');
     return token;
   },
 

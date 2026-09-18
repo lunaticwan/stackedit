@@ -10,8 +10,6 @@ import styledHtmlTemplate from '../data/templates/styledHtmlTemplate.html';
 import styledHtmlWithTocTemplate from '../data/templates/styledHtmlWithTocTemplate.html';
 import jekyllSiteTemplate from '../data/templates/jekyllSiteTemplate.html';
 import constants from '../data/constants';
-import features from '../data/features';
-import badgeSvc from '../services/badgeSvc';
 
 const itemTemplate = (id, data = {}) => ({
   id,
@@ -64,19 +62,18 @@ const patcher = id => ({ state, commit }, data) => {
 };
 
 // For layoutSettings
-const toggleLayoutSetting = (name, value, featureId, getters, dispatch) => {
+const toggleLayoutSetting = (name, value, getters, dispatch) => {
   const currentValue = getters.layoutSettings[name];
   const patch = {
     [name]: value === undefined ? !currentValue : !!value,
   };
   if (patch[name] !== currentValue) {
     dispatch('patchLayoutSettings', patch);
-    badgeSvc.addBadge(featureId);
   }
 };
 
-const layoutSettingsToggler = (propertyName, featureId) => ({ getters, dispatch }, value) =>
-  toggleLayoutSetting(propertyName, value, featureId, getters, dispatch);
+const layoutSettingsToggler = propertyName => ({ getters, dispatch }, value) =>
+  toggleLayoutSetting(propertyName, value, getters, dispatch);
 
 const notEnoughSpace = (layoutConstants, showGutter) =>
   document.body.clientWidth < layoutConstants.editorMinWidth +
@@ -168,11 +165,7 @@ export default {
     },
     localSettings: getter('localSettings'),
     layoutSettings: getter('layoutSettings'),
-    templatesById: getter('templates'),
-    allTemplatesById: (state, { templatesById }) => ({
-      ...templatesById,
-      ...defaultTemplates,
-    }),
+    allTemplatesById: () => defaultTemplates,
     lastCreated: getter('lastCreated'),
     lastOpened: getter('lastOpened'),
     lastOpenedIds: (state, { lastOpened }, rootState) => {
@@ -214,32 +207,18 @@ export default {
     gitlabTokensBySub: (state, { tokensByType }) => tokensByType.gitlab || {},
     wordpressTokensBySub: (state, { tokensByType }) => tokensByType.wordpress || {},
     zendeskTokensBySub: (state, { tokensByType }) => tokensByType.zendesk || {},
-    badgeCreations: getter('badgeCreations'),
-    badgeTree: (state, { badgeCreations }) => features
-      .map(feature => feature.toBadge(badgeCreations)),
-    allBadges: (state, { badgeTree }) => {
-      const result = [];
-      const processBadgeNodes = nodes => nodes.forEach((node) => {
-        result.push(node);
-        if (node.children) {
-          processBadgeNodes(node.children);
-        }
-      });
-      processBadgeNodes(badgeTree);
-      return result;
-    },
   },
   actions: {
     setServerConf: setter('serverConf'),
     setSettings: setter('settings'),
     patchLocalSettings: patcher('localSettings'),
     patchLayoutSettings: patcher('layoutSettings'),
-    toggleNavigationBar: layoutSettingsToggler('showNavigationBar', 'toggleNavigationBar'),
-    toggleEditor: layoutSettingsToggler('showEditor', 'toggleEditor'),
-    toggleSidePreview: layoutSettingsToggler('showSidePreview', 'toggleSidePreview'),
-    toggleStatusBar: layoutSettingsToggler('showStatusBar', 'toggleStatusBar'),
-    toggleScrollSync: layoutSettingsToggler('scrollSync', 'toggleScrollSync'),
-    toggleFocusMode: layoutSettingsToggler('focusMode', 'toggleFocusMode'),
+    toggleNavigationBar: layoutSettingsToggler('showNavigationBar'),
+    toggleEditor: layoutSettingsToggler('showEditor'),
+    toggleSidePreview: layoutSettingsToggler('showSidePreview'),
+    toggleStatusBar: layoutSettingsToggler('showStatusBar'),
+    toggleScrollSync: layoutSettingsToggler('scrollSync'),
+    toggleFocusMode: layoutSettingsToggler('focusMode'),
     setFontSize: ({ dispatch }, fontSize) => dispatch('patchLayoutSettings', { fontSize }),
     setLineHeight: ({ dispatch }, lineHeight) => dispatch('patchLayoutSettings', { lineHeight }),
     toggleSideBar: ({ getters, dispatch, rootGetters }, value) => {
@@ -247,7 +226,7 @@ export default {
       dispatch('setSideBarPanel');
 
       // Toggle it
-      toggleLayoutSetting('showSideBar', value, 'toggleSideBar', getters, dispatch);
+      toggleLayoutSetting('showSideBar', value, getters, dispatch);
 
       // Close explorer if not enough space
       if (getters.layoutSettings.showSideBar &&
@@ -260,7 +239,7 @@ export default {
     },
     toggleExplorer: ({ getters, dispatch, rootGetters }, value) => {
       // Toggle explorer
-      toggleLayoutSetting('showExplorer', value, 'toggleExplorer', getters, dispatch);
+      toggleLayoutSetting('showExplorer', value, getters, dispatch);
 
       // Close side bar if not enough space
       if (getters.layoutSettings.showExplorer &&
@@ -274,16 +253,6 @@ export default {
     setSideBarPanel: ({ dispatch }, value) => dispatch('patchLayoutSettings', {
       sideBarPanel: value === undefined ? 'menu' : value,
     }),
-    setTemplatesById: ({ commit }, templatesById) => {
-      const templatesToCommit = {
-        ...templatesById,
-      };
-      // We don't store additional templates
-      Object.keys(defaultTemplates).forEach((id) => {
-        delete templatesToCommit[id];
-      });
-      commit('setItem', itemTemplate('templates', templatesToCommit));
-    },
     setLastCreated: setter('lastCreated'),
     setLastOpenedId: ({ getters, commit, rootState }, fileId) => {
       const lastOpened = { ...getters.lastOpened };
@@ -308,6 +277,5 @@ export default {
     addGitlabToken: tokenAdder('gitlab'),
     addWordpressToken: tokenAdder('wordpress'),
     addZendeskToken: tokenAdder('zendesk'),
-    patchBadgeCreations: patcher('badgeCreations'),
   },
 };
