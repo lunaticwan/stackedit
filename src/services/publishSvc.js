@@ -5,7 +5,6 @@ import networkSvc from './networkSvc';
 import exportSvc from './exportSvc';
 import providerRegistry from './providers/common/providerRegistry';
 import workspaceSvc from './workspaceSvc';
-import badgeSvc from './badgeSvc';
 
 const hasCurrentFilePublishLocations = () => !!store.getters['publishLocation/current'].length;
 
@@ -117,7 +116,6 @@ const requestPublish = () => {
           throw new Error('Publish not possible.');
         }
         await publishFile(store.getters['file/current'].id);
-        badgeSvc.addBadge('triggerPublish');
       }
     };
     intervalId = utils.setInterval(() => attempt(), 1000);
@@ -125,7 +123,7 @@ const requestPublish = () => {
   });
 };
 
-const createPublishLocation = (publishLocation, featureId) => {
+const createPublishLocation = (publishLocation) => {
   const currentFile = store.getters['file/current'];
   publishLocation.fileId = currentFile.id;
   store.dispatch(
@@ -134,9 +132,6 @@ const createPublishLocation = (publishLocation, featureId) => {
       const publishLocationToStore = await publish(publishLocation);
       workspaceSvc.addPublishLocation(publishLocationToStore);
       store.dispatch('notification/info', `A new publication location was added to "${currentFile.name}".`);
-      if (featureId) {
-        badgeSvc.addBadge(featureId);
-      }
     },
   );
 };

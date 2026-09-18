@@ -1,6 +1,5 @@
 import networkSvc from '../../networkSvc';
 import store from '../../../store';
-import badgeSvc from '../../badgeSvc';
 
 const request = (token, options) => networkSvc.request({
   ...options,
@@ -53,7 +52,6 @@ export default {
   },
   async addAccount(subdomain, clientId) {
     const token = await this.startOauth2(subdomain, clientId);
-    badgeSvc.addBadge('addZendeskAccount');
     return token;
   },
 

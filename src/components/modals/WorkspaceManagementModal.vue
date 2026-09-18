@@ -68,7 +68,6 @@ import { mapGetters, mapActions } from 'vuex';
 import ModalInner from './common/ModalInner';
 import workspaceSvc from '../../services/workspaceSvc';
 import store from '../../store';
-import badgeSvc from '../../services/badgeSvc';
 import localDbSvc from '../../services/localDbSvc';
 
 export default {
@@ -108,7 +107,6 @@ export default {
               name: this.editingName,
             },
           });
-          badgeSvc.addBadge('renameWorkspace');
         } else {
           this.editingName = workspace.name;
         }
@@ -124,7 +122,6 @@ export default {
         try {
           await store.dispatch('modal/open', 'removeWorkspace');
           workspaceSvc.removeWorkspace(id);
-          badgeSvc.addBadge('removeWorkspace');
         } catch (e) { /* Cancel */ }
       }
     },

@@ -19,7 +19,6 @@ import editorSvc from '../services/editorSvc';
 import ModalInner from './modals/common/ModalInner';
 import FilePropertiesModal from './modals/FilePropertiesModal';
 import SettingsModal from './modals/SettingsModal';
-import TemplatesModal from './modals/TemplatesModal';
 import AboutModal from './modals/AboutModal';
 import HtmlExportModal from './modals/HtmlExportModal';
 import PdfExportModal from './modals/PdfExportModal';
@@ -29,7 +28,6 @@ import SyncManagementModal from './modals/SyncManagementModal';
 import PublishManagementModal from './modals/PublishManagementModal';
 import WorkspaceManagementModal from './modals/WorkspaceManagementModal';
 import AccountManagementModal from './modals/AccountManagementModal';
-import BadgeManagementModal from './modals/BadgeManagementModal';
 
 // Providers
 import GooglePhotoModal from './modals/providers/GooglePhotoModal';
@@ -67,7 +65,6 @@ export default {
     ModalInner,
     FilePropertiesModal,
     SettingsModal,
-    TemplatesModal,
     AboutModal,
     HtmlExportModal,
     PdfExportModal,
@@ -77,7 +74,6 @@ export default {
     PublishManagementModal,
     WorkspaceManagementModal,
     AccountManagementModal,
-    BadgeManagementModal,
     // Providers
     GooglePhotoModal,
     GoogleDriveAccountModal,

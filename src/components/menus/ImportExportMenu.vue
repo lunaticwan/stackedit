@@ -47,7 +47,6 @@ import Provider from '../../services/providers/common/Provider';
 import store from '../../store';
 import workspaceSvc from '../../services/workspaceSvc';
 import exportSvc from '../../services/exportSvc';
-import badgeSvc from '../../services/badgeSvc';
 
 const turndownService = new TurndownService(store.getters['data/computedSettings'].turndown);
 
@@ -79,7 +78,6 @@ export default {
         name: file.name,
       });
       store.commit('file/setCurrentId', item.id);
-      badgeSvc.addBadge('importMarkdown');
     },
     async onImportHtml(evt) {
       const file = evt.target.files[0];
@@ -91,13 +89,11 @@ export default {
         name: file.name,
       });
       store.commit('file/setCurrentId', item.id);
-      badgeSvc.addBadge('importHtml');
     },
     async exportMarkdown() {
       const currentFile = store.getters['file/current'];
       try {
         await exportSvc.exportToDisk(currentFile.id, 'md');
-        badgeSvc.addBadge('exportMarkdown');
       } catch (e) { /* Cancel */ }
     },
     async exportHtml() {
