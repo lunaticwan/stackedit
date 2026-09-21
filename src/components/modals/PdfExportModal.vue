@@ -21,9 +21,7 @@
 </template>
 
 <script>
-import FileSaver from 'file-saver';
 import exportSvc from '../../services/exportSvc';
-import networkSvc from '../../services/networkSvc';
 import modalTemplate from './common/modalTemplate';
 import store from '../../store';
 
@@ -36,24 +34,45 @@ export default modalTemplate({
       this.config.resolve();
       const currentFile = store.getters['file/current'];
       store.dispatch('queue/enqueue', async () => {
-        const html = await exportSvc.applyTemplate(
-          currentFile.id,
-          this.allTemplatesById[this.selectedTemplate],
-          true,
-        );
-
         try {
-          const { body } = await networkSvc.request({
-            method: 'POST',
-            url: 'pdfExport',
-            params: {
-              options: JSON.stringify(store.getters['data/computedSettings'].wkhtmltopdf),
-            },
-            body: html,
-            blob: true,
-            timeout: 60000,
+          // 템플릿 적용 HTML 생성
+          const html = await exportSvc.applyTemplate(
+            currentFile.id,
+            this.allTemplatesById[this.selectedTemplate],
+            true,
+          );
+
+          // 클라이언트 측 인쇄 프레임 생성
+          const iframe = document.createElement('iframe');
+          iframe.style.position = 'fixed';
+          iframe.style.right = '0';
+          iframe.style.bottom = '0';
+          iframe.style.width = '0';
+          iframe.style.height = '0';
+          iframe.style.border = '0';
+          document.body.appendChild(iframe);
+
+          const frameDoc = iframe.contentWindow.document;
+          frameDoc.open();
+          frameDoc.write(html);
+          frameDoc.close();
+
+          // 현재 문서 스타일 복사 및 주입
+          const headStyles = document.querySelectorAll('style, link[rel="stylesheet"]');
+          headStyles.forEach((styleNode) => {
+            frameDoc.head.appendChild(styleNode.cloneNode(true));
           });
-          FileSaver.saveAs(body, `${currentFile.name}.pdf`);
+
+          // 인쇄 창 호출 및 노드 정리
+          setTimeout(() => {
+            iframe.contentWindow.focus();
+            iframe.contentWindow.print();
+            setTimeout(() => {
+              if (document.body.contains(iframe)) {
+                document.body.removeChild(iframe);
+              }
+            }, 2000);
+          }, 300);
         } catch (err) {
           console.error(err); // eslint-disable-line no-console
           store.dispatch('notification/error', err);
