@@ -13,13 +13,7 @@
     </div>
     <div class="side-bar__inner">
       <main-menu v-if="panel === 'menu'"></main-menu>
-      <workspaces-menu v-else-if="panel === 'workspaces'"></workspaces-menu>
-      <export-menu v-else-if="panel === 'export'"></export-menu>
       <import-export-menu v-else-if="panel === 'importExport'"></import-export-menu>
-      <workspace-backup-menu v-else-if="panel === 'workspaceBackups'"></workspace-backup-menu>
-      <div v-else-if="panel === 'help'" class="side-bar__panel side-bar__panel--help">
-        <pre class="markdown-highlighting" v-html="markdownSample"></pre>
-      </div>
       <div class="side-bar__panel side-bar__panel--toc" :class="{'side-bar__panel--hidden': panel !== 'toc'}">
         <toc>
         </toc>
@@ -32,33 +26,21 @@
 import { mapActions } from 'vuex';
 import Toc from './Toc';
 import MainMenu from './menus/MainMenu';
-import WorkspacesMenu from './menus/WorkspacesMenu';
 import ImportExportMenu from './menus/ImportExportMenu';
-import WorkspaceBackupMenu from './menus/WorkspaceBackupMenu';
-import markdownSample from '../data/markdownSample.md';
-import markdownConversionSvc from '../services/markdownConversionSvc';
 import store from '../store';
 
 const panelNames = {
   menu: '메뉴',
-  workspaces: 'Workspaces',
-  help: 'Markdown 치트시트',
   toc: '목차 (TOC)',
   importExport: '가져오기/내보내기',
-  workspaceBackups: 'Workspace 백업',
 };
 
 export default {
   components: {
     Toc,
     MainMenu,
-    WorkspacesMenu,
     ImportExportMenu,
-    WorkspaceBackupMenu,
   },
-  data: () => ({
-    markdownSample: markdownConversionSvc.highlight(markdownSample),
-  }),
   computed: {
     panel() {
       if (store.state.light) {
@@ -133,26 +115,6 @@ export default {
 
 .side-bar__panel--menu {
   padding: 10px;
-}
-
-.side-bar__panel--help {
-  padding: 0 10px 0 20px;
-
-  pre {
-    font-size: 0.875em;
-    font-variant-ligatures: no-common-ligatures;
-    line-height: 1.25;
-    white-space: pre-wrap;
-    word-break: break-word;
-    word-wrap: break-word;
-  }
-
-  .code,
-  .img,
-  .imgref,
-  .cl-toc {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
 }
 
 .side-bar__info {
