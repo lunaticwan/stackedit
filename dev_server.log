@@ -11,3 +11,111 @@ For more information, check the migration guide at https://a.co/7PzMCcy
  DONE  Compiled successfully in 65498ms1:50:12 AM
 
 > Listening at http://localhost:8080
+
+ ERROR  Failed to compile with 1 errors2:11:37 AM
+
+ error  in ./src/components/menus/HistoryMenu.vue
+
+Module build failed: Error: ENOENT: no such file or directory, open '/app/src/components/menus/HistoryMenu.vue'
+
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/SideBar.vue?vue&type=script&lang=js& 8:0-46
+ @ ./src/components/SideBar.vue?vue&type=script&lang=js&
+ @ ./src/components/SideBar.vue
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/Layout.vue?vue&type=script&lang=js&
+ @ ./src/components/Layout.vue?vue&type=script&lang=js&
+ @ ./src/components/Layout.vue
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/App.vue?vue&type=script&lang=js&
+ @ ./src/components/App.vue?vue&type=script&lang=js&
+ @ ./src/components/App.vue
+ @ ./src/index.js
+ @ multi ./build/dev-client ./src/
+
+ WAIT  Compiling...2:11:37 AM
+
+ ERROR  Failed to compile with 3 errors2:11:56 AM
+
+ error  in ./src/components/menus/HistoryMenu.vue
+
+Module build failed: Error: ENOENT: no such file or directory, open '/app/src/components/menus/HistoryMenu.vue'
+
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/SideBar.vue?vue&type=script&lang=js& 8:0-46
+ @ ./src/components/SideBar.vue?vue&type=script&lang=js&
+ @ ./src/components/SideBar.vue
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/Layout.vue?vue&type=script&lang=js&
+ @ ./src/components/Layout.vue?vue&type=script&lang=js&
+ @ ./src/components/Layout.vue
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/App.vue?vue&type=script&lang=js&
+ @ ./src/components/App.vue?vue&type=script&lang=js&
+ @ ./src/components/App.vue
+ @ ./src/index.js
+ @ multi ./build/dev-client ./src/
+
+ error  in ./src/icons/History.vue
+
+Module build failed: Error: ENOENT: no such file or directory, open '/app/src/icons/History.vue'
+
+ @ ./src/icons/index.js 47:0-32
+ @ ./src/index.js
+ @ multi ./build/dev-client ./src/
+
+ error  in ./src/components/modals/FilePropertiesModal.vue
+
+Module build failed: Error: ENOENT: no such file or directory, open '/app/src/components/modals/FilePropertiesModal.vue'
+
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/Modal.vue?vue&type=script&lang=js& 9:0-63
+ @ ./src/components/Modal.vue?vue&type=script&lang=js&
+ @ ./src/components/Modal.vue
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/App.vue?vue&type=script&lang=js&
+ @ ./src/components/App.vue?vue&type=script&lang=js&
+ @ ./src/components/App.vue
+ @ ./src/index.js
+ @ multi ./build/dev-client ./src/
+
+ WAIT  Compiling...2:11:56 AM
+
+ ERROR  Failed to compile with 2 errors2:12:17 AM
+
+ error  in ./src/icons/History.vue
+
+Module build failed: Error: ENOENT: no such file or directory, open '/app/src/icons/History.vue'
+
+ @ ./src/icons/index.js 47:0-32
+ @ ./src/index.js
+ @ multi ./build/dev-client ./src/
+
+ error  in ./src/components/modals/FilePropertiesModal.vue
+
+Module build failed: Error: ENOENT: no such file or directory, open '/app/src/components/modals/FilePropertiesModal.vue'
+
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/Modal.vue?vue&type=script&lang=js& 9:0-63
+ @ ./src/components/Modal.vue?vue&type=script&lang=js&
+ @ ./src/components/Modal.vue
+ @ ./~/babel-loader/lib!./~/vue-loader/lib?{"loaders":{"css":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"postcss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}}],"less":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"less-loader","options":{"sourceMap":true}}],"sass":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"indentedSyntax":true,"sourceMap":true}}],"scss":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"sass-loader","options":{"sourceMap":true}}],"stylus":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}],"styl":["vue-style-loader",{"loader":"css-loader","options":{"minimize":false,"sourceMap":true}},{"loader":"stylus-loader","options":{"sourceMap":true}}]}}!./src/components/App.vue?vue&type=script&lang=js&
+ @ ./src/components/App.vue?vue&type=script&lang=js&
+ @ ./src/components/App.vue
+ @ ./src/index.js
+ @ multi ./build/dev-client ./src/
+
+ WAIT  Compiling...2:12:17 AM
+
+ ERROR  Failed to compile with 1 errors2:12:37 AM
+
+ error  in ./src/icons/History.vue
+
+Module build failed: Error: ENOENT: no such file or directory, open '/app/src/icons/History.vue'
+
+ @ ./src/icons/index.js 47:0-32
+ @ ./src/index.js
+ @ multi ./build/dev-client ./src/
+
+ WAIT  Compiling...2:12:37 AM
+
+ DONE  Compiled successfully in 20546ms2:12:58 AM
+
+ WAIT  Compiling...2:12:58 AM
+
+ DONE  Compiled successfully in 32796ms2:13:31 AM
+
+ WAIT  Compiling...2:13:32 AM
+
+ DONE  Compiled successfully in 25859ms2:13:58 AM

@@ -27,7 +27,6 @@ export default (desc) => {
     },
     methods: {
       ...desc.methods || {},
-      openFileProperties: () => store.dispatch('modal/open', 'fileProperties'),
       setError(name) {
         clearTimeout(this.errorTimeouts[name]);
         const formEntry = this.$el.querySelector(`.form-entry[error=${name}]`);
