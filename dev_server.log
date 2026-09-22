@@ -1,0 +1,13 @@
+
+> stackedit@5.15.4 start /app
+> node build/dev-server.js
+
+> Starting dev server...
+(node:169085) NOTE: We are formalizing our plans to enter AWS SDK for JavaScript (v2) into maintenance mode in 2023.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the migration guide at https://a.co/7PzMCcy
+[BABEL] Note: The code generator has deoptimised the styling of "/app/node_modules/mermaid/dist/mermaid.core.js" as it exceeds the max of "500KB".
+ DONE  Compiled successfully in 65498ms1:50:12 AM
+
+> Listening at http://localhost:8080
