@@ -17,7 +17,6 @@ import simpleModals from '../data/simpleModals';
 import editorSvc from '../services/editorSvc';
 
 import ModalInner from './modals/common/ModalInner';
-import FilePropertiesModal from './modals/FilePropertiesModal';
 import SettingsModal from './modals/SettingsModal';
 import AboutModal from './modals/AboutModal';
 import HtmlExportModal from './modals/HtmlExportModal';
@@ -63,7 +62,6 @@ const getTabbables = container => container.querySelectorAll('a[href], button, .
 export default {
   components: {
     ModalInner,
-    FilePropertiesModal,
     SettingsModal,
     AboutModal,
     HtmlExportModal,

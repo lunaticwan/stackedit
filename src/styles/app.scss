@@ -371,6 +371,8 @@ textarea {
   .layout__panel--find-replace,
   .gutter,
   .floating-copy-btn,
+  .preview__corner,
+  .preview__button,
   .modal__viewport,
   .no-print {
     display: none !important;
@@ -382,8 +384,10 @@ textarea {
   .app,
   .layout,
   .layout__panel,
-  .layout__panel--preview {
-    background-color: transparent !important;
+  .layout__panel--preview,
+  .preview,
+  .preview__inner-1 {
+    background-color: #fff !important;
     color: #000 !important;
     display: block !important;
     height: auto !important;
@@ -402,7 +406,8 @@ textarea {
     text-decoration: underline;
   }
 
-  .preview__inner-2 {
+  .preview__inner-2,
+  .stackedit__html {
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
@@ -410,6 +415,69 @@ textarea {
     font-size: 11pt !important;
     line-height: 1.6 !important;
     color: #000 !important;
+    background-color: transparent !important;
+  }
+
+  /* Code block & syntax highlighting print optimization */
+  pre,
+  code {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+    border: 1px solid #e9ecef !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    overflow: visible !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Headings print optimization */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #000 !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* Tables print optimization */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+
+    th,
+    td {
+      border: 1px solid #dee2e6 !important;
+      padding: 6px 12px !important;
+      color: #000 !important;
+      background-color: #fff !important;
+    }
+
+    th {
+      background-color: #f1f3f5 !important;
+    }
+  }
+
+  /* Images print optimization */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Blockquotes print optimization */
+  blockquote {
+    border-left: 4px solid #ced4da !important;
+    color: #495057 !important;
+    padding-left: 12px !important;
+    margin: 12px 0 !important;
+    background-color: transparent !important;
   }
 
   /* Page break utilities */

@@ -14,7 +14,6 @@
     <div class="side-bar__inner">
       <main-menu v-if="panel === 'menu'"></main-menu>
       <workspaces-menu v-else-if="panel === 'workspaces'"></workspaces-menu>
-      <history-menu v-else-if="panel === 'history'"></history-menu>
       <export-menu v-else-if="panel === 'export'"></export-menu>
       <import-export-menu v-else-if="panel === 'importExport'"></import-export-menu>
       <workspace-backup-menu v-else-if="panel === 'workspaceBackups'"></workspace-backup-menu>
@@ -34,7 +33,6 @@ import { mapActions } from 'vuex';
 import Toc from './Toc';
 import MainMenu from './menus/MainMenu';
 import WorkspacesMenu from './menus/WorkspacesMenu';
-import HistoryMenu from './menus/HistoryMenu';
 import ImportExportMenu from './menus/ImportExportMenu';
 import WorkspaceBackupMenu from './menus/WorkspaceBackupMenu';
 import markdownSample from '../data/markdownSample.md';
@@ -46,7 +44,6 @@ const panelNames = {
   workspaces: 'Workspaces',
   help: 'Markdown 치트시트',
   toc: '목차 (TOC)',
-  history: '파일 히스토리',
   importExport: '가져오기/내보내기',
   workspaceBackups: 'Workspace 백업',
 };
@@ -56,7 +53,6 @@ export default {
     Toc,
     MainMenu,
     WorkspacesMenu,
-    HistoryMenu,
     ImportExportMenu,
     WorkspaceBackupMenu,
   },

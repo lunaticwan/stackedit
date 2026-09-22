@@ -31,9 +31,6 @@
           <a href="javascript:void(0)" @click="configureTemplates">템플릿 설정</a>
         </div>
       </form-entry>
-      <div class="modal__info">
-        <b>ProTip:</b> You can provide a value for <code>title</code> in the <a href="javascript:void(0)" @click="openFileProperties">file properties</a>.
-      </div>
     </div>
     <div class="modal__button-bar">
       <button class="button" @click="config.reject()">취소</button>

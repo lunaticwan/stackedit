@@ -13,16 +13,6 @@
       <div><div class="menu-entry__label menu-entry__label--count" v-if="workspaceCount">{{workspaceCount}}</div> Workspaces</div>
       <span>다른 Workspace로 전환</span>
     </menu-entry>
-    <menu-entry @click.native="setPanel('history')">
-      <icon-history slot="icon"></icon-history>
-      <div>히스토리</div>
-      <span>파일 변경 이력 추적 및 복원</span>
-    </menu-entry>
-    <menu-entry @click.native="fileProperties">
-      <icon-view-list slot="icon"></icon-view-list>
-      <div>파일 속성</div>
-      <span>메타데이터 추가 및 확장 기능 설정</span>
-    </menu-entry>
     <hr>
     <menu-entry @click.native="setPanel('toc')">
       <icon-toc slot="icon"></icon-toc>
@@ -84,13 +74,6 @@ export default {
     ...mapActions('data', {
       setPanel: 'setSideBarPanel',
     }),
-    async fileProperties() {
-      try {
-        await store.dispatch('modal/open', 'fileProperties');
-      } catch (e) {
-        // Cancel
-      }
-    },
     print() {
       window.print();
     },
