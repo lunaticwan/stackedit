@@ -7,6 +7,32 @@ import utils from './utils';
 import store from '../store';
 import htmlSanitizer from '../libs/htmlSanitizer';
 
+function getEmbeddedCss() {
+  let cssText = '';
+  try {
+    const styleSheets = Array.from(document.styleSheets);
+    styleSheets.forEach((sheet) => {
+      try {
+        const rules = Array.from(sheet.cssRules || sheet.rules || []);
+        rules.forEach((rule) => {
+          cssText += `${rule.cssText}\n`;
+        });
+      } catch (e) {
+        // 외부 시트 또는 세큐리티 제약 시 예외 무시
+      }
+    });
+  } catch (e) {
+    // 예외 무시
+  }
+  if (!cssText) {
+    const styles = Array.from(document.querySelectorAll('style'));
+    styles.forEach((styleTag) => {
+      cssText += `${styleTag.textContent}\n`;
+    });
+  }
+  return cssText;
+}
+
 function groupHeadings(headings, level = 1) {
   const result = [];
   let currentItem;
@@ -103,7 +129,15 @@ export default {
         if (err) {
           reject(new Error(`${err}`));
         } else {
-          resolve(`${result}`);
+          let output = `${result}`;
+          const cssText = getEmbeddedCss();
+          if (cssText) {
+            output = output.replace(
+              /<link\s+rel=["']stylesheet["']\s+href=["']style\.css["']\s*\/?>/gi,
+              `<style>\n${cssText}\n</style>`,
+            );
+          }
+          resolve(output);
         }
       });
       worker.postMessage([template.value, view, template.helpers]);
