@@ -31,13 +31,8 @@ export default {
     '아니오',
     '예, 접미사 추가',
   ),
-  removeWorkspace: simpleModal(
-    '<p>로컬 Workspace를 제거하시겠습니까?</p>',
-    '아니오',
-    '예, 제거합니다',
-  ),
   reset: simpleModal(
-    '<p>모든 로컬 Workspace 데이터가 초기화됩니다. 계속하시겠습니까?</p>',
+    '<p>모든 로컬 데이터가 초기화됩니다. 계속하시겠습니까?</p>',
     '아니오',
     '예, 초기화합니다',
   ),

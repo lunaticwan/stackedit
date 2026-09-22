@@ -21,7 +21,7 @@
       </div>
       <div class="tour-step__inner" v-else-if="step === 'explorer'">
         <h2>파일 탐색기</h2>
-        <p>iM Markdown은 Workspace 내의 여러 파일과 폴더를 관리할 수 있습니다.</p>
+        <p>iM Markdown은 여러 파일과 폴더를 관리할 수 있습니다.</p>
         <p><icon-folder></icon-folder>를 클릭하여 파일 탐색기를 열 수 있습니다.</p>
         <div class="tour-step__button-bar">
           <button class="button" @click="finish">건너뛰기</button>

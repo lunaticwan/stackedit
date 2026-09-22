@@ -18,21 +18,18 @@ import editorSvc from '../services/editorSvc';
 
 import ModalInner from './modals/common/ModalInner';
 import SettingsModal from './modals/SettingsModal';
-import AboutModal from './modals/AboutModal';
 import HtmlExportModal from './modals/HtmlExportModal';
 import PdfExportModal from './modals/PdfExportModal';
 import LinkModal from './modals/LinkModal';
 import ImageModal from './modals/ImageModal';
 import SyncManagementModal from './modals/SyncManagementModal';
 import PublishManagementModal from './modals/PublishManagementModal';
-import WorkspaceManagementModal from './modals/WorkspaceManagementModal';
 import AccountManagementModal from './modals/AccountManagementModal';
 
 // Providers
 import GooglePhotoModal from './modals/providers/GooglePhotoModal';
 import GoogleDriveAccountModal from './modals/providers/GoogleDriveAccountModal';
 import GoogleDriveSaveModal from './modals/providers/GoogleDriveSaveModal';
-import GoogleDriveWorkspaceModal from './modals/providers/GoogleDriveWorkspaceModal';
 import GoogleDrivePublishModal from './modals/providers/GoogleDrivePublishModal';
 import DropboxAccountModal from './modals/providers/DropboxAccountModal';
 import DropboxSaveModal from './modals/providers/DropboxSaveModal';
@@ -40,7 +37,6 @@ import DropboxPublishModal from './modals/providers/DropboxPublishModal';
 import GithubAccountModal from './modals/providers/GithubAccountModal';
 import GithubOpenModal from './modals/providers/GithubOpenModal';
 import GithubSaveModal from './modals/providers/GithubSaveModal';
-import GithubWorkspaceModal from './modals/providers/GithubWorkspaceModal';
 import GithubPublishModal from './modals/providers/GithubPublishModal';
 import GistSyncModal from './modals/providers/GistSyncModal';
 import GistPublishModal from './modals/providers/GistPublishModal';
@@ -48,11 +44,9 @@ import GitlabAccountModal from './modals/providers/GitlabAccountModal';
 import GitlabOpenModal from './modals/providers/GitlabOpenModal';
 import GitlabPublishModal from './modals/providers/GitlabPublishModal';
 import GitlabSaveModal from './modals/providers/GitlabSaveModal';
-import GitlabWorkspaceModal from './modals/providers/GitlabWorkspaceModal';
 import WordpressPublishModal from './modals/providers/WordpressPublishModal';
 import ZendeskAccountModal from './modals/providers/ZendeskAccountModal';
 import ZendeskPublishModal from './modals/providers/ZendeskPublishModal';
-import CouchdbWorkspaceModal from './modals/providers/CouchdbWorkspaceModal';
 import CouchdbCredentialsModal from './modals/providers/CouchdbCredentialsModal';
 
 const getTabbables = container => container.querySelectorAll('a[href], button, .textfield, input[type=checkbox]')
@@ -63,20 +57,17 @@ export default {
   components: {
     ModalInner,
     SettingsModal,
-    AboutModal,
     HtmlExportModal,
     PdfExportModal,
     LinkModal,
     ImageModal,
     SyncManagementModal,
     PublishManagementModal,
-    WorkspaceManagementModal,
     AccountManagementModal,
     // Providers
     GooglePhotoModal,
     GoogleDriveAccountModal,
     GoogleDriveSaveModal,
-    GoogleDriveWorkspaceModal,
     GoogleDrivePublishModal,
     DropboxAccountModal,
     DropboxSaveModal,
@@ -84,7 +75,6 @@ export default {
     GithubAccountModal,
     GithubOpenModal,
     GithubSaveModal,
-    GithubWorkspaceModal,
     GithubPublishModal,
     GistSyncModal,
     GistPublishModal,
@@ -92,11 +82,9 @@ export default {
     GitlabOpenModal,
     GitlabPublishModal,
     GitlabSaveModal,
-    GitlabWorkspaceModal,
     WordpressPublishModal,
     ZendeskAccountModal,
     ZendeskPublishModal,
-    CouchdbWorkspaceModal,
     CouchdbCredentialsModal,
   },
   computed: {
