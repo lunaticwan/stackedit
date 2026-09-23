@@ -366,7 +366,7 @@ textarea {
     margin: 15mm;
   }
 
-  /* Hide non-printable UI components */
+  /* Hide non-printable UI components & template TOC sidebar */
   .layout__panel--explorer,
   .layout__panel--navigation-bar,
   .layout__panel--button-bar,
@@ -374,6 +374,8 @@ textarea {
   .layout__panel--side-bar,
   .layout__panel--editor,
   .layout__panel--find-replace,
+  .stackedit__left,
+  .stackedit__toc,
   .gutter,
   .floating-copy-btn,
   .preview__corner,
@@ -391,7 +393,9 @@ textarea {
   .layout__panel,
   .layout__panel--preview,
   .preview,
-  .preview__inner-1 {
+  .preview__inner-1,
+  .stackedit,
+  .stackedit__right {
     background-color: #fff !important;
     color: #000 !important;
     display: block !important;
@@ -404,6 +408,9 @@ textarea {
     padding: 0 !important;
     border: none !important;
     box-shadow: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
   }
 
   a {

@@ -89,16 +89,17 @@ export default {
 <style lang="scss">
 .toc__inner {
   position: relative;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
-  font-size: 13px;
-  line-height: 1.4;
-  padding: 12px 16px 40px;
-  white-space: nowrap;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 14px 16px 40px;
+  white-space: normal;
+  word-break: break-word;
   user-select: none;
 
   .app--dark & {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.85);
   }
 
   * {
@@ -112,7 +113,7 @@ export default {
     h4,
     h5,
     h6 {
-      line-height: 1.4;
+      line-height: 1.45;
       border: none;
       padding: 0;
 
@@ -122,42 +123,42 @@ export default {
     }
 
     h1 {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
-      margin: 8px 0 4px;
+      margin: 10px 0 4px;
     }
 
     h2 {
-      font-size: 12px;
-      font-weight: 500;
-      margin: 6px 0 3px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 8px 0 3px 12px;
     }
 
     h3 {
-      font-size: 12px;
-      font-weight: 400;
-      margin: 4px 0 2px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      margin: 6px 0 2px 22px;
     }
 
     h4 {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 400;
-      margin: 3px 0 2px 30px;
-      opacity: 0.85;
+      margin: 4px 0 2px 32px;
+      opacity: 0.9;
     }
 
     h5 {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 400;
-      margin: 2px 0 1px 40px;
-      opacity: 0.75;
+      margin: 3px 0 1px 40px;
+      opacity: 0.8;
     }
 
     h6 {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 400;
-      margin: 1px 0 0 50px;
-      opacity: 0.65;
+      margin: 2px 0 0 48px;
+      opacity: 0.7;
     }
   }
 }
