@@ -17,7 +17,7 @@
       </div>
       <div class="side-title__close">
         <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
-          <icon-close></icon-close>
+          <icon-panel-right-close></icon-panel-right-close>
         </button>
       </div>
     </div>
@@ -32,7 +32,7 @@
       </div>
       <div class="side-title__close">
         <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
-          <icon-close></icon-close>
+          <icon-panel-right-close></icon-panel-right-close>
         </button>
       </div>
     </div>
