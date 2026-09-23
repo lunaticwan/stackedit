@@ -16,7 +16,7 @@
         </button>
       </div>
       <button class="side-title__button side-title__button--close button" @click="toggleExplorer(false)" v-title="'탐색기 닫기'">
-        <icon-close></icon-close>
+        <icon-panel-left-close></icon-panel-left-close>
       </button>
     </div>
     <div class="explorer__tree" :class="{'explorer__tree--new-item': !newChildNode.isNil}" v-if="!light" tabindex="0" @keydown.delete="deleteItem()">

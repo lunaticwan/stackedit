@@ -89,56 +89,75 @@ export default {
 <style lang="scss">
 .toc__inner {
   position: relative;
-  color: rgba(0, 0, 0, 0.67);
+  color: rgba(0, 0, 0, 0.75);
   cursor: pointer;
-  font-size: 9px;
-  padding: 10px 20px 40px;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 12px 16px 40px;
   white-space: nowrap;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 
+  .app--dark & {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
   * {
-    font-weight: inherit;
     pointer-events: none;
   }
 
   .cl-toc-section {
     h1,
-    h2 {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      line-height: 1.4;
+      border: none;
+      padding: 0;
+
       &::after {
         display: none;
       }
     }
 
     h1 {
-      margin: 1rem 0;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 8px 0 4px;
     }
 
     h2 {
-      margin: 0.5rem 0;
-      margin-left: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 6px 0 3px 10px;
     }
 
     h3 {
-      margin: 0.33rem 0;
-      margin-left: 16px;
+      font-size: 12px;
+      font-weight: 400;
+      margin: 4px 0 2px 20px;
     }
 
     h4 {
-      margin: 0.22rem 0;
-      margin-left: 24px;
+      font-size: 11px;
+      font-weight: 400;
+      margin: 3px 0 2px 30px;
+      opacity: 0.85;
     }
 
     h5 {
-      margin: 0.11rem 0;
-      margin-left: 32px;
+      font-size: 11px;
+      font-weight: 400;
+      margin: 2px 0 1px 40px;
+      opacity: 0.75;
     }
 
     h6 {
-      margin: 0;
-      margin-left: 40px;
+      font-size: 11px;
+      font-weight: 400;
+      margin: 1px 0 0 50px;
+      opacity: 0.65;
     }
   }
 }

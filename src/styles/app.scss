@@ -229,24 +229,27 @@ textarea {
 }
 
 .side-title {
-  height: 44px;
-  line-height: 36px;
-  padding: 4px 4px 0;
+  height: 40px;
+  padding: 0 4px 0 12px;
   background-color: rgba(0, 0, 0, 0.1);
   flex: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .side-title__button {
-  width: 38px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   padding: 6px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   opacity: 0.75;
   flex: none;
-
-  /* prevent from seeing wrapped buttons */
-  margin-bottom: 20px;
+  margin: 0 1px;
+  border-radius: $border-radius-base;
 
   &:active,
   &:focus,
@@ -257,12 +260,14 @@ textarea {
 }
 
 .side-title__title {
+  font-size: 14px;
+  font-weight: 600;
   text-transform: uppercase;
-  padding: 0 5px;
+  padding: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 100%;
+  line-height: 1;
 }
 
 .logo-background {
