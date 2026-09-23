@@ -1,9 +1,6 @@
 <template>
   <div class="side-bar flex flex--column">
-    <div v-if="panel === 'menu'" class="side-title flex flex--row flex--align-center">
-      <div class="side-title__title flex-1">
-        목차
-      </div>
+    <div v-if="panel === 'menu'" class="side-title flex flex--row flex--align-center flex--space-between">
       <div class="side-title__actions flex flex--row">
         <button class="side-title__button button" @click="setPanel('importExport')" v-title="'가져오기/내보내기'">
           <icon-content-save></icon-content-save>
@@ -17,21 +14,27 @@
         <button class="side-title__button button" @click="reset" v-title="'애플리케이션 초기화'">
           <icon-logout></icon-logout>
         </button>
+      </div>
+      <div class="side-title__close">
         <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
           <icon-close></icon-close>
         </button>
       </div>
     </div>
-    <div v-else class="side-title flex flex--row flex--align-center">
-      <button class="side-title__button button" @click="setPanel('menu')" v-title="'목차로 돌아가기'">
-        <icon-arrow-left></icon-arrow-left>
-      </button>
-      <div class="side-title__title flex-1">
-        {{panelName}}
+    <div v-else class="side-title flex flex--row flex--align-center flex--space-between">
+      <div class="flex flex--row flex--align-center flex-1">
+        <button class="side-title__button button" @click="setPanel('menu')" v-title="'목차로 돌아가기'">
+          <icon-arrow-left></icon-arrow-left>
+        </button>
+        <div class="side-title__title">
+          {{panelName}}
+        </div>
       </div>
-      <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
-        <icon-close></icon-close>
-      </button>
+      <div class="side-title__close">
+        <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
+          <icon-close></icon-close>
+        </button>
+      </div>
     </div>
     <div class="side-bar__inner">
       <div class="side-bar__panel side-bar__panel--toc" v-show="panel === 'menu'">
