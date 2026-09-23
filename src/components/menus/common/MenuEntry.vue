@@ -14,16 +14,16 @@
 
 .menu-entry {
   text-align: left;
-  padding: 10px;
+  padding: 8px 10px;
   height: auto;
-  font-size: 17px;
+  font-size: 14px;
   line-height: 1.4;
   text-transform: none;
   white-space: normal;
 
   span {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 11px;
     opacity: 0.67;
     line-height: 1.3;
 
@@ -44,9 +44,9 @@
 }
 
 .menu-entry__icon {
-  height: 20px;
-  width: 20px;
-  margin-right: 12px;
+  height: 18px;
+  width: 18px;
+  margin-right: 10px;
   flex: none;
 }
 

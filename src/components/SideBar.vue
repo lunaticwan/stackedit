@@ -1,10 +1,32 @@
 <template>
   <div class="side-bar flex flex--column">
-    <div class="side-title flex flex--row">
-      <button v-if="panel !== 'menu'" class="side-title__button button" @click="setPanel('menu')" v-title="'메인 메뉴'">
-        <icon-dots-horizontal></icon-dots-horizontal>
+    <div v-if="panel === 'menu'" class="side-title flex flex--row flex--align-center">
+      <div class="side-title__title flex-1">
+        목차
+      </div>
+      <div class="side-title__actions flex flex--row">
+        <button class="side-title__button button" @click="setPanel('importExport')" v-title="'가져오기/내보내기'">
+          <icon-content-save></icon-content-save>
+        </button>
+        <button class="side-title__button button" @click="print" v-title="'인쇄'">
+          <icon-printer></icon-printer>
+        </button>
+        <button class="side-title__button button" @click="settings" v-title="'설정'">
+          <icon-settings></icon-settings>
+        </button>
+        <button class="side-title__button button" @click="reset" v-title="'애플리케이션 초기화'">
+          <icon-logout></icon-logout>
+        </button>
+        <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
+          <icon-close></icon-close>
+        </button>
+      </div>
+    </div>
+    <div v-else class="side-title flex flex--row flex--align-center">
+      <button class="side-title__button button" @click="setPanel('menu')" v-title="'목차로 돌아가기'">
+        <icon-arrow-left></icon-arrow-left>
       </button>
-      <div class="side-title__title">
+      <div class="side-title__title flex-1">
         {{panelName}}
       </div>
       <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
@@ -12,12 +34,10 @@
       </button>
     </div>
     <div class="side-bar__inner">
-      <main-menu v-if="panel === 'menu'"></main-menu>
-      <import-export-menu v-else-if="panel === 'importExport'"></import-export-menu>
-      <div class="side-bar__panel side-bar__panel--toc" :class="{'side-bar__panel--hidden': panel !== 'toc'}">
-        <toc>
-        </toc>
+      <div class="side-bar__panel side-bar__panel--toc" v-show="panel === 'menu'">
+        <toc></toc>
       </div>
+      <import-export-menu v-if="panel === 'importExport'"></import-export-menu>
     </div>
   </div>
 </template>
@@ -25,20 +45,17 @@
 <script>
 import { mapActions } from 'vuex';
 import Toc from './Toc';
-import MainMenu from './menus/MainMenu';
 import ImportExportMenu from './menus/ImportExportMenu';
 import store from '../store';
 
 const panelNames = {
-  menu: '메뉴',
-  toc: '목차 (TOC)',
+  menu: '목차',
   importExport: '가져오기/내보내기',
 };
 
 export default {
   components: {
     Toc,
-    MainMenu,
     ImportExportMenu,
   },
   computed: {
@@ -60,6 +77,21 @@ export default {
     ...mapActions('data', {
       setPanel: 'setSideBarPanel',
     }),
+    print() {
+      window.print();
+    },
+    async settings() {
+      try {
+        await store.dispatch('modal/open', 'settings');
+      } catch (e) { /* Cancel */ }
+    },
+    async reset() {
+      try {
+        await store.dispatch('modal/open', 'reset');
+        localStorage.setItem('resetStackEdit', '1');
+        window.location.reload();
+      } catch (e) { /* Cancel */ }
+    },
   },
 };
 </script>
@@ -72,17 +104,9 @@ export default {
   height: 100%;
 
   hr {
-    margin: 10px 40px;
-    display: none;
+    margin: 6px 10px;
+    border: none;
     border-top: 1px solid $hr-color;
-  }
-
-  * + hr {
-    display: block;
-  }
-
-  hr + hr {
-    display: none;
   }
 
   .textfield {
@@ -94,6 +118,7 @@ export default {
 .side-bar__inner {
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 
 .side-bar__panel {
@@ -107,10 +132,6 @@ export default {
     display: block;
     height: 40px;
   }
-}
-
-.side-bar__panel--hidden {
-  left: 1000px;
 }
 
 .side-bar__panel--menu {
