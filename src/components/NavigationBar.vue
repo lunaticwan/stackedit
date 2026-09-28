@@ -4,14 +4,18 @@
     <div class="navigation-bar__inner navigation-bar__inner--left navigation-bar__inner--button flex flex--row">
       <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" v-title="'iM Markdown 닫기'"><icon-check-circle></icon-check-circle></button>
       <template v-else>
-        <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" tour-step-anchor="explorer" @click="toggleExplorer()" v-title="'탐색기 토글'"><icon-folder></icon-folder></button>
+        <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" tour-step-anchor="explorer" @click="toggleExplorer()" v-title="styles.showExplorer ? '탐색기 접기' : '탐색기 펼치기'">
+          <component :is="styles.showExplorer ? 'icon-panel-left-close' : 'icon-panel-left-open'"></component>
+        </button>
         <button class="navigation-bar__button navigation-bar__button--new-file button" @click="createNewFile()" v-title="'새 문서'"><icon-file-plus></icon-file-plus></button>
       </template>
     </div>
     <!-- Side bar -->
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--button">
-      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" v-title="'iM Markdown 열기'"><icon-provider provider-id="stackedit"></icon-provider></a>
-      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else tour-step-anchor="menu" @click="toggleSideBar()" v-title="'사이드바 토글'"><icon-provider provider-id="stackedit"></icon-provider></button>
+      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" v-title="'iM Markdown 열기'"><icon-panel-right-open></icon-panel-right-open></a>
+      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else tour-step-anchor="menu" @click="toggleSideBar()" v-title="styles.showSideBar ? '사이드바 접기' : '사이드바 펼치기'">
+        <component :is="styles.showSideBar ? 'icon-panel-right-close' : 'icon-panel-right-open'"></component>
+      </button>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--title flex flex--row">
       <!-- Spinner -->
@@ -441,16 +445,6 @@ export default {
   .navigation-bar__inner--button & {
     padding: 0 4px;
     width: 38px;
-
-    &.navigation-bar__button--stackedit {
-      opacity: 0.85;
-
-      &:active,
-      &:focus,
-      &:hover {
-        opacity: 1;
-      }
-    }
   }
 }
 
@@ -601,6 +595,17 @@ export default {
   &:hover {
     color: #10b981;
     background-color: rgba(16, 185, 129, 0.15);
+  }
+}
+
+.navigation-bar__button--stackedit {
+  color: #fb923c;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: #f97316;
+    background-color: rgba(249, 115, 22, 0.15);
   }
 }
 
