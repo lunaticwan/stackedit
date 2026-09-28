@@ -52,7 +52,9 @@ import ContentCopy from './ContentCopy';
 import Key from './Key';
 import DotsHorizontal from './DotsHorizontal';
 import PanelLeftClose from './PanelLeftClose';
+import PanelLeftOpen from './PanelLeftOpen';
 import PanelRightClose from './PanelRightClose';
+import PanelRightOpen from './PanelRightOpen';
 
 Vue.component('iconProvider', Provider);
 Vue.component('iconFormatBold', FormatBold);
@@ -107,4 +109,6 @@ Vue.component('iconContentCopy', ContentCopy);
 Vue.component('iconKey', Key);
 Vue.component('iconDotsHorizontal', DotsHorizontal);
 Vue.component('iconPanelLeftClose', PanelLeftClose);
+Vue.component('iconPanelLeftOpen', PanelLeftOpen);
 Vue.component('iconPanelRightClose', PanelRightClose);
+Vue.component('iconPanelRightOpen', PanelRightOpen);
