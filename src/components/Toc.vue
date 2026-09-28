@@ -125,40 +125,40 @@ export default {
     h1 {
       font-size: 14px;
       font-weight: 600;
-      margin: 10px 0 4px;
+      margin: 12px 0 4px;
     }
 
     h2 {
       font-size: 13px;
       font-weight: 600;
-      margin: 8px 0 3px 12px;
+      margin: 8px 0 3px 8px;
     }
 
     h3 {
-      font-size: 13px;
-      font-weight: 500;
-      margin: 6px 0 2px 22px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 6px 0 2px 16px;
     }
 
     h4 {
       font-size: 12px;
-      font-weight: 400;
-      margin: 4px 0 2px 32px;
+      font-weight: 500;
+      margin: 5px 0 2px 24px;
       opacity: 0.9;
     }
 
     h5 {
-      font-size: 12px;
-      font-weight: 400;
-      margin: 3px 0 1px 40px;
-      opacity: 0.8;
+      font-size: 11px;
+      font-weight: 500;
+      margin: 4px 0 2px 30px;
+      opacity: 0.85;
     }
 
     h6 {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 400;
-      margin: 2px 0 0 48px;
-      opacity: 0.7;
+      margin: 4px 0 2px 36px;
+      opacity: 0.75;
     }
   }
 }
