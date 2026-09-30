@@ -98,3 +98,21 @@ npm run build
    - 폰트 크기 및 레이아웃 치수 수정 시 서브픽셀 번짐을 방지하기 위해 정수 픽셀 및 16 베이스 em 값(0.875em=14px, 0.8125em=13px 등)을 사용합니다.
 3. **코드 주석 표준**:
    - 비즈니스 의도만 간결하게 설명하며, AI 지시 흔적(`[1단계]`, `[Rule 5.2]` 등)을 기재하지 않습니다.
+
+---
+
+## 📄 라이선스 (License)
+
+본 프로젝트는 [Apache License 2.0](LICENSE) 라이선스 하에 배포됩니다.
+
+### 주요 오픈소스 라이선스 준수 (Open Source Licenses)
+**iM Markdown**은 다음의 주요 오픈소스 라이브러리를 활용하여 개발되었으며, 각 오픈소스의 라이선스를 준수합니다.
+
+* **StackEdit** ([Apache-2.0](https://github.com/benweet/stackedit)): 베이스 웹 마크다운 에디터 프레임워크
+* **Vue.js & Vuex** ([MIT](https://github.com/vuejs/vue)): UI 컴포넌트 프레임워크 및 상태 관리
+* **Markdown-it** ([MIT](https://github.com/markdown-it/markdown-it)): 마크다운 파싱 및 HTML 변환 엔진
+* **KaTeX** ([MIT](https://github.com/KaTeX/KaTeX)): 수식 렌더링 라이브러리
+* **Mermaid** ([MIT](https://github.com/mermaid-js/mermaid)): 다이어그램 및 차트 생성 라이브러리
+* **Prism.js** ([MIT](https://github.com/PrismJS/prism)): 코드 구문 하이라이팅 라이브러리 (`gulpfile.js` 빌드 스크립트를 통해 커스텀 번들링 적용)
+* **ClEdit / PageDown** ([Apache-2.0](https://github.com/benweet/stackedit)): 에디터 코어 입력 처리 및 하이라이팅 엔진 (`src/services/editor/cledit/` 경로에서 커스터마이징하여 사용)
+* **Turndown** ([MIT](https://github.com/mixmark-io/turndown)): HTML to Markdown 변환 라이브러리
