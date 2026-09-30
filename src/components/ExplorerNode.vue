@@ -191,7 +191,7 @@ export default {
 </script>
 
 <style lang="scss">
-$item-font-size: 14px;
+$item-font-size: 15px;
 
 .explorer-node--drag-target {
   background-color: rgba(0, 128, 255, 0.2);

@@ -174,11 +174,11 @@ const editorSvc = Object.assign(new Vue(), editorSvcDiscussions, editorSvcUtils,
             ...Array.prototype.slice.call(sectionPreviewElt.getElementsByTagName('img')),
           ];
 
-          // Create TOC section element
+          // Create TOC section element (Collect only ATX headings using '#' syntax)
           sectionTocElt = document.createElement('div');
           sectionTocElt.className = 'cl-toc-section';
           const headingElt = sectionPreviewElt.querySelector('h1, h2, h3, h4, h5, h6');
-          if (headingElt) {
+          if (headingElt && /^\s*#{1,6}(\s+|$)/.test(section.text)) {
             const clonedElt = headingElt.cloneNode(true);
             clonedElt.removeAttribute('id');
             sectionTocElt.appendChild(clonedElt);

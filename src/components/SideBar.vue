@@ -15,11 +15,6 @@
           <icon-logout></icon-logout>
         </button>
       </div>
-      <div class="side-title__close">
-        <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
-          <icon-panel-right-close></icon-panel-right-close>
-        </button>
-      </div>
     </div>
     <div v-else class="side-title flex flex--row flex--align-center flex--space-between">
       <div class="flex flex--row flex--align-center flex-1">
@@ -29,11 +24,6 @@
         <div class="side-title__title">
           {{panelName}}
         </div>
-      </div>
-      <div class="side-title__close">
-        <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'사이드바 닫기'">
-          <icon-panel-right-close></icon-panel-right-close>
-        </button>
       </div>
     </div>
     <div class="side-bar__inner">
