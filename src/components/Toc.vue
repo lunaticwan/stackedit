@@ -87,11 +87,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/variables.scss';
+
 .toc__inner {
   position: relative;
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
-  font-size: 14px;
+  font-family: $font-family-main;
+  font-size: 15px;
   line-height: 1.5;
   padding: 14px 16px 40px;
   white-space: normal;
@@ -106,13 +109,23 @@ export default {
     pointer-events: none;
   }
 
+  code,
+  pre,
+  samp,
+  kbd {
+    font-family: inherit;
+  }
+
   .cl-toc-section {
+    font-family: $font-family-main;
+
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
+      font-family: $font-family-main;
       line-height: 1.45;
       border: none;
       padding: 0;
@@ -123,39 +136,39 @@ export default {
     }
 
     h1 {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       margin: 12px 0 4px;
     }
 
     h2 {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       margin: 8px 0 3px 8px;
     }
 
     h3 {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       margin: 6px 0 2px 16px;
     }
 
     h4 {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
       margin: 5px 0 2px 24px;
       opacity: 0.9;
     }
 
     h5 {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 500;
       margin: 4px 0 2px 30px;
       opacity: 0.85;
     }
 
     h6 {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 400;
       margin: 4px 0 2px 36px;
       opacity: 0.75;
