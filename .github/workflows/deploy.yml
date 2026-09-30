@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -38,11 +38,41 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Detect build directory and set release env
+        run: |
+          echo "BUILD_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+          if [ -d "dist" ]; then
+            echo "BUILD_DIR=dist" >> $GITHUB_ENV
+          elif [ -d "build" ]; then
+            echo "BUILD_DIR=build" >> $GITHUB_ENV
+          elif [ -d "out" ]; then
+            echo "BUILD_DIR=out" >> $GITHUB_ENV
+          elif [ -d "public" ]; then
+            echo "BUILD_DIR=public" >> $GITHUB_ENV
+          else
+            echo "BUILD_DIR=dist" >> $GITHUB_ENV
+          fi
+
+      - name: Archive build output
+        run: |
+          ZIP_NAME="${{ github.event.repository.name }}-${{ env.BUILD_DATE }}-run${{ github.run_number }}.zip"
+          (cd "$BUILD_DIR" && zip -r "../$ZIP_NAME" .)
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './${{ env.BUILD_DIR }}'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="v${{ env.BUILD_DATE }}-${{ github.run_number }}"
+          gh release create "$TAG_NAME" "$ZIP_NAME" \
+            --title "$TAG_NAME" \
+            --generate-notes
